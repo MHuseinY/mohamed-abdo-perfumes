@@ -1,0 +1,19 @@
+# ffmpeg binary (large, not needed in repo)
+ffmpeg-*/
+*.7z
+
+# Original unoptimized video (keep only the scrub version)
+Luxury_Perfume_Ad_Video_Generation.mp4
+video_faststart.mp4
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+
+# Skills lock (auto-generated)
+skills-lock.json

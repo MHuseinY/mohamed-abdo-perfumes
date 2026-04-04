@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohamed Abdo Perfumes — أكاديمية العطور</title>
+  <meta name="description" content="منصة تعليمية لصناعة العطور — أكاديمية، موارد، وثقافة عطرية" />
+
+  <!-- Preconnect for fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: { DEFAULT: '#C9A84C', light: '#D4AF77', dark: '#A8883A' },
+            cream: '#FAFAF8',
+            dark: '#1A1A1A',
+          },
+          fontFamily: {
+            arabic: ['Noto Naskh Arabic', 'serif'],
+            latin: ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Base */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: auto; } /* Disabled — GSAP handles scroll */
+    body {
+      font-family: 'Noto Naskh Arabic', serif;
+      background-color: #FAFAF8;
+      color: #1A1A1A;
+      overflow-x: hidden;
+    }
+
+    /* Scroll progress bar */
+    #scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      width: 0%;
+      background: linear-gradient(90deg, #C9A84C, #D4AF77);
+      z-index: 9999;
+      transition: width 0.08s linear;
+    }
+
+    /* Nav glassmorphism */
+    #navbar {
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(250, 250, 248, 0.88) !important;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 1px 0 rgba(201, 168, 76, 0.18), 0 4px 24px rgba(0,0,0,0.06);
+    }
+
+    /* Nav links */
+    .nav-link { position: relative; text-decoration: none; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 1.5px;
+      background: #C9A84C;
+      transform: scaleX(0);
+      transition: transform 0.25s ease;
+      transform-origin: center;
+    }
+    .nav-link:hover::after,
+    .nav-link.active::after { transform: scaleX(1); }
+
+    /* Hero video */
+    #hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    /* Scroll hint bounce */
+    @keyframes bounce-soft {
+      0%, 100% { transform: translateY(0); opacity: 0.7; }
+      50% { transform: translateY(8px); opacity: 1; }
+    }
+    #scroll-hint { animation: bounce-soft 2s ease-in-out infinite; }
+
+    /* Category cards */
+    .category-card {
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  box-shadow 0.35s ease,
+                  border-color 0.25s ease;
+      cursor: pointer;
+    }
+    .category-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 16px 40px rgba(201, 168, 76, 0.18), 0 4px 12px rgba(0,0,0,0.06);
+      border-color: rgba(201, 168, 76, 0.3) !important;
+    }
+
+    /* Track cards — RTL gold border on inline-start side */
+    .track-card {
+      border-inline-start: 3px solid #C9A84C;
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+    }
+    .track-card:hover {
+      transform: translateX(-5px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.09);
+    }
+    [dir="ltr"] .track-card:hover { transform: translateX(5px); }
+
+    /* Gold gradient */
+    .gold-gradient {
+      background: linear-gradient(135deg, #A8883A 0%, #C9A84C 35%, #D4AF77 65%, #C9A84C 100%);
+    }
+
+    /* Gold text shimmer */
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    .gold-shimmer {
+      background: linear-gradient(90deg, #A8883A 0%, #D4AF77 30%, #C9A84C 50%, #D4AF77 70%, #A8883A 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+    }
+
+    /* Mobile menu */
+    #mobile-menu {
+      display: none;
+      flex-direction: column;
+    }
+    #mobile-menu.open { display: flex; }
+
+    /* Hamburger */
+    .hamburger-bar {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #1A1A1A;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    #navbar.scrolled .hamburger-bar { background: #1A1A1A; }
+    .hamburger-bar.on-dark { background: #fff; }
+    #hamburger.open .hamburger-bar:nth-child(1) { transform: rotate(45deg) translate(3px, 3px); }
+    #hamburger.open .hamburger-bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    #hamburger.open .hamburger-bar:nth-child(3) { transform: rotate(-45deg) translate(3px, -3px); }
+
+    /* Section reveal (initial state set by GSAP) */
+    .reveal { opacity: 0; transform: translateY(36px); }
+
+    /* Tailwind safelist (dynamic JS classes) */
+    .safelist-holder {
+      display: none;
+    }
+  </style>
+</head>
+
+<body class="bg-cream">
+
+  <!-- Safelist for Tailwind Play CDN dynamic classes -->
+  <div class="safelist-holder text-gold font-semibold text-gray-400 border-gold bg-gold/10 text-white/90 text-white/50 text-white/30 text-white/80 border-gold/20 bg-black/60 bg-black/40 bg-black/70 sm:grid-cols-2 lg:grid-cols-3 sm:flex-row border-transparent hover:border-gold/20"></div>
+
+  <!-- Scroll progress bar -->
+  <div id="scroll-progress"></div>
+
+  <!-- ═══════════════════════════════════════════
+       NAV
+  ═══════════════════════════════════════════ -->
+  <nav id="navbar" class="fixed top-0 inset-x-0 z-50 px-5 py-3">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+
+      <!-- Logo (inline SVG — transparent bg, works on any nav state) -->
+      <a href="#hero" class="flex items-center gap-2.5 flex-shrink-0 group">
+        <svg width="42" height="42" viewBox="0 0 100 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Capsule/bottle outline -->
+          <rect x="12" y="8" width="76" height="114" rx="38" fill="none" stroke="#C9A84C" stroke-width="5"/>
+          <rect x="24" y="20" width="52" height="90" rx="26" fill="none" stroke="#C9A84C" stroke-width="3" stroke-dasharray="0"/>
+          <!-- M letter -->
+          <path d="M34 88 L34 48 L50 70 L66 48 L66 88" fill="none" stroke="#C9A84C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- U arc at bottom of M -->
+          <path d="M34 72 Q34 95 50 95 Q66 95 66 72" fill="none" stroke="#C9A84C" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+        <div class="hidden sm:flex flex-col leading-tight">
+          <span class="font-latin text-[11px] font-bold tracking-[0.15em] text-[#1A1A1A] group-hover:text-gold transition-colors uppercase">Mohamed Abdo</span>
+          <span class="font-latin text-[9px] tracking-[0.25em] text-gray-400 uppercase">Perfumes</span>
+        </div>
+      </a>
+
+      <!-- Desktop nav -->
+      <div class="hidden md:flex items-center gap-7 flex-1 justify-center">
+        <a href="#hero" class="nav-link active flex flex-col items-center gap-0.5 group">
+          <span class="font-arabic text-[14px] font-semibold text-dark group-hover:text-gold transition-colors">الرئيسية</span>
+          <span class="font-latin text-[10px] text-gray-400 group-hover:text-gold transition-colors">Home</span>
+        </a>
+        <a href="#tracks" class="nav-link flex flex-col items-center gap-0.5 group">
+          <span class="font-arabic text-[14px] font-semibold text-dark group-hover:text-gold transition-colors">الأكاديمية</span>
+          <span class="font-latin text-[10px] text-gray-400 group-hover:text-gold transition-colors">Academy</span>
+        </a>
+        <a href="#about" class="nav-link flex flex-col items-center gap-0.5 group">
+          <span class="font-arabic text-[14px] font-semibold text-dark group-hover:text-gold transition-colors">المدونة</span>
+          <span class="font-latin text-[10px] text-gray-400 group-hover:text-gold transition-colors">Blog</span>
+        </a>
+        <a href="#categories" class="nav-link flex flex-col items-center gap-0.5 group">
+          <span class="font-arabic text-[14px] font-semibold text-dark group-hover:text-gold transition-colors">الموارد</span>
+          <span class="font-latin text-[10px] text-gray-400 group-hover:text-gold transition-colors">Resources</span>
+        </a>
+      </div>
+
+      <!-- AR/EN + hamburger -->
+      <div class="flex items-center gap-4 flex-shrink-0">
+        <div class="flex items-center gap-1 font-latin text-[13px]">
+          <button id="lang-ar" class="px-2 py-1 rounded font-semibold text-gold transition-colors">AR</button>
+          <span class="text-gray-300 select-none">|</span>
+          <button id="lang-en" class="px-2 py-1 rounded text-gray-400 hover:text-gold transition-colors">EN</button>
+        </div>
+        <!-- Mobile hamburger -->
+        <button id="hamburger" aria-label="القائمة" class="md:hidden flex flex-col gap-1.5 p-1">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden border-t border-gold/20 mt-3 pt-4 pb-5 px-4 gap-5 bg-cream/95 backdrop-blur-sm">
+      <a href="#hero"       class="font-arabic text-base font-semibold text-dark hover:text-gold transition-colors" onclick="closeMobileMenu()">الرئيسية &nbsp;<span class="font-latin text-xs text-gray-400">Home</span></a>
+      <a href="#tracks"     class="font-arabic text-base font-semibold text-dark hover:text-gold transition-colors" onclick="closeMobileMenu()">الأكاديمية &nbsp;<span class="font-latin text-xs text-gray-400">Academy</span></a>
+      <a href="#about"      class="font-arabic text-base font-semibold text-dark hover:text-gold transition-colors" onclick="closeMobileMenu()">المدونة &nbsp;<span class="font-latin text-xs text-gray-400">Blog</span></a>
+      <a href="#categories" class="font-arabic text-base font-semibold text-dark hover:text-gold transition-colors" onclick="closeMobileMenu()">الموارد &nbsp;<span class="font-latin text-xs text-gray-400">Resources</span></a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════
+       HERO — scroll-pinned video scrub
+  ═══════════════════════════════════════════ -->
+  <div id="hero-wrapper" style="height: 100vh;">
+    <section id="hero" class="relative w-full h-screen overflow-hidden flex items-center justify-center">
+
+      <!-- Background video -->
+      <video id="hero-video"
+             autoplay
+             muted
+             playsinline
+             preload="auto"
+             class="absolute inset-0 w-full h-full object-cover">
+        <source src="./Luxury_Perfume_Ad_Video_Generation_scrub.mp4" type="video/mp4" />
+      </video>
+
+      <!-- Overlay gradient -->
+      <div class="absolute inset-0 z-10"
+           style="background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.65) 100%);">
+      </div>
+
+      <!-- Content -->
+      <div id="hero-content" class="relative z-20 text-center px-6 max-w-3xl mx-auto">
+
+        <!-- Logo image (dark bg matches overlay perfectly) -->
+        <div class="flex justify-center mb-7">
+          <img src="./friend_logo.png"
+               alt="Mohamed Abdo Perfumes"
+               class="w-24 h-24 object-contain opacity-95 drop-shadow-2xl"
+               style="border-radius: 50%;" />
+        </div>
+
+        <!-- Gold divider line -->
+        <div class="flex items-center justify-center gap-3 mb-6">
+          <div class="h-px w-16 bg-gold/60"></div>
+          <div class="w-1.5 h-1.5 rounded-full bg-gold"></div>
+          <div class="h-px w-16 bg-gold/60"></div>
+        </div>
+
+        <!-- Main headline -->
+        <h1 id="hero-headline"
+            class="font-arabic text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-5 gold-shimmer"
+            style="line-height: 1.4;">
+          موهبة العطور تبدأ من هنا
+        </h1>
+
+        <!-- Subheadline -->
+        <p id="hero-sub"
+           class="font-arabic text-lg sm:text-xl text-white/85 mb-10 leading-relaxed max-w-xl mx-auto">
+          أكاديمية ومنصة تعليمية لصناعة العطور
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href="#tracks" id="cta-start"
+             class="px-9 py-3.5 bg-gold text-white font-arabic font-semibold text-base
+                    rounded-full shadow-lg hover:bg-gold-dark transition-all duration-300 hover:scale-105 hover:shadow-xl">
+            ابدأ مسارك
+          </a>
+          <a href="#categories" id="cta-browse"
+             class="px-9 py-3.5 border-2 border-gold text-gold font-arabic font-semibold text-base
+                    rounded-full hover:bg-gold/15 transition-all duration-300 hover:scale-105 backdrop-blur-sm">
+            تصفح الموارد
+          </a>
+        </div>
+
+        <!-- Scroll hint -->
+        <div id="scroll-hint" class="mt-14 flex flex-col items-center gap-2">
+          <span class="font-arabic text-xs text-white/40">اسحب للأسفل</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round">
+            <path d="M12 5v14M5 12l7 7 7-7"/>
+          </svg>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SEARCH BAR (like screenshot 1)
+  ═══════════════════════════════════════════ -->
+  <section class="py-12 px-6 bg-cream border-b border-gray-100">
+    <div class="max-w-2xl mx-auto">
+      <div class="relative flex items-center bg-white rounded-full shadow-sm border border-gray-100 px-5 py-3.5 gap-3
+                  focus-within:border-gold/40 focus-within:shadow-md transition-all">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" class="flex-shrink-0">
+          <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+        </svg>
+        <input type="text"
+               id="search-input"
+               placeholder="ابحث عن مادة، كتاب، دورة..."
+               class="flex-1 bg-transparent outline-none font-arabic text-sm text-dark placeholder-gray-400 text-right" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       QUICK ACCESS CARDS
+  ═══════════════════════════════════════════ -->
+  <section id="categories" class="py-20 px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+
+      <!-- Section header -->
+      <div class="text-center mb-14 reveal">
+        <div class="flex items-center justify-center gap-3 mb-4">
+          <div class="h-px w-12 bg-gold/50"></div>
+          <div class="w-1.5 h-1.5 rounded-full bg-gold"></div>
+          <div class="h-px w-12 bg-gold/50"></div>
+        </div>
+        <h2 class="font-arabic text-2xl sm:text-3xl font-bold text-dark">استكشف المحتوى</h2>
+        <p class="font-latin text-sm text-gray-400 mt-2 tracking-widest uppercase">Explore Content</p>
+      </div>
+
+      <!-- Top row: 3 cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-5 sm:mb-6">
+
+        <!-- Card 1: موسوعة الزيوت -->
+        <div class="category-card bg-white rounded-2xl shadow-sm border border-transparent p-8 flex flex-col items-center gap-4">
+          <div class="w-16 h-16 flex items-center justify-center">
+            <svg width="52" height="52" viewBox="0 0 52 52" fill="none" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Center drop -->
+              <path d="M26 8 C26 8 16 22 16 30 a10 10 0 0 0 20 0 C36 22 26 8 26 8z"/>
+              <!-- Left small drop -->
+              <path d="M13 16 C13 16 8 23 8 27 a5 5 0 0 0 10 0" stroke-width="1.2"/>
+              <!-- Right small drop -->
+              <path d="M39 16 C39 16 44 23 44 27 a5 5 0 0 0 -10 0" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <h3 class="font-arabic text-lg font-semibold text-dark text-center leading-snug">موسوعة الزيوت</h3>
+        </div>
+
+        <!-- Card 2: أكاديمية التصميم -->
+        <div class="category-card bg-white rounded-2xl shadow-sm border border-transparent p-8 flex flex-col items-center gap-4">
+          <div class="w-16 h-16 flex items-center justify-center">
+            <svg width="52" height="52" viewBox="0 0 52 52" fill="none" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Bowl of mortar -->
+              <ellipse cx="26" cy="38" rx="15" ry="7"/>
+              <!-- Flask body -->
+              <path d="M14 38 L18 22 h16 L34 38"/>
+              <!-- Flask neck -->
+              <path d="M20 22 L18 14 h16 L34 22"/>
+              <!-- Recipe lines in bowl -->
+              <line x1="20" y1="32" x2="32" y2="32" stroke-width="1.2"/>
+              <line x1="22" y1="36" x2="30" y2="36" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <h3 class="font-arabic text-lg font-semibold text-dark text-center leading-snug">أكاديمية التصميم</h3>
+        </div>
+
+        <!-- Card 3: ثقافة العطور -->
+        <div class="category-card bg-white rounded-2xl shadow-sm border border-transparent p-8 flex flex-col items-center gap-4">
+          <div class="w-16 h-16 flex items-center justify-center">
+            <svg width="52" height="52" viewBox="0 0 52 52" fill="none" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Bottom book -->
+              <rect x="8" y="34" width="36" height="10" rx="2"/>
+              <!-- Middle book -->
+              <rect x="10" y="22" width="32" height="12" rx="2"/>
+              <!-- Open book on top -->
+              <path d="M14 22 L26 10 L38 22"/>
+              <line x1="26" y1="10" x2="26" y2="22" stroke-width="1.2"/>
+              <!-- Open pages lines -->
+              <line x1="16" y1="38" x2="26" y2="38" stroke-width="1.2"/>
+              <line x1="26" y1="38" x2="36" y2="38" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <h3 class="font-arabic text-lg font-semibold text-dark text-center leading-snug">ثقافة العطور</h3>
+        </div>
+
+      </div>
+
+      <!-- Bottom row: 2 cards centered -->
+      <div class="flex flex-col sm:flex-row justify-center gap-5 sm:gap-6">
+
+        <!-- Card 4: اللدونة العطرية -->
+        <div class="category-card bg-white rounded-2xl shadow-sm border border-transparent p-8 flex flex-col items-center gap-4
+                    w-full sm:w-[calc(33.333%-12px)]">
+          <div class="w-16 h-16 flex items-center justify-center">
+            <svg width="52" height="52" viewBox="0 0 52 52" fill="none" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Camera body -->
+              <rect x="5" y="18" width="30" height="22" rx="3"/>
+              <!-- Camera lens -->
+              <circle cx="20" cy="29" r="7"/>
+              <circle cx="20" cy="29" r="3" stroke-width="1"/>
+              <!-- Camera top -->
+              <path d="M9 18 L13 11 h14 L31 18"/>
+              <!-- Viewfinder -->
+              <rect x="25" y="13" width="6" height="4" rx="1" stroke-width="1.2"/>
+              <!-- Small perfume bottle -->
+              <rect x="38" y="14" width="8" height="26" rx="4"/>
+              <line x1="38" y1="21" x2="46" y2="21" stroke-width="1.2"/>
+              <rect x="40" y="10" width="4" height="5" rx="1" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <h3 class="font-arabic text-lg font-semibold text-dark text-center leading-snug">اللدونة العطرية</h3>
+        </div>
+
+        <!-- Card 5: متجر الموارد -->
+        <div class="category-card bg-white rounded-2xl shadow-sm border border-transparent p-8 flex flex-col items-center gap-4
+                    w-full sm:w-[calc(33.333%-12px)]">
+          <div class="w-16 h-16 flex items-center justify-center">
+            <svg width="52" height="52" viewBox="0 0 52 52" fill="none" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Open box -->
+              <path d="M8 24 L26 14 L44 24 L44 42 L8 42 Z"/>
+              <path d="M8 24 L26 34 L44 24"/>
+              <line x1="26" y1="34" x2="26" y2="42"/>
+              <!-- Calculator top right -->
+              <rect x="32" y="5" width="15" height="18" rx="2" stroke-width="1.3"/>
+              <line x1="35" y1="10" x2="44" y2="10" stroke-width="1"/>
+              <circle cx="35" cy="15" r="1.2" fill="#C9A84C" stroke="none"/>
+              <circle cx="39.5" cy="15" r="1.2" fill="#C9A84C" stroke="none"/>
+              <circle cx="44" cy="15" r="1.2" fill="#C9A84C" stroke="none"/>
+              <circle cx="35" cy="19" r="1.2" fill="#C9A84C" stroke="none"/>
+              <circle cx="39.5" cy="19" r="1.2" fill="#C9A84C" stroke="none"/>
+              <circle cx="44" cy="19" r="1.2" fill="#C9A84C" stroke="none"/>
+            </svg>
+          </div>
+          <h3 class="font-arabic text-lg font-semibold text-dark text-center leading-snug">متجر الموارد</h3>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       PROFESSIONAL TRACKS — مسارك الاحترافي
+  ═══════════════════════════════════════════ -->
+  <section id="tracks" class="py-20 px-6 bg-white">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Section header -->
+      <div class="mb-12 reveal">
+        <p class="font-latin text-xs tracking-[0.3em] text-gold uppercase mb-2">Professional Tracks</p>
+        <h2 class="font-arabic text-3xl sm:text-4xl font-bold text-dark">مسارك الاحترافي</h2>
+        <div class="mt-3 h-px w-16 bg-gold/40"></div>
+      </div>
+
+      <!-- Track cards -->
+      <div class="flex flex-col gap-5">
+
+        <!-- Track 1: Free -->
+        <div class="track-card bg-white rounded-2xl p-6 sm:p-7 shadow-sm
+                    flex items-center gap-5 sm:gap-7">
+          <!-- Icon (trailing side in RTL) -->
+          <div class="w-14 h-14 flex-shrink-0 flex items-center justify-center bg-gold/10 rounded-xl">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 5 L10 14 L5 22 h20 L20 14 L20 5 M8 5 h14"/>
+              <line x1="12" y1="17" x2="18" y2="17" stroke-width="1.4"/>
+              <line x1="13" y1="20" x2="17" y2="20" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <!-- Text (leading side in RTL) -->
+          <div class="flex-1 min-w-0">
+            <h3 id="track1-title" class="font-arabic text-lg sm:text-xl font-bold text-dark leading-snug mb-2">أساسيات جين كارلز</h3>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="font-latin text-xs font-semibold px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100">Free</span>
+              <span class="text-gray-200">·</span>
+              <span class="font-arabic text-sm text-gray-500">مجاني</span>
+              <span class="text-gray-200">·</span>
+              <span class="font-latin text-sm text-gray-400">15 min</span>
+            </div>
+          </div>
+          <!-- Arrow -->
+          <div class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full border border-gold/30 hover:bg-gold/10 transition-colors cursor-pointer">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round">
+              <path d="M10 3L5 8l5 5"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Track 2: Legal -->
+        <div class="track-card bg-white rounded-2xl p-6 sm:p-7 shadow-sm
+                    flex items-center gap-5 sm:gap-7">
+          <div class="w-14 h-14 flex-shrink-0 flex items-center justify-center bg-gold/10 rounded-xl">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Balance scales -->
+              <line x1="15" y1="4" x2="15" y2="26"/>
+              <line x1="8" y1="8" x2="22" y2="8"/>
+              <!-- Left pan -->
+              <path d="M5 13 a6 3 0 0 0 12 0"/>
+              <line x1="5" y1="13" x2="8" y2="8"/>
+              <line x1="17" y1="13" x2="14" y2="8"/>
+              <!-- Right pan -->
+              <path d="M13 18 a6 3 0 0 0 12 0"/>
+              <line x1="13" y1="18" x2="16" y2="8"/>
+              <line x1="25" y1="18" x2="22" y2="8"/>
+              <!-- Base -->
+              <line x1="11" y1="26" x2="19" y2="26"/>
+            </svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 id="track2-title" class="font-arabic text-lg sm:text-xl font-bold text-dark leading-snug mb-2">معايير IFRA 51: الدليل الكامل</h3>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="font-latin text-xs font-semibold px-3 py-1 rounded-full bg-blue-50 text-blue-600 border border-blue-100">Legal</span>
+              <span class="text-gray-200">·</span>
+              <span class="font-arabic text-sm text-gray-500">قانوني</span>
+              <span class="text-gray-200">·</span>
+              <span class="font-latin text-sm text-gray-400">30 min</span>
+            </div>
+          </div>
+          <div class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full border border-gold/30 hover:bg-gold/10 transition-colors cursor-pointer">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round">
+              <path d="M10 3L5 8l5 5"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Track 3: Paid -->
+        <div class="track-card bg-white rounded-2xl p-6 sm:p-7 shadow-sm
+                    flex items-center gap-5 sm:gap-7">
+          <div class="w-14 h-14 flex-shrink-0 flex items-center justify-center bg-gold/10 rounded-xl">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Molecule -->
+              <circle cx="15" cy="15" r="4"/>
+              <circle cx="6" cy="8" r="2.5"/>
+              <circle cx="24" cy="8" r="2.5"/>
+              <circle cx="6" cy="22" r="2.5"/>
+              <circle cx="24" cy="22" r="2.5"/>
+              <line x1="11.5" y1="12" x2="8" y2="9.8"/>
+              <line x1="18.5" y1="12" x2="22" y2="9.8"/>
+              <line x1="11.5" y1="18" x2="8" y2="20.2"/>
+              <line x1="18.5" y1="18" x2="22" y2="20.2"/>
+            </svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 id="track3-title" class="font-arabic text-lg sm:text-xl font-bold text-dark leading-snug mb-2">كيمياء الجزيئات العطرية</h3>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="font-latin text-xs font-semibold px-3 py-1 rounded-full bg-purple-50 text-purple-600 border border-purple-100">Paid</span>
+              <span class="text-gray-200">·</span>
+              <span class="font-arabic text-sm text-gray-500">متقدم</span>
+              <span class="text-gray-200">·</span>
+              <span class="font-arabic text-sm text-gray-400">مدفوع · مدورة متقدمة</span>
+            </div>
+          </div>
+          <div class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full border border-gold/30 hover:bg-gold/10 transition-colors cursor-pointer">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round">
+              <path d="M10 3L5 8l5 5"/>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- View all link -->
+      <div class="mt-10 text-center reveal">
+        <a href="#" class="font-arabic text-gold text-sm border-b border-gold/40 hover:border-gold
+                           transition-colors pb-0.5 hover:text-gold-dark">
+          عرض جميع المسارات
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       ABOUT
+  ═══════════════════════════════════════════ -->
+  <section id="about" class="py-24 px-6" style="background: #1A1A1A;">
+    <div class="max-w-3xl mx-auto text-center">
+
+      <!-- Logo (dark bg — perfect match) -->
+      <div class="flex justify-center mb-8 reveal">
+        <img src="./friend_logo.png"
+             alt="Mohamed Abdo Perfumes"
+             class="w-24 h-24 object-contain opacity-90"
+             style="border-radius: 50%;" />
+      </div>
+
+      <!-- Brand label -->
+      <p class="font-latin text-xs tracking-[0.35em] text-gold uppercase mb-8 reveal">
+        MOHAMED ABDO PERFUMES
+      </p>
+
+      <!-- Arabic brand statement -->
+      <p id="about-text-ar"
+         class="font-arabic text-2xl sm:text-3xl leading-loose text-white/88 mb-8 reveal"
+         style="line-height: 2;">
+        نحن نؤمن بأن العطر هو لغة صامتة، فن يجمع بين العلم والتاريخ.
+        <br />
+        منصتنا هي مساحة للمصمم المستقل، ليتعلم ويشارك ويبتكر.
+      </p>
+
+      <!-- Gold divider -->
+      <div class="flex items-center justify-center gap-4 mb-8 reveal">
+        <div class="w-20 h-px bg-gold/30"></div>
+        <div class="w-2 h-2 rounded-full bg-gold/60"></div>
+        <div class="w-20 h-px bg-gold/30"></div>
+      </div>
+
+      <!-- English translation -->
+      <p id="about-text-en"
+         class="font-latin text-base text-white/45 leading-relaxed max-w-lg mx-auto reveal">
+        We believe perfume is a silent language, an art that combines science and history.
+        Our platform is a space for the independent designer to learn, share, and innovate.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FINAL CTA
+  ═══════════════════════════════════════════ -->
+  <section id="cta" class="py-28 px-6 gold-gradient relative overflow-hidden">
+    <!-- Decorative circles -->
+    <div class="absolute top-0 right-0 w-64 h-64 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-white/5 translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+
+    <div class="max-w-2xl mx-auto text-center relative z-10">
+      <p class="font-latin text-xs tracking-[0.3em] text-white/60 uppercase mb-4 reveal">Join Us Today</p>
+      <h2 id="cta-headline"
+          class="font-arabic text-3xl sm:text-4xl font-bold text-white mb-5 leading-snug reveal"
+          style="line-height: 1.5;">
+        ابدأ رحلتك في عالم العطور اليوم
+      </h2>
+      <p id="cta-sub"
+         class="font-arabic text-white/80 text-base sm:text-lg mb-12 reveal">
+        انضم إلى آلاف المصممين العرب الذين يتعلمون ويبتكرون معنا
+      </p>
+      <a href="#" id="cta-register"
+         class="inline-block px-12 py-4 bg-white text-gold font-arabic font-bold text-lg
+                rounded-full shadow-2xl hover:scale-105 hover:shadow-3xl
+                transition-all duration-300 reveal">
+        سجّل مجاناً
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer class="py-10 px-6 border-t border-gold/20" style="background: #111111;">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+
+      <!-- Brand -->
+      <div class="text-center sm:text-right">
+        <p class="font-latin text-gold font-semibold tracking-[0.2em] text-xs uppercase">
+          Mohamed Abdo Perfumes
+        </p>
+        <p class="font-arabic text-white/35 text-xs mt-1">منصة تعليمية لصناعة العطور</p>
+      </div>
+
+      <!-- Footer links -->
+      <div class="flex gap-6 font-arabic text-sm text-white/40">
+        <a href="#hero"       class="hover:text-gold transition-colors">الرئيسية</a>
+        <a href="#tracks"     class="hover:text-gold transition-colors">الأكاديمية</a>
+        <a href="#about"      class="hover:text-gold transition-colors">المدونة</a>
+        <a href="#categories" class="hover:text-gold transition-colors">الموارد</a>
+      </div>
+
+      <!-- Copyright -->
+      <p class="font-latin text-white/25 text-xs">© 2025 Mohamed Abdo Perfumes</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════════ -->
+  <script>
+    // ── Register GSAP plugins ──
+    gsap.registerPlugin(ScrollTrigger);
+
+    // ── Scroll progress bar ──
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (maxScroll > 0) {
+        const pct = (scrolled / maxScroll) * 100;
+        document.getElementById('scroll-progress').style.width = pct + '%';
+      }
+    }, { passive: true });
+
+    // ── Nav glassmorphism ──
+    const navbar = document.getElementById('navbar');
+    const hamburgerBars = document.querySelectorAll('.hamburger-bar');
+
+    function updateNav() {
+      if (window.scrollY > 60) {
+        navbar.classList.add('scrolled');
+        hamburgerBars.forEach(b => b.classList.remove('on-dark'));
+      } else {
+        navbar.classList.remove('scrolled');
+        // Hero has dark overlay — keep bars white when at top
+        hamburgerBars.forEach(b => b.classList.add('on-dark'));
+      }
+    }
+    updateNav();
+    window.addEventListener('scroll', updateNav, { passive: true });
+
+    // ── Hamburger menu ──
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+
+    function closeMobileMenu() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }
+
+    // ── Smooth anchor scrolling (GSAP-aware) ──
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href === '#') return;
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        closeMobileMenu();
+      });
+    });
+
+    // ── Hero video scroll scrubbing ──
+    const video = document.getElementById('hero-video');
+
+    function initScrollScrub() {
+      const dur = video.duration;
+      if (!isFinite(dur) || dur <= 0) return;
+
+      video.loop = false;
+      video.pause();
+      video.currentTime = 0;
+
+      ScrollTrigger.create({
+        trigger: '#hero-wrapper',
+        start: 'top top',
+        end: '+=220%',
+        pin: true,
+        scrub: 0,
+        onUpdate: (self) => {
+          video.currentTime = self.progress * dur;
+        }
+      });
+
+      gsap.to('#hero-content', {
+        opacity: 0, y: -60, ease: 'none',
+        scrollTrigger: { trigger: '#hero-wrapper', start: 'top top', end: '+=100%', scrub: true }
+      });
+
+      gsap.to('#scroll-hint', {
+        opacity: 0, ease: 'none',
+        scrollTrigger: { trigger: '#hero-wrapper', start: 'top top', end: '+=30%', scrub: true }
+      });
+
+      ScrollTrigger.refresh();
+    }
+
+    video.addEventListener('canplay', () => {
+      video.play().then(() => { video.pause(); initScrollScrub(); }).catch(() => initScrollScrub());
+    }, { once: true });
+
+    video.addEventListener('error', () => {
+      document.getElementById('hero').style.background =
+        'linear-gradient(135deg, #1A1A1A 0%, #2d2410 50%, #1A1A1A 100%)';
+      video.style.display = 'none';
+    }, { once: true });
+
+    // ── Section reveal animations ──
+    // Cards stagger entrance
+    gsap.from('.category-card', {
+      y: 45,
+      opacity: 0,
+      duration: 0.75,
+      stagger: 0.1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#categories',
+        start: 'top 78%',
+        once: true
+      }
+    });
+
+    // Track cards stagger from inline-end
+    gsap.from('.track-card', {
+      x: document.dir === 'ltr' ? -40 : 40,
+      opacity: 0,
+      duration: 0.65,
+      stagger: 0.15,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: '#tracks',
+        start: 'top 78%',
+        once: true
+      }
+    });
+
+    // Generic reveal elements
+    document.querySelectorAll('.reveal').forEach((el) => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 32 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%',
+            once: true
+          }
+        }
+      );
+    });
+
+    // About text character-by-character feel (just a stagger on words)
+    gsap.from('#about p, #about img', {
+      y: 28,
+      opacity: 0,
+      duration: 0.9,
+      stagger: 0.18,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: '#about',
+        start: 'top 72%',
+        once: true
+      }
+    });
+
+    // ── AR / EN Language Toggle ──
+    const translations = {
+      'hero-headline':  { ar: 'موهبة العطور تبدأ من هنا',         en: 'Your Perfume Journey Starts Here' },
+      'hero-sub':       { ar: 'أكاديمية ومنصة تعليمية لصناعة العطور', en: 'An Academy and Educational Platform for Perfume Creation' },
+      'cta-start':      { ar: 'ابدأ مسارك',                         en: 'Start Your Journey' },
+      'cta-browse':     { ar: 'تصفح الموارد',                       en: 'Browse Resources' },
+      'track1-title':   { ar: 'أساسيات جين كارلز',                  en: 'Jean Carles Fundamentals' },
+      'track2-title':   { ar: 'معايير IFRA 51: الدليل الكامل',       en: 'IFRA 51 Standards: The Complete Guide' },
+      'track3-title':   { ar: 'كيمياء الجزيئات العطرية',             en: 'Chemistry of Aromatic Molecules' },
+      'cta-headline':   { ar: 'ابدأ رحلتك في عالم العطور اليوم',    en: 'Start Your Perfume World Journey Today' },
+      'cta-sub':        { ar: 'انضم إلى آلاف المصممين العرب الذين يتعلمون ويبتكرون معنا', en: 'Join thousands of designers who learn and innovate with us' },
+      'cta-register':   { ar: 'سجّل مجاناً',                         en: 'Register Free' },
+      'search-input':   { ar: 'ابحث عن مادة، كتاب، دورة...', en: 'Search for a topic, book, or course...' },
+    };
+
+    const langAR = document.getElementById('lang-ar');
+    const langEN = document.getElementById('lang-en');
+    let currentLang = 'ar';
+
+    function switchLang(lang) {
+      if (lang === currentLang) return;
+      currentLang = lang;
+
+      const html = document.documentElement;
+      html.setAttribute('lang', lang);
+      html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+      // Toggle button styles
+      if (lang === 'ar') {
+        langAR.classList.add('text-gold', 'font-semibold');
+        langAR.classList.remove('text-gray-400');
+        langEN.classList.remove('text-gold', 'font-semibold');
+        langEN.classList.add('text-gray-400');
+      } else {
+        langEN.classList.add('text-gold', 'font-semibold');
+        langEN.classList.remove('text-gray-400');
+        langAR.classList.remove('text-gold', 'font-semibold');
+        langAR.classList.add('text-gray-400');
+      }
+
+      // Update text content
+      Object.entries(translations).forEach(([id, vals]) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (el.tagName === 'INPUT') {
+          el.placeholder = vals[lang];
+        } else {
+          el.textContent = vals[lang];
+        }
+      });
+
+      // Refresh ScrollTrigger after dir change
+      ScrollTrigger.refresh();
+    }
+
+    langAR.addEventListener('click', () => switchLang('ar'));
+    langEN.addEventListener('click', () => switchLang('en'));
+
+    // ── Active nav link on scroll ──
+    const sections = ['hero', 'categories', 'tracks', 'about', 'cta'];
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const navMap = {
+      'hero': 0,
+      'categories': 3,
+      'tracks': 1,
+      'about': 2,
+      'cta': 1
+    };
+
+    window.addEventListener('scroll', () => {
+      let current = 'hero';
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 120) current = id;
+      });
+      navLinks.forEach((link, i) => {
+        link.classList.toggle('active', i === (navMap[current] ?? 0));
+      });
+    }, { passive: true });
+
+  </script>
+
+</body>
+</html>
