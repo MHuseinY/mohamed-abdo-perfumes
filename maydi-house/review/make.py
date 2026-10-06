@@ -5,8 +5,7 @@
 # Steps, in order (each reads the previous one's output):
 #   1. build.py en   the English homepage as a fragment, links pointing at the shell's hash routes
 #   2. build.py ar   the Arabic homepage, same
-#   3. build_pages.py   the inner pages as views of one document
-#   4. build_single.py  the shell: inner pages + the two homepages as full-screen iframes
+#   3. build_single.py  the shell: the inner pages in both languages as views, plus the two homepages as full-screen iframes
 # Then it writes:
 #   review/out/maydi-house-single.html   publish this one as the artifact's main page
 #   review/out/publish-files.json        the files to pass beside it (assets the page uses, plus the engine)
@@ -25,7 +24,6 @@ def run(*args):
 
 run('build.py', 'en', 'ar.html', 'public', 'pages.html')
 run('build.py', 'ar', 'index.html', 'public', 'pages.html')
-run('build_pages.py', '#home')
 run('build_single.py')
 
 single = (OUT / 'maydi-house-single.html').read_text(encoding='utf-8')

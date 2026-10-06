@@ -51,68 +51,11 @@
 <script>
   (function () {
     var slug = new URLSearchParams(location.search).get('p') || 'timbrose-ii';
-    var p = maydiProduct(slug), root = document.getElementById('pdp-root');
-    if (!p) {
-      root.innerHTML = '<div class="missing"><h1>We could not find that fragrance.</h1><p class="muted" style="margin-top:1rem">It may have left the shelf. <a href="boutique.html">Return to the Boutique</a>.</p></div>';
-      return;
-    }
-    // Where this product lives decides the crumbs and the "more" row.
-    var home = p.house === 'Mohamed Abdo'
-      ? (p.group === 'atelier' ? ['atelier.html', 'Maydi Atelier'] : ['mohamed-abdo.html', 'Mohamed Abdo'])
-      : ['boutique.html', 'Maydi Boutique'];
-    document.body.setAttribute('data-section', home[0]);
-    document.querySelectorAll('.site-bar nav a').forEach(function (a) {
-      a.toggleAttribute('aria-current', a.getAttribute('href') === home[0]);
-      if (a.getAttribute('href') === home[0]) a.setAttribute('aria-current', 'page');
-    });
-    document.title = p.name + ' · ' + p.house + ' · Maydi House';
-
-    var tiers = p.notes
-      ? [['Top', p.notes.top], ['Heart', p.notes.heart], ['Base', p.notes.base], ['Accords', null]]
-      : null;
-    var notesHtml = tiers
-      ? '<div class="pyramid"><h2>The notes</h2>' + tiers.map(function (t) {
-          return '<div class="tier"><b>' + t[0] + '</b><p' + (t[1] ? '' : ' class="muted"') + '>' + (t[1] ? t[1].join(', ') : 'To come') + '</p></div>';
-        }).join('') + '</div>'
-      : (p.keyNotes && p.keyNotes.length
-          ? '<div class="pyramid"><h2>Key notes</h2><div class="tier"><b>Notes</b><p>' + p.keyNotes.join(', ') + '</p></div></div>'
-          : '<div class="pyramid"><h2>The notes</h2><div class="tier"><b>Notes</b><p class="muted">To come</p></div></div>');
-
-    var atelier = p.group === 'atelier';
-    var buy = atelier
-      ? '<a class="btn" href="contact.html?topic=atelier&formula=' + p.slug + '">Request this formula for your brand</a>' +
-        '<p class="note">A ready formula by Mohamed Abdo, released under your own name.</p>'
-      : '<button class="btn" type="button" aria-disabled="true" title="Online ordering comes later">' + (p.soldOut ? 'Sold out' : 'Add to bag') + '</button>' +
-        '<a class="btn btn--ghost" href="contact.html?topic=order&item=' + p.slug + '">Order through the house</a>' +
-        '<p class="note">Online ordering opens later. For now, the house takes orders directly.</p>';
-
-    var more = MAYDI_PRODUCTS.filter(function (x) { return x.slug !== p.slug && x.house === p.house; }).slice(0, 4);
-
-    root.innerHTML =
-      '<div class="crumbs" style="margin-top:2rem"><a href="index.html">Home</a> / <a href="' + home[0] + '">' + home[1] + '</a> / ' + p.name + '</div>' +
-      '<article class="pdp">' +
-        '<div class="frame"><img src="' + p.img + '" alt="' + (p.alt || p.name + ' by ' + p.house) + '"></div>' +
-        '<div>' +
-          '<div class="house">' + p.house + ' · ' + p.line + '</div>' +
-          '<h1>' + p.name + '</h1>' +
-          '<p class="kind">' + (p.kind || p.line) + '</p>' +
-          (p.edition ? '<p class="edition"><span class="chip">' + p.edition + '</span></p>' : '') +
-          '<div class="price-row"><span class="price-slot">Price</span><small>' + (atelier ? 'Formula pricing on request' : 'Prices to be announced') + '</small></div>' +
-          '<div class="sizes"><div class="label">Size</div><div class="opts" id="sizes">' +
-            p.sizes.map(function (s, i) { return '<button type="button" aria-pressed="' + (i === 0) + '">' + s + '</button>'; }).join('') +
-          '</div></div>' +
-          '<div class="buy">' + buy + '</div>' +
-          '<p class="story">' + p.summary + '</p>' +
-          notesHtml +
-        '</div>' +
-      '</article>' +
-      (more.length ? '<section class="more" style="padding-bottom:5rem"><h2>More from ' + p.house + '</h2><div class="grid">' + more.map(maydiCard).join('') + '</div></section>' : '');
-
-    document.getElementById('sizes').addEventListener('click', function (e) {
-      var b = e.target.closest('button'); if (!b) return;
-      this.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-    });
-    maydiReveal(root);
+    var key = MAYDI.renderProduct(slug, document.getElementById('pdp-root'));
+    if (!key) return;
+    // Where this product lives decides which part of the nav is current.
+    document.body.setAttribute('data-section', (MAYDI.lang() === 'ar' ? 'ar-' : '') + key + '.html');
+    MAYDI.renderChrome(MAYDI.lang(), key);
   })();
 </script>
 <script src="glass.js"></script>

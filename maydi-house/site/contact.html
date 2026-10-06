@@ -74,23 +74,7 @@
 <footer data-site-foot></footer>
 <script src="products.js"></script>
 <script src="site.js"></script>
-<script>
-  (function () {
-    var q = new URLSearchParams(location.search), topic = q.get('topic');
-    var sel = document.getElementById('f-topic'), msg = document.getElementById('f-message');
-    if (topic && sel.querySelector('option[value="' + topic + '"]')) sel.value = topic;
-    var item = q.get('formula') || q.get('item');
-    var p = item && window.maydiProduct ? maydiProduct(item) : null;
-    if (p) msg.value = (q.get('formula') ? 'I am interested in the ready formula ' : 'I would like to order ') + p.name + ' (' + p.house + ').\n\n';
-
-    document.getElementById('enquiry').addEventListener('submit', function (e) {
-      e.preventDefault();
-      var s = document.getElementById('form-status');
-      s.hidden = false;
-      s.textContent = 'This is a design prototype, so nothing was sent. Until the form is connected, write to maydihouse@gmail.com.';
-    });
-  })();
-</script>
+<script>MAYDI.initContact(document, MAYDI.queryCtx());</script>
 <script src="glass.js"></script>
 </body>
 </html>

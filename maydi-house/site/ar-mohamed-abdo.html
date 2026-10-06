@@ -1,0 +1,115 @@
+<!doctype html>
+<!-- محمد عبده (نسخة عربية): قسم المؤسس: الصورة والتعريف، والسيرة، والأعمال، والأرشيف، والمقالات. -->
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>محمد عبده · مايدي هاوس</title>
+<meta name="description" content="محمد عبده، مصمم عطور صومالي، مؤسس مايدي هاوس وعطّارها.">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="glass.css">
+<style>
+  .founder-head { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(2rem, 6vw, 6rem); align-items: end; padding-block: clamp(2.5rem, 6vw, 5rem); }
+  .founder-head .portrait img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 28%; }
+  .founder-head h1 { font-size: clamp(3rem, 7.4vw, 6.4rem); line-height: 1; }
+  .founder-head .ar-name { font-family: var(--display); font-weight: 700; font-size: clamp(2rem, 4.6vw, 3.8rem); color: var(--accent-2); margin-top: .5rem; line-height: 1.3; }
+  .founder-head .role { margin-top: 1.4rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .16em; color: var(--umber); }
+  .founder-head .lede { font-family: var(--display); font-size: clamp(1.15rem, 1.8vw, 1.4rem); line-height: 1.6; color: var(--ink-soft); max-width: 40ch; margin-top: 1rem; }
+  .bio { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(2rem, 6vw, 6rem); }
+  .bio .pull { margin: 0; font-family: var(--display); font-size: clamp(1.5rem, 2.6vw, 2.2rem); line-height: 1.35; color: var(--accent); }
+  .bio .text p + p { margin-top: 1rem; }
+  .works { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.4rem, 4vw, 3rem); margin-top: 2.6rem; max-width: 880px; }
+  .cv { list-style: none; margin: 2rem 0 0; padding: 0; border-top: 1px solid rgba(245,230,218,.3); }
+  .cv li { display: grid; grid-template-columns: 9rem 1fr; gap: 1.4rem; padding-block: 1.1rem; border-bottom: 1px solid rgba(245,230,218,.3); }
+  .cv .when { font-size: .72rem; text-transform: uppercase; letter-spacing: .16em; color: #EAD3CB; padding-top: .3rem; }
+  .cv .what { font-family: var(--display); font-size: 1.2rem; color: var(--canvas); }
+  .cv .what.todo { opacity: .6; }
+  .archive { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 2.4rem; }
+  .archive .slot { border: 1px dashed color-mix(in oklab, var(--accent) 35%, transparent); padding: 1.6rem; min-height: 11rem; display: flex; flex-direction: column; justify-content: space-between; }
+  .archive .slot h3 { font-size: 1.35rem; }
+  .archive .slot p { color: var(--ink-soft); font-size: .92rem; }
+  .follow { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.6rem; }
+  @media (max-width: 860px) {
+    .founder-head, .bio { grid-template-columns: 1fr; }
+    .founder-head .portrait { max-width: 22rem; }
+    .archive { grid-template-columns: 1fr; }
+    .cv li { grid-template-columns: 1fr; gap: .2rem; }
+  }
+  @media (max-width: 480px) { .works { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body data-section="ar-mohamed-abdo.html">
+<header data-site-bar></header>
+<main>
+
+  <section class="wrap">
+    <div class="crumbs" style="margin-top:2rem"><a href="ar.html">الرئيسية</a> / محمد عبده</div>
+    <div class="founder-head">
+      <figure class="portrait arch rv" style="margin:0"><img class="bw" src="assets/founder.webp" width="900" height="1600" alt="محمد عبده يشمّ شريط عطر"></figure>
+      <div>
+        <h1>محمد عبده</h1>
+        <span class="lat" lang="en">Mohamed Abdo</span>
+        <p class="role">المؤسس والعطّار · مايدي هاوس</p>
+        <p class="lede">مصمم عطور صومالي، تركيباته مبتكرة بطابع كلاسيكي. أسّس مايدي هاوس في مقديشو ليحمل العطر الصومالي إلى العالم.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="wrap bio">
+      <p class="pull rv">تؤمن الدار بأن العطر فنٌّ قبل أن يكون منتجاً.</p>
+      <div class="text rv">
+        <p>تتلمذ محمد عبده على يد الخبير الكويتي المهندس سالم الجارالله، من أبرز الأسماء في تصميم العطور في المنطقة.</p>
+        <p>ابتكر تركيبات عطرية أصيلة، وتعاون مع دور عطور في أنحاء الخليج العربي، ويعمل اليوم مستشاراً في ابتكار العطور.</p>
+        <p>في مايدي هاوس يقود الأتيليه، حيث تأتيه العلامات لتحصل على عطر خاص بها، ويوقّع مجموعة خاصة باسمه.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- عطوره: اللون الوحيد في هذه الصفحة يأتي من الزجاجات. -->
+  <section class="section">
+    <div class="wrap">
+      <h2>عطوره</h2>
+      <p class="intro">تركيبات صمّمها محمد عبده. تيمبروز ٢ من مجموعته الخاصة؛ وتيمبروز الأول يُعرض عبر الأتيليه تركيبةً جاهزة للعلامات.</p>
+      <div class="works" id="works"></div>
+    </div>
+  </section>
+
+  <section class="section section--accent">
+    <div class="wrap">
+      <h2>السيرة الذاتية</h2>
+      <p class="intro">تُنشر السيرة كاملة هنا. وما نستطيع ذكره الآن:</p>
+      <ol class="cv">
+        <li><span class="when">التدريب</span><span class="what">تصميم العطور، على يد المهندس سالم الجارالله، الكويت</span></li>
+        <li><span class="when">التعاون</span><span class="what">دور عطور في أنحاء الخليج العربي</span></li>
+        <li><span class="when">اليوم</span><span class="what">مستشار ابتكار عطور؛ ومؤسس مايدي هاوس، مقديشو</span></li>
+        <li><span class="when">التواريخ والتفاصيل</span><span class="what todo">تأتي من محمد عبده</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>الأرشيف والمقابلات والمقالات</h2>
+      <p class="intro">أرشيف خاص من الصور، والمقابلات التي أجراها، والمقالات التي كُتبت عنه. يمتلئ هذا الجزء كلما وصلت المواد.</p>
+      <div class="archive">
+        <div class="slot rv"><h3>الأرشيف</h3><p>صور من المختبر والأشجار والعمل. قريباً.</p></div>
+        <div class="slot rv"><h3>المقابلات</h3><p>مقابلات صحفية ومرئية. قريباً.</p></div>
+        <div class="slot rv"><h3>المقالات</h3><p>كتابات له وعنه. قريباً.</p></div>
+      </div>
+      <div class="follow">
+        <a class="btn btn--ghost" href="https://www.instagram.com/ma.perfumer/" rel="noopener">إنستغرام · <bdi>@ma.perfumer</bdi></a>
+        <a class="btn btn--ghost" href="https://www.tiktok.com/@ma.perfumer" rel="noopener">تيك توك · <bdi>@ma.perfumer</bdi></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+<footer data-site-foot></footer>
+<script src="products.js"></script>
+<script src="products-ar.js"></script>
+<script src="site.js"></script>
+<script>MAYDI.initFounder(document);</script>
+<script src="glass.js"></script>
+</body>
+</html>

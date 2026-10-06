@@ -14,32 +14,49 @@
   };
   // The shared inner-pages build is one file with views switched by #hash.
   var spa = !!document.getElementById('views');
-  var ITEMS = ar
+  // The homepages keep their four houses in one list (the review build rewrites these two literals).
+  var HOME_ITEMS = ar
     ? [['#houses', 'التصميم', 'atelier'], ['#houses', 'التصنيع', 'factory'], ['#houses', 'البوتيك', 'boutique'], ['#houses', 'المواد الخام', 'botanicals']]
     : [['atelier.html', 'Atelier', 'atelier'], ['factory.html', 'Factory', 'factory'], ['boutique.html', 'Boutique', 'boutique'], ['botanicals.html', 'Botanicals', 'botanicals']];
-
-  if (spa) ITEMS = ITEMS.map(function (it) { return ['#' + it[2], it[1], it[2]]; });
+  // The inner pages, in either language. In the single-document review site the links are hash routes (#boutique, #ar-boutique).
+  var KEYS = ['atelier', 'factory', 'boutique', 'botanicals'];
+  var LABEL = { en: { atelier: 'Atelier', factory: 'Factory', boutique: 'Boutique', botanicals: 'Botanicals' },
+                ar: { atelier: 'التصميم', factory: 'التصنيع', boutique: 'البوتيك', botanicals: 'المواد الخام' } };
+  var curLang = ar ? 'ar' : 'en';
+  function itemsFor(l) {
+    if (home) return HOME_ITEMS;
+    return KEYS.map(function (k) {
+      var pre = l === 'ar' ? 'ar-' : '';
+      return [spa ? '#' + pre + k : pre + k + '.html', LABEL[l][k], k];
+    });
+  }
 
   var dock = document.createElement('nav');
   dock.className = 'dock';
-  dock.setAttribute('aria-label', ar ? 'أقسام الدار' : 'Houses');
   dock.innerHTML =
-    '<div class="dock__pill"><span class="dock__lens" aria-hidden="true"></span>' +
-      ITEMS.map(function (it) {
-        var here = !home && it[0] === section;
-        return '<a class="dock__item" data-key="' + it[2] + '" href="' + it[0] + '"' + (here ? ' aria-current="page"' : '') + '>' +
-          '<svg viewBox="0 0 24 24" aria-hidden="true">' + ICON[it[2]] + '</svg><span>' + it[1] + '</span></a>';
-      }).join('') +
-    '</div>' +
-    '<button class="dock__more" type="button" aria-label="' + (ar ? 'القائمة' : 'Menu') + '" aria-haspopup="dialog">' +
+    '<div class="dock__pill"></div>' +
+    '<button class="dock__more" type="button" aria-haspopup="dialog">' +
       '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9.5h14M5 14.5h14"/></svg></button>';
   document.body.appendChild(dock);
   document.documentElement.classList.add('has-dock');
 
-  var pill = dock.querySelector('.dock__pill'), lens = dock.querySelector('.dock__lens');
-  var items = [].slice.call(dock.querySelectorAll('.dock__item'));
-  var active = -1;
-  items.forEach(function (a, i) { if (a.hasAttribute('aria-current')) active = i; });
+  var pill = dock.querySelector('.dock__pill'), more = dock.querySelector('.dock__more');
+  var lens, items = [], active = -1;
+  function renderItems(l) {
+    dock.setAttribute('aria-label', l === 'ar' ? 'أقسام الدار' : 'Houses');
+    more.setAttribute('aria-label', l === 'ar' ? 'القائمة' : 'Menu');
+    pill.innerHTML = '<span class="dock__lens" aria-hidden="true"></span>' +
+      itemsFor(l).map(function (it) {
+        var here = !home && it[0] === section;
+        return '<a class="dock__item" data-key="' + it[2] + '" href="' + it[0] + '"' + (here ? ' aria-current="page"' : '') + '>' +
+          '<svg viewBox="0 0 24 24" aria-hidden="true">' + ICON[it[2]] + '</svg><span>' + it[1] + '</span></a>';
+      }).join('');
+    lens = pill.querySelector('.dock__lens');
+    items = [].slice.call(pill.querySelectorAll('.dock__item'));
+    active = -1;
+    items.forEach(function (a, i) { if (a.hasAttribute('aria-current')) active = i; });
+    placeLens();
+  }
 
   function placeLens() {
     lens.classList.toggle('is-on', active >= 0);
@@ -52,6 +69,7 @@
     if (items[active]) items[active].classList.add('is-here');
     placeLens();
   }
+  renderItems(curLang);
   // Shared inner pages: the router has already marked the current view in the bar, so the dock copies it.
   function syncFromRoute() {
     var cur = document.querySelector('.site-bar nav [data-nav][aria-current="page"]');
@@ -63,10 +81,11 @@
     active = idx; placeLens();
   }
   if (spa) { window.addEventListener('hashchange', syncFromRoute); syncFromRoute(); }
+  // The single-document review site changes language without reloading: it calls this on each route.
+  window.maydiGlass = { setLang: function (l) { curLang = l; renderItems(l); if (spa) syncFromRoute(); } };
 
   // The round button opens the page's own menu, and the dock steps aside while it is open.
   var menuBtn = document.getElementById('menu-btn'), menu = document.getElementById('menu');
-  var more = dock.querySelector('.dock__more');
   if (menuBtn && menu) {
     more.addEventListener('click', function () { menuBtn.click(); });
     new MutationObserver(function () {

@@ -109,11 +109,7 @@
 <footer data-site-foot></footer>
 <script src="products.js"></script>
 <script src="site.js"></script>
-<script>
-  document.getElementById('works').innerHTML =
-    ['timbrose-ii', 'timbrose'].map(function (s) { return maydiCard(maydiProduct(s)); }).join('');
-  maydiReveal(document.getElementById('works'));
-</script>
+<script>MAYDI.initFounder(document);</script>
 <script src="glass.js"></script>
 </body>
 </html>

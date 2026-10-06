@@ -17,7 +17,7 @@
   .tree-strip figcaption { margin-top: .6rem; font-family: var(--display); font-size: 1.05rem; color: #D7E3DA; }
   .compare { width: 100%; min-width: 620px; border-collapse: collapse; margin-top: 2.4rem; }
   .compare thead th { width: 38%; }
-  .compare th, .compare td { text-align: left; padding: 1rem 1.2rem 1rem 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .compare th, .compare td { text-align: start; padding: 1rem 0; padding-inline-end: 1.2rem; border-bottom: 1px solid var(--line); vertical-align: top; }
   .compare thead th { font-family: var(--display); font-weight: 500; font-size: 1.4rem; color: var(--accent); }
   .compare thead th:last-child { color: var(--umber); }
   .compare tbody th { font-size: .72rem; text-transform: uppercase; letter-spacing: .16em; color: var(--umber); font-weight: 500; width: 11rem; }
@@ -28,7 +28,7 @@
   .materials li { padding-block: 1.4rem; border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr auto; gap: .4rem 1rem; }
   .materials h3 { font-size: 1.45rem; }
   .materials p { grid-column: 1 / -1; color: var(--ink-soft); }
-  .materials .lead h3::after { content: " ·  the house material"; font-family: var(--text); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--resin); }
+  .materials .lead h3::after { content: attr(data-tag); font-family: var(--text); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--resin); }
   @media (max-width: 860px) {
     .resin-head .frame { justify-self: start; max-width: 300px; }
     .tree-strip { grid-template-columns: 1fr 1fr; }
@@ -91,7 +91,7 @@
       <h2>What we supply</h2>
       <p class="intro">Grades, minimum orders and prices are confirmed per request.</p>
       <ul class="materials">
-        <li class="lead rv"><h3>Maydi frankincense</h3><span class="price-slot">Price</span><p>The highest-grade Boswellia frereana resin, sorted by hand.</p></li>
+        <li class="lead rv"><h3 data-tag=" ·  the house material">Maydi frankincense</h3><span class="price-slot">Price</span><p>The highest-grade Boswellia frereana resin, sorted by hand.</p></li>
         <li class="rv"><h3>Myrrh</h3><span class="price-slot">Price</span><p>Somali myrrh resin for perfumery and incense.</p></li>
         <li class="rv"><h3>Resins</h3><span class="price-slot">Price</span><p>Other Somali aromatic resins, on request.</p></li>
         <li class="rv"><h3>Single-note aromatic oils</h3><span class="price-slot">Price</span><p>Natural oils for perfume designers, led by Maydi.</p></li>

@@ -57,23 +57,10 @@ if lang == 'en':
 else:
     s = s.replace('href="index.html"', f'href="{other}"')
     if pages:
-        # One link: the Arabic page reaches the inner pages (English for now) with relative links.
-        P = lambda name: f'{pages}#{name}'
-        def swap(a, b, n=None):
-            global s
-            assert a in s, a
-            if n is not None: assert s.count(a) == n, (a, s.count(a))
-            s = s.replace(a, b)
-        for label, name in [('تصميم العطور', 'atelier'), ('التصنيع', 'factory'), ('البوتيك', 'boutique'), ('المواد الخام', 'botanicals')]:
-            swap(f'<a href="#houses">{label}', f'<a href="{P(name)}">{label}', 2)      # top bar and phone menu
-        swap('<a class="bar-cta" href="#partner">ابدأ شراكة', f'<a class="bar-cta" href="{P("contact")}">ابدأ شراكة', 1)
-        swap('<a class="btn" href="#partner">ابدأ شراكة', f'<a class="btn" href="{P("contact")}">ابدأ شراكة', 1)
-        swap('<a class="text-link" href="#partner">ابدأ مشروعك', f'<a class="text-link" href="{P("atelier")}">ابدأ مشروعك', 1)
-        swap('<a class="text-link" href="#partner">اطلب عرض سعر', f'<a class="text-link" href="{P("factory")}">اطلب عرض سعر', 1)
-        swap('<a class="text-link" href="#partner">اطلب المواد الخام', f'<a class="text-link" href="{P("botanicals")}">اطلب المواد الخام', 1)
-        swap('<a class="text-link" role="link" aria-disabled="true" title="البوتيك يُفتتح قريباً">تسوّق التشكيلة', f'<a class="text-link" href="{P("boutique")}">تسوّق التشكيلة', 1)
-        swap('<a class="text-link" role="link" aria-disabled="true" title="صفحته تأتي في مرحلة لاحقة">تعرّف على محمد عبده', f'<a class="text-link" href="{P("mohamed-abdo")}">تعرّف على محمد عبده', 1)
-        swap('<a class="btn btn--light" href="mailto:maydihouse@gmail.com">ابدأ شراكة', f'<a class="btn btn--light" href="{P("contact")}">ابدأ شراكة', 1)
+        # One link: the Arabic homepage reaches the Arabic inner pages through the shell's hash routes (#ar-boutique ...).
+        for name in ['atelier', 'factory', 'boutique', 'botanicals', 'mohamed-abdo', 'contact']:
+            s = s.replace(f'href="ar-{name}.html"', f'href="{pages}#ar-{name}"')
+        bad = re.search(r'href="(?!ar\.html|pages\.html|index\.html)[a-z-]+\.html"', s); assert bad is None, bad
 
 # Liquid-glass navigation: inlined (the share links carry no extra files).
 gcss = open(f'{S}/site/glass.css', encoding='utf-8').read()
@@ -81,7 +68,7 @@ gjs = open(f'{S}/site/glass.js', encoding='utf-8').read()
 if lang == 'ar' and pages:
     for label, name in [('التصميم', 'atelier'), ('التصنيع', 'factory'), ('البوتيك', 'boutique'), ('المواد الخام', 'botanicals')]:
         a = f"['#houses', '{label}', '{name}']"; assert gjs.count(a) == 1, a
-        gjs = gjs.replace(a, f"['{pages}#{name}', '{label}', '{name}']")
+        gjs = gjs.replace(a, f"['{pages}#ar-{name}', '{label}', '{name}']")
     a = "if (home && ar && houses.length === 4) {"; assert gjs.count(a) == 1
     gjs = gjs.replace(a, "if (false) {")
 if lang == 'en' and pages:

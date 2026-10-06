@@ -48,6 +48,7 @@ p { margin: 0; }
 .site-bar { position: sticky; top: 0; z-index: 50; height: var(--bar-h);
   display: flex; align-items: center; gap: 2rem; padding-inline: clamp(16px, 4vw, 48px);
   background: rgba(245,230,218,.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.bar-main { display: contents; }
 .mark { display: flex; align-items: center; gap: .6rem; color: var(--accent); text-decoration: none; font-family: var(--display); font-size: .95rem; }
 .mark svg { width: 18px; height: 22px; }
 .site-bar nav { display: flex; align-items: center; gap: 1.5rem; margin-inline-start: auto; }
@@ -109,7 +110,7 @@ p { margin: 0; }
 
 /* numbered process: a real sequence, so the numbers carry information */
 .steps { list-style: none; margin: 2.5rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
-.steps li { padding: 1.4rem 1.4rem 0 0; }
+.steps li { padding: 1.4rem 0 0; padding-inline-end: 1.4rem; }
 .steps b { display: block; font-family: var(--display); font-weight: 500; font-size: 2.2rem; color: var(--accent-2); line-height: 1; }
 .steps h3 { font-size: 1.25rem; margin: .7rem 0 .4rem; }
 .steps p { color: var(--ink-soft); font-size: .95rem; }
@@ -217,3 +218,23 @@ p { margin: 0; }
   .site-bar nav, .site-bar .lang { display: none; }
   .site-bar .mark { font-size: .85rem; }
 }
+
+
+/* ---------------------------------------------------------------- Arabic --
+   Arabic letters join, so letter-spacing and capitals are off everywhere, and the small labels are lifted
+   because Arabic glyphs sit smaller than Latin ones at the same size. Latin names keep their own style (.lat). */
+.lat { direction: ltr; unicode-bidi: isolate; display: inline-block; font-family: var(--display); }
+html[lang="ar"] body * { letter-spacing: 0 !important; text-transform: none !important; }
+html[lang="ar"] body .lat { letter-spacing: .14em !important; text-transform: uppercase !important; }
+html[lang="ar"] body { line-height: 1.85; }
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3 { line-height: 1.35; }
+html[lang="ar"] .page-head .lat, html[lang="ar"] .founder-head .lat { display: block; margin-top: .7rem; font-size: .85rem; color: var(--umber); text-align: end; }
+html[lang="ar"] .caps, html[lang="ar"] .btn, html[lang="ar"] .text-link, html[lang="ar"] .chip, html[lang="ar"] .filters button,
+html[lang="ar"] .menu-btn, html[lang="ar"] .menu-close, html[lang="ar"] .facts dt, html[lang="ar"] .foot h4, html[lang="ar"] .card .house,
+html[lang="ar"] .form label, html[lang="ar"] .sizes .label, html[lang="ar"] .pdp .house, html[lang="ar"] .pyramid .tier b,
+html[lang="ar"] .made-with, html[lang="ar"] .formula .by, html[lang="ar"] .status, html[lang="ar"] .founder-head .role,
+html[lang="ar"] .cv .when, html[lang="ar"] .direct dt, html[lang="ar"] .compare tbody th, html[lang="ar"] .lang { font-size: .92rem; }
+html[lang="ar"] .btn { font-size: .95rem; font-weight: 700; }
+html[lang="ar"] .site-bar nav a { font-size: .95rem; }
+html[lang="ar"] .crumbs { font-size: .9rem; }
+html[lang="ar"] .materials .lead h3::after { font-size: .85rem; }
