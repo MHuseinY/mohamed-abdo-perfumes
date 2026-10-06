@@ -1,0 +1,74 @@
+<!doctype html>
+<!-- Maydi Factory (v2 prototype): status "coming soon", per the client. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maydi Factory · Maydi House</title>
+<meta name="description" content="Perfume manufacturing, filling and private-label production in Mogadishu. Coming soon.">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="glass.css">
+<style>
+  .soon-head { min-height: calc(100vh - var(--bar-h) - 8rem); display: grid; align-content: center; }
+  .status { display: inline-flex; align-items: center; gap: .6rem; font-size: .74rem; text-transform: uppercase; letter-spacing: .16em; color: var(--accent); }
+  .status i { width: .55rem; height: .55rem; border-radius: 50%; background: var(--resin); box-shadow: 0 0 0 0 rgba(217,164,65,.6); }
+  @media (prefers-reduced-motion: no-preference) { .status i { animation: pulse 2.4s ease-out infinite; } }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(217,164,65,.55); } 80%, 100% { box-shadow: 0 0 0 .7rem rgba(217,164,65,0); } }
+  .will { list-style: none; margin: 2.6rem 0 0; padding: 0; border-top: 1px solid var(--line); }
+  .will li { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; padding-block: 1.6rem; border-bottom: 1px solid var(--line); }
+  .will h3 { font-size: 1.6rem; }
+  .will p { color: var(--ink-soft); max-width: 52ch; }
+  @media (max-width: 860px) { .will li { grid-template-columns: 1fr; gap: .4rem; } }
+</style>
+</head>
+<body data-section="factory.html">
+<header data-site-bar></header>
+<main>
+
+  <section class="wrap page-head soon-head">
+    <div class="crumbs"><a href="index.html">Home</a> / Maydi Factory</div>
+    <div class="split">
+      <div>
+        <span class="status"><i aria-hidden="true"></i>Coming soon</span>
+        <h1 style="margin-top:1.2rem">Maydi Factory</h1>
+        <p class="ar" lang="ar" dir="rtl">تصنيع العطور وتعبئتها وإنتاجها لحساب العلامات التجارية</p>
+        <p class="lede">Perfume manufacturing, filling and private-label production in Mogadishu. We are building the capacity to take a brand from concept to a market-ready bottle, without working across many suppliers.</p>
+        <p style="margin-top:2rem;display:flex;gap:.8rem;flex-wrap:wrap">
+          <a class="btn" href="contact.html?topic=factory">Register your interest</a>
+          <a class="btn btn--ghost" href="atelier.html">Need a formula first? Atelier</a>
+        </p>
+      </div>
+      <div class="head-art">
+        <svg class="line-art draw" viewBox="0 0 200 260" aria-hidden="true">
+          <path class="frame" pathLength="1" d="M24 252V104a76 76 0 0 1 152 0v148"/>
+          <path pathLength="1" d="M14 252H186"/>
+          <path pathLength="1" d="M40 226H160"/>
+          <path pathLength="1" d="M46 236a6 6 0 1 0 12 0a6 6 0 1 0-12 0M142 236a6 6 0 1 0 12 0a6 6 0 1 0-12 0"/>
+          <path pathLength="1" d="M56 226v-30h16v30M60 196v-8h8v8M92 226v-30h16v30M96 196v-8h8v8M128 226v-30h16v30M132 196v-8h8v8"/>
+          <path pathLength="1" d="M100 96v22M90 118h20v28l-6 12h-8l-6-12z"/>
+          <path class="tear" pathLength="1" d="M100 164c0 0-3 5-3 7a3 3 0 0 0 6 0c0-2-3-7-3-7z"/>
+          <path pathLength="1" d="M48 132a12 12 0 1 0 24 0a12 12 0 1 0-24 0M56 132a4 4 0 1 0 8 0a4 4 0 1 0-8 0"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="wrap">
+      <h2>What the Factory will do</h2>
+      <p class="intro">Three services, planned to open together. Details, capacities and minimum orders will be published at launch.</p>
+      <ul class="will">
+        <li class="rv"><h3>Manufacturing</h3><p>Producing your formula at batch scale, from Atelier compositions or from a formula you already own.</p></li>
+        <li class="rv"><h3>Filling</h3><p>Filling, capping and finishing in the bottles you choose.</p></li>
+        <li class="rv"><h3>Private label</h3><p>Your name on the bottle and the box, so your brand reaches the market ready to sell.</p></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+<footer data-site-foot></footer>
+<script src="products.js"></script>
+<script src="site.js"></script>
+<script src="glass.js"></script>
+</body>
+</html>

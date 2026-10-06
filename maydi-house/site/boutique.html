@@ -1,0 +1,114 @@
+<!doctype html>
+<!-- Maydi Boutique (v2 prototype). Structure follows the client's reference, gafur.ae:
+     a curator's introduction, a filter bar, then a grid of packshots. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maydi Boutique · Maydi House</title>
+<meta name="description" content="A curated selection of international luxury fragrances, at Maydi House in Mogadishu.">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="glass.css">
+<style>
+  .boutique-head h1 { letter-spacing: .02em; }
+  .boutique-head .curator { font-family: var(--display); font-size: clamp(1.15rem, 1.8vw, 1.4rem); line-height: 1.65; color: var(--ink-soft); max-width: 58ch; margin-top: 1.4rem; }
+  .house-band { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 6rem); align-items: center; }
+  .house-band .facts { margin-top: 1.4rem; }
+  .featured .frame { aspect-ratio: 1; }
+  .made-with { display: inline-flex; align-items: center; gap: .5rem; color: var(--resin); font-size: .72rem; text-transform: uppercase; letter-spacing: .16em; }
+  .made-with svg { width: 12px; height: 16px; }
+  @media (max-width: 860px) { .house-band { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body data-section="boutique.html">
+<header data-site-bar></header>
+<main>
+
+  <section class="wrap page-head boutique-head">
+    <div class="crumbs"><a href="index.html">Home</a> / Maydi Boutique</div>
+    <span class="chip">Maydi Boutique</span>
+    <h1 style="margin-top:1.2rem">The Boutique</h1>
+    <p class="ar" lang="ar" dir="rtl">تشكيلة مختارة من العطور العالمية الفاخرة</p>
+    <p class="curator">A curated selection of international luxury fragrances, chosen in Mogadishu for people who know what they are smelling. We carry small houses that work with rare materials in limited batches, and we tell you why each one is on our shelf.</p>
+  </section>
+
+  <!-- The first house on the shelf, and why: it puts Maydi at the centre of a perfume. -->
+  <section class="section section--surface featured">
+    <div class="wrap feature">
+      <a class="frame rv" href="product.html?p=king-maydi" aria-label="King Maydi Elixir by Zakir Gafur">
+        <img src="https://gafur.ae/cdn/shop/files/2_1080x.jpg?v=1785340257" alt="King Maydi Elixir by Zakir Gafur">
+      </a>
+      <div class="stack rv">
+        <span class="made-with"><svg viewBox="0 0 24 32" aria-hidden="true"><path d="M12 1C12 1 2 13.5 2 20a10 10 0 0 0 20 0C22 13.5 12 1 12 1z" fill="#D9A441"/></svg>Made with Maydi</span>
+        <h2>King Maydi, by Zakir Gafur</h2>
+        <p class="intro">Four frankincense varieties, Frereana among them, carry this elixir over rose, saffron and honey. It treats frankincense as the heart of a perfume, not only as incense, which is exactly why it opens our shelf.</p>
+        <p style="margin-top:1.6rem"><a class="btn" href="product.html?p=king-maydi">View the fragrance</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="house-band" style="margin-bottom:3rem">
+        <div>
+          <h2>Zakir Gafur</h2>
+          <p class="intro">An artisan house that reimagines classic attar blends as modern elixirs, in limited batches, from olfactory memory and traditional Indian compositions.</p>
+        </div>
+        <dl class="facts rv">
+          <dt>Formats</dt><dd>Elixir 15 ml, Mix Media 50 ml, Attar by weight</dd>
+          <dt>Batches</dt><dd>Small and numbered; some releases are a dozen bottles</dd>
+          <dt>On our shelf</dt><dd><span id="count-all">21</span> fragrances</dd>
+        </dl>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filter the collection">
+        <div class="set" id="filters">
+          <button type="button" data-f="all" aria-pressed="true">All</button>
+          <button type="button" data-f="elixir" aria-pressed="false">Elixir</button>
+          <button type="button" data-f="mix-media" aria-pressed="false">Mix Media</button>
+          <button type="button" data-f="attar" aria-pressed="false">Attar</button>
+        </div>
+        <span class="count" id="count" aria-live="polite"></span>
+      </div>
+
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="section section--accent">
+    <div class="wrap split--even split">
+      <div>
+        <h2>Looking for something specific?</h2>
+        <p class="intro">Tell us what you wear and what you are looking for. We will suggest a fragrance, or bring it in for you.</p>
+      </div>
+      <p><a class="btn btn--ghost" style="color:var(--canvas);border-color:var(--canvas)" href="contact.html?topic=boutique">Ask the boutique</a></p>
+    </div>
+  </section>
+
+</main>
+<footer data-site-foot></footer>
+<script src="products.js"></script>
+<script src="site.js"></script>
+<script>
+  (function () {
+    var shelf = MAYDI_PRODUCTS.filter(function (p) { return p.house === 'Zakir Gafur'; });
+    var all = shelf.filter(function (p) { return !p.featured; });
+    var grid = document.getElementById('grid'), count = document.getElementById('count');
+    document.getElementById('count-all').textContent = shelf.length;
+    function render(f) {
+      var list = f === 'all' ? all : all.filter(function (p) { return p.group === f; });
+      grid.innerHTML = list.map(maydiCard).join('');
+      count.textContent = list.length + (list.length === 1 ? ' fragrance' : ' fragrances') + (f === 'all' ? ', plus King Maydi above' : '');
+      maydiReveal(grid);
+    }
+    document.getElementById('filters').addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) return;
+      this.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      render(b.getAttribute('data-f'));
+    });
+    render('all');
+  })();
+</script>
+<script src="glass.js"></script>
+</body>
+</html>

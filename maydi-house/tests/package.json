@@ -1,0 +1,14 @@
+{
+  "name": "maydi-house-tests",
+  "private": true,
+  "description": "Browser checks for the Maydi House site. They drive the installed Google Chrome, so no browser download is needed.",
+  "scripts": {
+    "nav:phone": "node nav-phone.cjs",
+    "nav:desktop": "node nav-desktop.cjs",
+    "hero": "node hero-film.cjs index 390 780 phone",
+    "taps": "node taps-reach-buttons.cjs"
+  },
+  "devDependencies": {
+    "playwright-core": "1.63.0"
+  }
+}
