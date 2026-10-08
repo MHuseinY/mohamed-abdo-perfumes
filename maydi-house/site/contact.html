@@ -20,6 +20,18 @@
   .form input, .form select, .form textarea { background: #fff; }
   @media (max-width: 860px) { .contact { grid-template-columns: 1fr; } }
 </style>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:site_name" content="Maydi House">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Partner with us · Maydi House">
+<meta property="og:description" content="Start a project, order raw materials or ask the boutique. Maydi House, Mogadishu.">
+<meta property="og:image" content="https://maydihouse.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body data-section="contact.html">
 <header data-site-bar></header>
@@ -36,7 +48,7 @@
     <div>
       <dl class="direct">
         <div><dt>Email</dt><dd><a href="mailto:maydihouse@gmail.com">maydihouse@gmail.com</a></dd></div>
-        <div><dt>WhatsApp</dt><dd class="muted">Number to come</dd></div>
+        <div><dt>WhatsApp</dt><dd><a href="https://wa.me/252610161810" rel="noopener"><bdi dir="ltr">+252 610 161 810</bdi></a></dd></div>
         <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/maydihouse/" rel="noopener">@maydihouse</a></dd></div>
         <div><dt>Where</dt><dd>Mogadishu, Somalia</dd></div>
       </dl>
@@ -53,7 +65,7 @@
         <label class="full">Which house?
           <select id="f-topic" name="topic">
             <option value="atelier">Maydi Atelier · bespoke design or a ready formula</option>
-            <option value="factory">Maydi Factory · register interest (coming soon)</option>
+            <option value="factory">Maydi Factory · register interest (under construction)</option>
             <option value="boutique">Maydi Boutique · a fragrance question</option>
             <option value="order">Maydi Boutique · an order</option>
             <option value="botanicals">Maydi Botanicals · raw materials</option>
@@ -62,8 +74,8 @@
         </label>
         <label class="full">Your message<textarea id="f-message" name="message"></textarea></label>
         <div class="full" style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
-          <button class="btn" type="submit">Send enquiry</button>
-          <span class="muted" style="font-size:.85rem">Prototype: this form does not send yet.</span>
+          <button class="btn" type="submit">Send on WhatsApp</button>
+          <span class="muted" style="font-size:.85rem">Opens WhatsApp with your message ready to send.</span>
         </div>
         <p class="form-note full" id="form-status" role="status" hidden></p>
       </form>

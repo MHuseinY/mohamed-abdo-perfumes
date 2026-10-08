@@ -16,7 +16,7 @@ s = s.replace('<!doctype html>\n', '')
 s = re.sub(r'<html lang="[a-z]+"( dir="rtl")?>\n<head>\n<meta charset="utf-8">\n', '', s)
 s = re.sub(r'<script>\n  // Opened as.*?</script>\n', '', s, flags=re.S)   # local-server fix only
 s = re.sub(r'<meta name="(viewport|description)"[^\n]*\n', '', s)
-s = '\n'.join(l for l in s.split('\n') if not l.startswith('<link rel="icon"'))
+s = '\n'.join(l for l in s.split('\n') if not l.startswith(('<link rel="icon"', '<link rel="apple-touch-icon"', '<meta property="og:', '<meta name="twitter:')))
 s = s.replace('</head>\n<body>\n', '').replace('</body>\n</html>\n', '')
 title = {'en': 'Maydi House Homepage', 'ar': 'مايدي هاوس بالعربية'}[lang]
 s = re.sub(r'<title>.*?</title>', f'<title>{title}</title>', s, count=1)

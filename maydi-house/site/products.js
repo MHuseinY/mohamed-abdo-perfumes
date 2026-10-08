@@ -3,11 +3,11 @@
    (gafur.ae/collections/perfumes, first page, plus Shalemar Attar). Images are loaded from
    gafur.ae for this local preview only; a live site needs the house's permission and its files.
    Descriptions are our own short summaries of the house's notes, not their copy.
-   Prices are deliberately empty: the layout keeps a slot for them. */
+   Prices: only the ones the house has given us (`price`, in US dollars, for the first size). Every other product keeps an empty slot. */
 window.MAYDI_PRODUCTS = [
   // ------------------------------------------------------ Mohamed Abdo ----
   { slug: "timbrose-ii", house: "Mohamed Abdo", line: "Private Collection", name: "Timbrose II", kind: "Eau de Parfum",
-    sizes: ["30 ml"], edition: "Numbered bottles, e.g. 11 of 12", img: "assets/timbrose-ii.webp", alt: "Timbrose II, a black bottle with a gold label",
+    sizes: ["30 ml"], price: 160, formula: true, edition: "Numbered bottles, an edition of 12", img: "assets/timbrose-ii.webp", alt: "Timbrose II, a black bottle with a gold label",
     summary: "Bergamot and bitter orange open onto a floral heart of roses, orris and violet, settling into tobacco, beeswax, sandalwood and oud.",
     notes: { top: ["Bergamot", "Bitter orange"],
              heart: ["Lavender", "Orris", "Violet", "Geranium", "Bulgarian rose", "Moroccan rose", "Grasse jasmine"],
@@ -16,7 +16,8 @@ window.MAYDI_PRODUCTS = [
   { slug: "timbrose", house: "Mohamed Abdo", line: "Ready formula · Maydi Atelier", name: "Timbrose", kind: "Eau de Parfum",
     sizes: ["30 ml"], img: "assets/timbrose.webp", alt: "Timbrose, a black bottle with a round wooden cap",
     summary: "The first Timbrose by Mohamed Abdo, offered through Maydi Atelier as a ready formula that a brand can buy and release under its own name.",
-    notes: null, group: "atelier" },
+    // The house gave the notes as one list (an Instagram story, 2026-10-07), with no top, heart and base. We do not invent tiers.
+    notes: { list: ["Oud oil", "Taif rose", "Bulgarian rose", "Moroccan rose", "Violet", "Geranium", "Woods", "Musks"] }, group: "atelier" },
 
   // ------------------------------------------------------- Zakir Gafur ----
   { slug: "king-maydi", house: "Zakir Gafur", line: "Elixir", name: "King Maydi", sizes: ["15 ml"], featured: true,

@@ -35,8 +35,27 @@
     .archive { grid-template-columns: 1fr; }
     .cv li { grid-template-columns: 1fr; gap: .2rem; }
   }
+  .works-wrap { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(1.6rem, 5vw, 4rem); align-items: start; margin-top: 2.6rem; }
+  .works-wrap .works { margin-top: 0; max-width: none; }
+  .pair { margin: 0; }
+  .pair img { display: block; width: 100%; height: auto; aspect-ratio: 888 / 1205; object-fit: cover; }
+  .pair figcaption { margin-top: .8rem; font-size: .9rem; line-height: 1.6; color: var(--ink-soft); }
+  .pair figcaption b { color: var(--accent); font-weight: 600; }
+  @media (max-width: 860px) { .works-wrap { grid-template-columns: 1fr; } .pair { max-width: 26rem; } }
   @media (max-width: 480px) { .works { grid-template-columns: 1fr; } }
 </style>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:site_name" content="مايدي هاوس">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:title" content="محمد عبده · مايدي هاوس">
+<meta property="og:description" content="محمد عبده، مصمم عطور صومالي، مؤسس مايدي هاوس وعطّارها.">
+<meta property="og:image" content="https://maydihouse.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body data-section="ar-mohamed-abdo.html">
 <header data-site-bar></header>
@@ -59,7 +78,7 @@
     <div class="wrap bio">
       <p class="pull rv">تؤمن الدار بأن العطر فنٌّ قبل أن يكون منتجاً.</p>
       <div class="text rv">
-        <p>تتلمذ محمد عبده على يد الخبير الكويتي المهندس سالم الجارالله، من أبرز الأسماء في تصميم العطور في المنطقة.</p>
+        <p>تعلّم محمد عبده تصميم العطور عبر دورات في هذا المجال.</p>
         <p>ابتكر تركيبات عطرية أصيلة، وتعاون مع دور عطور في أنحاء الخليج العربي، ويعمل اليوم مستشاراً في ابتكار العطور.</p>
         <p>في مايدي هاوس يقود الأتيليه، حيث تأتيه العلامات لتحصل على عطر خاص بها، ويوقّع مجموعة خاصة باسمه.</p>
       </div>
@@ -70,8 +89,14 @@
   <section class="section">
     <div class="wrap">
       <h2>عطوره</h2>
-      <p class="intro">تركيبات صمّمها محمد عبده. تيمبروز ٢ من مجموعته الخاصة؛ وتيمبروز الأول يُعرض عبر الأتيليه تركيبةً جاهزة للعلامات.</p>
-      <div class="works" id="works"></div>
+      <p class="intro">تركيبات صمّمها محمد عبده. يُعرض عطرا تيمبروز عبر الأتيليه تركيبتين جاهزتين للعلامات، ويوجد تيمبروز ٢ أيضاً في مجموعته الخاصة زجاجاتٍ مرقّمة.</p>
+      <div class="works-wrap">
+        <figure class="pair rv">
+          <img src="assets/timbrose-pair.webp" width="888" height="1205" loading="lazy" alt="تيمبروز ٢ وتيمبروز جنباً إلى جنب: زجاجتان سوداوان بملصقين ذهبيين، إحداهما بغطاء أسود متسع والأخرى بغطاء خشبي مستدير">
+          <figcaption><b>إبداعات تنتظر الشتاء.</b> تيمبروز ٢ وتيمبروز، 30 مل لكل منهما. وكل زجاجة من تيمبروز ٢ تحمل رقمها من 12.</figcaption>
+        </figure>
+        <div class="works" id="works"></div>
+      </div>
     </div>
   </section>
 
@@ -80,7 +105,7 @@
       <h2>السيرة الذاتية</h2>
       <p class="intro">تُنشر السيرة كاملة هنا. وما نستطيع ذكره الآن:</p>
       <ol class="cv">
-        <li><span class="when">التدريب</span><span class="what">تصميم العطور، على يد المهندس سالم الجارالله، الكويت</span></li>
+        <li><span class="when">التدريب</span><span class="what">دورات في تصميم العطور</span></li>
         <li><span class="when">التعاون</span><span class="what">دور عطور في أنحاء الخليج العربي</span></li>
         <li><span class="when">اليوم</span><span class="what">مستشار ابتكار عطور؛ ومؤسس مايدي هاوس، مقديشو</span></li>
         <li><span class="when">التواريخ والتفاصيل</span><span class="what todo">تأتي من محمد عبده</span></li>

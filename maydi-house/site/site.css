@@ -50,7 +50,7 @@ p { margin: 0; }
   background: rgba(245,230,218,.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
 .bar-main { display: contents; }
 .mark { display: flex; align-items: center; gap: .6rem; color: var(--accent); text-decoration: none; font-family: var(--display); font-size: .95rem; }
-.mark svg { width: 18px; height: 22px; }
+.mark svg { width: 20px; height: 24px; }
 .site-bar nav { display: flex; align-items: center; gap: 1.5rem; margin-inline-start: auto; }
 .site-bar a, .site-bar .lang { white-space: nowrap; }
 .site-bar nav a { color: var(--ink); text-decoration: none; }
@@ -132,6 +132,8 @@ p { margin: 0; }
 .card h3 { font-size: 1.12rem; margin-top: .25rem; color: var(--ink); line-height: 1.25; }
 .card:hover h3 { color: var(--accent); }
 .card .meta { display: flex; justify-content: space-between; gap: 1rem; margin-top: .35rem; font-size: .85rem; color: var(--ink-soft); }
+.price { color: var(--ink); font-weight: 600; font-variant-numeric: lining-nums; white-space: nowrap; }
+.price-row .price { font-family: var(--display); font-size: 1.5rem; font-weight: 500; }
 .price-slot { color: var(--ink-soft); }
 .price-slot::before { content: ""; display: inline-block; width: 1.6em; height: 1px; background: currentColor; vertical-align: middle; margin-inline-end: .4em; opacity: .6; }
 
