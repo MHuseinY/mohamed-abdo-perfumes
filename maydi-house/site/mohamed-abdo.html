@@ -44,6 +44,17 @@
   .pair figcaption b { color: var(--accent); font-weight: 600; }
   @media (max-width: 860px) { .works-wrap { grid-template-columns: 1fr; } .pair { max-width: 26rem; } }
   @media (max-width: 480px) { .works { grid-template-columns: 1fr; } }
+  .cred { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(1.6rem, 5vw, 4rem); align-items: center; margin-top: 2.2rem; }
+  .cred .cert { margin: 0; display: block; padding: 0; border: 0; background: none; cursor: zoom-in; }
+  .cred .cert img { display: block; width: 100%; height: auto; box-shadow: 0 1.2rem 3rem -1.2rem rgba(0,0,0,.45); border: 1px solid color-mix(in oklab, var(--accent) 30%, transparent); }
+  .cred .seal { display: inline-block; font-size: .72rem; text-transform: uppercase; letter-spacing: .16em; color: var(--accent); border: 1px solid currentColor; padding: .35rem .8rem; border-radius: 999px; }
+  .cred h3 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); margin-top: 1rem; }
+  .cred p { color: var(--ink-soft); margin-top: .7rem; }
+  .cred .meta { font-size: .85rem; color: var(--umber); }
+  .cred-zoom { position: fixed; inset: 0; z-index: 90; display: none; align-items: center; justify-content: center; padding: 1rem; background: rgba(20,12,8,.88); cursor: zoom-out; }
+  .cred-zoom.on { display: flex; }
+  .cred-zoom img { max-width: 100%; max-height: 100%; }
+  @media (max-width: 860px) { .cred { grid-template-columns: 1fr; } }
 </style>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
@@ -82,6 +93,21 @@
         <p>Mohamed Abdo trained in perfume design through courses in the craft.</p>
         <p>He has created original fragrance compositions, collaborated with perfume houses across the Arab Gulf, and serves today as a fragrance innovation consultant.</p>
         <p>At Maydi House he leads the Atelier, where brands come to him for a fragrance of their own, and he signs a private collection under his name.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="wrap">
+      <h2>Credentials</h2>
+      <div class="cred">
+        <button class="cert rv" type="button" aria-label="Enlarge the certificate"><img src="assets/certificate-cpd.webp" width="1400" height="1059" loading="lazy" alt="Certificate of Completion: Advanced Perfumery Course, awarded to Mohamed Elmi Abdo by Perfumery Art Training, 21 December 2024, CPD certified (UK)"></button>
+        <div class="rv">
+          <span class="seal">CPD Certified · UK</span>
+          <h3>Advanced Perfumery Course</h3>
+          <p>Completed with Perfumery Art Training, a course certified by the Continuing Professional Development (CPD) Certification Service in the United Kingdom.</p>
+          <p class="meta">Awarded 21 December 2024. Tap the certificate to enlarge it.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -136,5 +162,17 @@
 <script src="site.js"></script>
 <script>MAYDI.initFounder(document);</script>
 <script src="glass.js"></script>
+<div class="cred-zoom" id="cred-zoom" role="dialog" aria-modal="true" hidden><img alt="Certificate, enlarged"></div>
+<script>
+(function () {
+  var z = document.getElementById('cred-zoom'), b = document.querySelector('.cred .cert');
+  if (!z || !b) return;
+  function set(on) { z.hidden = !on; z.classList.toggle('on', on); if (on) z.querySelector('img').src = b.querySelector('img').src; }
+  b.addEventListener('click', function () { set(true); });
+  z.addEventListener('click', function () { set(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
+})();
+</script>
+
 </body>
 </html>
