@@ -1,0 +1,92 @@
+<!doctype html>
+<!-- Partner with us (v2 prototype). The form is layout only: nothing is sent yet. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Partner with us · Maydi House</title>
+<meta name="description" content="Start a project, order raw materials or ask the boutique. Maydi House, Mogadishu.">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="glass.css">
+<style>
+  .contact { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(2rem, 6vw, 6rem); align-items: start; padding-bottom: 5rem; }
+  .direct { display: grid; gap: 1.6rem; }
+  .direct dt { font-size: .72rem; text-transform: uppercase; letter-spacing: .16em; color: var(--umber); }
+  .direct dd { margin: .3rem 0 0; font-family: var(--display); font-size: 1.3rem; }
+  .direct dd a { text-decoration: none; border-bottom: 1px solid var(--line); }
+  .license { margin-top: 2.4rem; padding-top: 1.4rem; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: .95rem; max-width: 40ch; }
+  .form-wrap { background: var(--paper); padding: clamp(1.4rem, 3vw, 2.6rem); border: 1px solid color-mix(in oklab, var(--accent) 12%, transparent); }
+  .form-wrap h2 { font-size: 1.8rem; margin-bottom: 1.4rem; }
+  .form input, .form select, .form textarea { background: #fff; }
+  @media (max-width: 860px) { .contact { grid-template-columns: 1fr; } }
+</style>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:site_name" content="Maydi House">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Partner with us · Maydi House">
+<meta property="og:description" content="Start a project, order raw materials or ask the boutique. Maydi House, Mogadishu.">
+<meta property="og:image" content="https://maydihouse.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body data-section="contact.html">
+<header data-site-bar></header>
+<main>
+
+  <section class="wrap page-head">
+    <div class="crumbs"><a href="index.html">Home</a> / Partner with us</div>
+    <h1>Partner with the house.</h1>
+    <p class="ar" lang="ar" dir="rtl">ابدأ شراكة مع مايدي هاوس</p>
+    <p class="lede">Brands, designers and buyers: tell us what you need and which house it concerns.</p>
+  </section>
+
+  <section class="wrap contact">
+    <div>
+      <dl class="direct">
+        <div><dt>Email</dt><dd><a href="mailto:maydihouse@gmail.com">maydihouse@gmail.com</a></dd></div>
+        <div><dt>WhatsApp</dt><dd><a href="https://wa.me/252610161810" rel="noopener"><bdi dir="ltr">+252 610 161 810</bdi></a></dd></div>
+        <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/maydihouse/" rel="noopener">@maydihouse</a></dd></div>
+        <div><dt>Where</dt><dd>Mogadishu, Somalia</dd></div>
+      </dl>
+      <p class="license">Licensed by the Municipality of Mogadishu, and authenticated by the Somali Ministry of Foreign Affairs and the Benadir Regional Governor's Office.</p>
+    </div>
+
+    <div class="form-wrap">
+      <h2>Send an enquiry</h2>
+      <form class="form" id="enquiry" novalidate>
+        <label>Your name<input id="f-name" name="name" autocomplete="name" required></label>
+        <label>Company or brand<input id="f-company" name="company" autocomplete="organization"></label>
+        <label>Email<input id="f-email" name="email" type="email" autocomplete="email" required></label>
+        <label>Country<input id="f-country" name="country" autocomplete="country-name"></label>
+        <label class="full">Which house?
+          <select id="f-topic" name="topic">
+            <option value="atelier">Maydi Atelier · bespoke design or a ready formula</option>
+            <option value="factory">Maydi Factory · register interest (under construction)</option>
+            <option value="boutique">Maydi Boutique · a fragrance question</option>
+            <option value="order">Maydi Boutique · an order</option>
+            <option value="botanicals">Maydi Botanicals · raw materials</option>
+            <option value="other">Something else</option>
+          </select>
+        </label>
+        <label class="full">Your message<textarea id="f-message" name="message"></textarea></label>
+        <div class="full" style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
+          <button class="btn" type="submit">Send on WhatsApp</button>
+          <span class="muted" style="font-size:.85rem">Opens WhatsApp with your message ready to send.</span>
+        </div>
+        <p class="form-note full" id="form-status" role="status" hidden></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+<footer data-site-foot></footer>
+<script src="products.js"></script>
+<script src="site.js"></script>
+<script>MAYDI.initContact(document, MAYDI.queryCtx());</script>
+<script src="glass.js"></script>
+</body>
+</html>

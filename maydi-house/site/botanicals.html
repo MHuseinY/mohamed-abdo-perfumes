@@ -1,0 +1,121 @@
+<!doctype html>
+<!-- Maydi Botanicals (v2 prototype). Facts about Maydi come from the client's own resin slides. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maydi Botanicals · Maydi House</title>
+<meta name="description" content="Rare Somali frankincense, myrrh, resins and natural aromatic oils, led by Maydi.">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="glass.css">
+<style>
+  .resin-head .frame { max-width: 380px; justify-self: end; background: #111; }
+  .resin-head .frame img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+  .tree-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2.6rem; }
+  .tree-strip figure { margin: 0; }
+  .tree-strip img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+  .tree-strip figcaption { margin-top: .6rem; font-family: var(--display); font-size: 1.05rem; color: #D7E3DA; }
+  .compare { width: 100%; min-width: 620px; border-collapse: collapse; margin-top: 2.4rem; }
+  .compare thead th { width: 38%; }
+  .compare th, .compare td { text-align: start; padding: 1rem 0; padding-inline-end: 1.2rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .compare thead th { font-family: var(--display); font-weight: 500; font-size: 1.4rem; color: var(--accent); }
+  .compare thead th:last-child { color: var(--umber); }
+  .compare tbody th { font-size: .72rem; text-transform: uppercase; letter-spacing: .16em; color: var(--umber); font-weight: 500; width: 11rem; }
+  .compare td:nth-child(2) { font-family: var(--display); font-size: 1.1rem; }
+  .compare td:last-child { color: var(--ink-soft); }
+  .table-wrap { overflow-x: auto; }
+  .materials { list-style: none; margin: 2.4rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 3rem; }
+  .materials li { padding-block: 1.4rem; border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr auto; gap: .4rem 1rem; }
+  .materials h3 { font-size: 1.45rem; }
+  .materials p { grid-column: 1 / -1; color: var(--ink-soft); }
+  .materials .lead h3::after { content: attr(data-tag); font-family: var(--text); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--resin); }
+  @media (max-width: 860px) {
+    .resin-head .frame { justify-self: start; max-width: 300px; }
+    .tree-strip { grid-template-columns: 1fr 1fr; }
+    .materials { grid-template-columns: 1fr; }
+  }
+</style>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:site_name" content="Maydi House">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Maydi Botanicals · Maydi House">
+<meta property="og:description" content="Rare Somali frankincense, myrrh, resins and natural aromatic oils, led by Maydi.">
+<meta property="og:image" content="https://maydihouse.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body data-section="botanicals.html">
+<header data-site-bar></header>
+<main>
+
+  <section class="wrap page-head resin-head">
+    <div class="crumbs"><a href="index.html">Home</a> / Maydi Botanicals</div>
+    <div class="split">
+      <div>
+        <span class="chip">04 · Maydi Botanicals</span>
+        <h1 style="margin-top:1.2rem">Raw Somali materials, led by Maydi.</h1>
+        <p class="ar" lang="ar" dir="rtl">اللبان والمر والراتنجات والزيوت العطرية الطبيعية النادرة من الصومال</p>
+        <p class="lede">Rare Somali frankincense, myrrh, resins and single-note aromatic oils, supplied to perfume designers and manufacturers around the world.</p>
+        <p style="margin-top:2rem"><a class="btn" href="contact.html?topic=botanicals">Order raw materials</a></p>
+      </div>
+      <figure class="frame arch rv" style="margin:0"><img src="assets/resin.webp" alt="A single tear of Maydi frankincense, glowing amber"></figure>
+    </div>
+  </section>
+
+  <section class="section section--green">
+    <div class="wrap">
+      <h2>From the cliff to the tear</h2>
+      <p class="intro">Maydi grows on Boswellia trees rooted in the vertical limestone cliffs of northern Somalia, and nowhere else.</p>
+      <div class="tree-strip">
+        <figure class="rv"><img class="bw" src="assets/tree-cliff.webp" alt="A Boswellia tree on a limestone slope"><figcaption>The tree, on the cliff.</figcaption></figure>
+        <figure class="rv"><img class="bw" src="assets/tree-bark.webp" alt="Papery Boswellia bark"><figcaption>Bark that peels like paper.</figcaption></figure>
+        <figure class="rv"><img class="bw" src="assets/tree-cut.webp" alt="Resin weeping from a cut"><figcaption>A shallow cut; the resin weeps.</figcaption></figure>
+        <figure class="rv"><img src="assets/tree-tears.webp" alt="Frankincense tears sorted in a wooden spoon"><figcaption>Dried into tears, sorted by hand.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Why Maydi is different</h2>
+      <p class="intro">From the house's own material sheet.</p>
+      <div class="table-wrap">
+        <table class="compare">
+          <thead><tr><td></td><th scope="col">Maydi pure resin</th><th scope="col">Common gum resin</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Species</th><td><i>Boswellia frereana</i></td><td><i>Boswellia carterii</i></td></tr>
+            <tr><th scope="row">Gum</th><td>Virtually gum-free</td><td>Water-soluble gum</td></tr>
+            <tr><th scope="row">Burn and texture</th><td>Clean burn, velvety texture</td><td>—</td></tr>
+            <tr><th scope="row">Scent</th><td>Deeply balsamic and woody, with citrus-lemon top notes and honey-like warmth</td><td>—</td></tr>
+            <tr><th scope="row">Uses</th><td>Essential oil and base note in high-end perfumery; incense and ritual; traditional chewing gum</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="wrap">
+      <h2>What we supply</h2>
+      <p class="intro">Grades, minimum orders and prices are confirmed per request.</p>
+      <ul class="materials">
+        <li class="lead rv"><h3 data-tag=" ·  the house material">Maydi frankincense</h3><span class="price-slot">Price</span><p>The highest-grade Boswellia frereana resin, sorted by hand.</p></li>
+        <li class="rv"><h3>Myrrh</h3><span class="price-slot">Price</span><p>Somali myrrh resin for perfumery and incense.</p></li>
+        <li class="rv"><h3>Resins</h3><span class="price-slot">Price</span><p>Other Somali aromatic resins, on request.</p></li>
+        <li class="rv"><h3>Single-note aromatic oils</h3><span class="price-slot">Price</span><p>Natural oils for perfume designers, led by Maydi.</p></li>
+      </ul>
+      <p style="margin-top:2.4rem"><a class="btn" href="contact.html?topic=botanicals">Order raw materials</a></p>
+    </div>
+  </section>
+
+</main>
+<footer data-site-foot></footer>
+<script src="products.js"></script>
+<script src="site.js"></script>
+<script src="glass.js"></script>
+</body>
+</html>

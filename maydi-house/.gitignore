@@ -1,0 +1,8 @@
+# Licensed Arabic font (Thmanyah). Web use is allowed only when the files are bundled unmodified.
+# Never commit them, never upload them as standalone files (also not as artifact files).
+site/fonts-local/
+site/assets/type/
+
+node_modules/
+review/out/
+tests/out/

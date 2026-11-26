@@ -1,0 +1,140 @@
+<!doctype html>
+<!-- Mohamed Abdo (v2 prototype): the founder's own section inside Maydi House.
+     The client asked for: photo and introduction, CV, works and oils, archive, interviews, articles. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mohamed Abdo · Maydi House</title>
+<meta name="description" content="Mohamed Abdo, Somali perfume designer, founder and perfumer of Maydi House.">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="glass.css">
+<style>
+  .founder-head { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(2rem, 6vw, 6rem); align-items: end; padding-block: clamp(2.5rem, 6vw, 5rem); }
+  .founder-head .portrait img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 28%; }
+  .founder-head h1 { font-size: clamp(3rem, 7.4vw, 6.4rem); line-height: 1; }
+  .founder-head .ar-name { font-family: var(--display); font-weight: 700; font-size: clamp(2rem, 4.6vw, 3.8rem); color: var(--accent-2); margin-top: .5rem; line-height: 1.3; }
+  .founder-head .role { margin-top: 1.4rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .16em; color: var(--umber); }
+  .founder-head .lede { font-family: var(--display); font-size: clamp(1.15rem, 1.8vw, 1.4rem); line-height: 1.6; color: var(--ink-soft); max-width: 40ch; margin-top: 1rem; }
+  .bio { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(2rem, 6vw, 6rem); }
+  .bio .pull { margin: 0; font-family: var(--display); font-size: clamp(1.5rem, 2.6vw, 2.2rem); line-height: 1.35; color: var(--accent); }
+  .bio .text p + p { margin-top: 1rem; }
+  .works { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.4rem, 4vw, 3rem); margin-top: 2.6rem; max-width: 880px; }
+  .cv { list-style: none; margin: 2rem 0 0; padding: 0; border-top: 1px solid rgba(245,230,218,.3); }
+  .cv li { display: grid; grid-template-columns: 9rem 1fr; gap: 1.4rem; padding-block: 1.1rem; border-bottom: 1px solid rgba(245,230,218,.3); }
+  .cv .when { font-size: .72rem; text-transform: uppercase; letter-spacing: .16em; color: #EAD3CB; padding-top: .3rem; }
+  .cv .what { font-family: var(--display); font-size: 1.2rem; color: var(--canvas); }
+  .cv .what.todo { opacity: .6; }
+  .archive { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 2.4rem; }
+  .archive .slot { border: 1px dashed color-mix(in oklab, var(--accent) 35%, transparent); padding: 1.6rem; min-height: 11rem; display: flex; flex-direction: column; justify-content: space-between; }
+  .archive .slot h3 { font-size: 1.35rem; }
+  .archive .slot p { color: var(--ink-soft); font-size: .92rem; }
+  .follow { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.6rem; }
+  @media (max-width: 860px) {
+    .founder-head, .bio { grid-template-columns: 1fr; }
+    .founder-head .portrait { max-width: 22rem; }
+    .archive { grid-template-columns: 1fr; }
+    .cv li { grid-template-columns: 1fr; gap: .2rem; }
+  }
+  .works-wrap { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(1.6rem, 5vw, 4rem); align-items: start; margin-top: 2.6rem; }
+  .works-wrap .works { margin-top: 0; max-width: none; }
+  .pair { margin: 0; }
+  .pair img { display: block; width: 100%; height: auto; aspect-ratio: 888 / 1205; object-fit: cover; }
+  .pair figcaption { margin-top: .8rem; font-size: .9rem; line-height: 1.6; color: var(--ink-soft); }
+  .pair figcaption b { color: var(--accent); font-weight: 600; }
+  @media (max-width: 860px) { .works-wrap { grid-template-columns: 1fr; } .pair { max-width: 26rem; } }
+  @media (max-width: 480px) { .works { grid-template-columns: 1fr; } }
+</style>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:site_name" content="Maydi House">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Mohamed Abdo · Maydi House">
+<meta property="og:description" content="Mohamed Abdo, Somali perfume designer, founder and perfumer of Maydi House.">
+<meta property="og:image" content="https://maydihouse.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body data-section="mohamed-abdo.html">
+<header data-site-bar></header>
+<main>
+
+  <section class="wrap">
+    <div class="crumbs" style="margin-top:2rem"><a href="index.html">Home</a> / Mohamed Abdo</div>
+    <div class="founder-head">
+      <figure class="portrait arch rv" style="margin:0"><img class="bw" src="assets/founder.webp" width="900" height="1600" alt="Mohamed Abdo smelling a perfume blotter"></figure>
+      <div>
+        <h1>Mohamed Abdo</h1>
+        <p class="ar-name" lang="ar" dir="rtl">محمد عبده</p>
+        <p class="role">Founder and perfumer · Maydi House</p>
+        <p class="lede">A Somali perfume designer whose compositions are inventive, with a classic character. He founded Maydi House in Mogadishu to carry Somali fragrance to the world.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="wrap bio">
+      <p class="pull rv">The house believes perfume is an art before it is a product.</p>
+      <div class="text rv">
+        <p>Mohamed Abdo trained in perfume design through courses in the craft.</p>
+        <p>He has created original fragrance compositions, collaborated with perfume houses across the Arab Gulf, and serves today as a fragrance innovation consultant.</p>
+        <p>At Maydi House he leads the Atelier, where brands come to him for a fragrance of their own, and he signs a private collection under his name.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- His perfumes: the only colour on this page comes from the bottles. -->
+  <section class="section">
+    <div class="wrap">
+      <h2>His perfumes</h2>
+      <p class="intro">Compositions designed by Mohamed Abdo. Both Timbroses are offered through the Atelier as ready formulas for brands, and Timbrose II also sits in his private collection as numbered bottles.</p>
+      <div class="works-wrap">
+        <figure class="pair rv">
+          <img src="assets/timbrose-pair.webp" width="888" height="1205" loading="lazy" alt="Timbrose II and Timbrose side by side: two black bottles with gold labels, one with a flared black cap and one with a round wooden cap">
+          <figcaption><b>Creations waiting for winter.</b> Timbrose II and Timbrose, 30 ml each. Every bottle of Timbrose II is numbered out of 12.</figcaption>
+        </figure>
+        <div class="works" id="works"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--accent">
+    <div class="wrap">
+      <h2>Curriculum vitae</h2>
+      <p class="intro">The full CV will be published here. What we can already state:</p>
+      <ol class="cv">
+        <li><span class="when">Training</span><span class="what">Courses in perfume design</span></li>
+        <li><span class="when">Collaborations</span><span class="what">Perfume houses across the Arab Gulf</span></li>
+        <li><span class="when">Today</span><span class="what">Fragrance innovation consultant; founder of Maydi House, Mogadishu</span></li>
+        <li><span class="when">Dates and details</span><span class="what todo">To come from Mohamed Abdo</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Archive, interviews and articles</h2>
+      <p class="intro">A private archive of photographs, the interviews he has given and the articles written about him. This part of the page fills as material arrives.</p>
+      <div class="archive">
+        <div class="slot rv"><h3>Archive</h3><p>Photographs from the lab, the trees and the work. To come.</p></div>
+        <div class="slot rv"><h3>Interviews</h3><p>Press and video interviews. To come.</p></div>
+        <div class="slot rv"><h3>Articles</h3><p>Writing by and about Mohamed Abdo. To come.</p></div>
+      </div>
+      <div class="follow">
+        <a class="btn btn--ghost" href="https://www.instagram.com/ma.perfumer/" rel="noopener">Instagram · @ma.perfumer</a>
+        <a class="btn btn--ghost" href="https://www.tiktok.com/@ma.perfumer" rel="noopener">TikTok · @ma.perfumer</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+<footer data-site-foot></footer>
+<script src="products.js"></script>
+<script src="site.js"></script>
+<script>MAYDI.initFounder(document);</script>
+<script src="glass.js"></script>
+</body>
+</html>

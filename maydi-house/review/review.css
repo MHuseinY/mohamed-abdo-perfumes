@@ -1,0 +1,33 @@
+/* What the single-document review site adds on top of the site's own styles. */
+
+/* the views and the placeholder frame for a product that has no image yet */
+.view[hidden] { display: none !important; }
+.frame.ph, .card .frame.ph, .featured .frame { display: grid; place-content: center; text-align: center; gap: .6rem; padding: 1.4rem; }
+.ph-name { font-family: var(--display); font-size: clamp(1.2rem, 2.2vw, 1.8rem); color: var(--accent); line-height: 1.2; }
+.ph-note { font-size: .62rem; text-transform: uppercase; letter-spacing: .14em; color: var(--umber); }
+.lang a { color: inherit; text-decoration: none; }
+
+/* Review builds carry no licensed font files: Lora for Latin display, Almarai for text and for all Arabic */
+html[lang="ar"] { --display: "Almarai", system-ui, sans-serif; }
+
+/* the draft label and the note button (the viewer's own comment composer opens from it) */
+.draft-tag { font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--umber); border: 1px dashed var(--accent-2); padding: .2rem .45rem; white-space: nowrap; }
+.note-btn { position: fixed; z-index: 60; inset-inline-end: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: inline-flex; align-items: center; gap: .5rem;
+  padding: .7rem 1rem; cursor: pointer; font: 700 .78rem/1 var(--text); background: var(--canvas); color: var(--accent); border: 1px solid var(--accent); box-shadow: 0 6px 20px rgba(43,20,24,.18); }
+.note-btn:hover { background: var(--accent); color: var(--canvas); }
+.note-btn svg { width: 14px; height: 16px; }
+.note-btn[hidden], .note-hint[hidden] { display: none; }
+.note-hint { position: fixed; z-index: 60; inset-inline-end: 16px; bottom: calc(68px + env(safe-area-inset-bottom, 0px)); max-width: 17rem; font-size: .8rem; background: var(--ink); color: var(--canvas); padding: .6rem .8rem; }
+.site-bar { padding-top: env(safe-area-inset-top, 0px); }
+@media (max-width: 860px) {
+  .draft-tag { display: none; }
+  .note-btn { top: calc(var(--bar-h) + 12px); bottom: auto; padding: .6rem .7rem; }
+  .note-btn .nb-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .note-hint { top: calc(var(--bar-h) + 64px); bottom: auto; }
+}
+
+/* the two homepages: full-screen iframes over everything else */
+.home-frame { position: fixed; inset: 0; width: 100%; height: 100%; height: 100dvh; border: 0; background: #F5E6DA; display: none; z-index: 40; }
+.home-frame.is-on { display: block; }
+.on-home, .on-home body { overflow: hidden; }
+.on-home [data-site-bar], .on-home #views, .on-home [data-site-foot], .on-home .dock, .on-home .menu-panel { display: none !important; }
