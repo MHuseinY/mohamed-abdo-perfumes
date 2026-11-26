@@ -13,6 +13,7 @@
   var ARCH = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 76" aria-hidden="true"><g fill="none" stroke="#702030" stroke-linecap="round" stroke-linejoin="round"><path d="M20 64H2V31C2 17 15 8 32 1C49 8 62 17 62 31V64H44" stroke-width="2.6"/><path d="M14 64V27L32 47L50 27V64" stroke-width="2.4"/></g><path d="M32 54V20" fill="none" stroke="#3A6351" stroke-width="2" stroke-linecap="round"/><g fill="#3A6351"><ellipse cx="32" cy="14" rx="2.9" ry="6"/><ellipse cx="26.2" cy="25.5" rx="4.6" ry="2.3" transform="rotate(-38 26.2 25.5)"/><ellipse cx="37.8" cy="25.5" rx="4.6" ry="2.3" transform="rotate(38 37.8 25.5)"/><ellipse cx="26.6" cy="34.5" rx="4.4" ry="2.2" transform="rotate(-32 26.6 34.5)"/><ellipse cx="37.4" cy="34.5" rx="4.4" ry="2.2" transform="rotate(32 37.4 34.5)"/></g><path d="M32 53C32 53 25.5 61.5 25.5 66.2A6.5 6.5 0 0 0 38.5 66.2C38.5 61.5 32 53 32 53Z" fill="#D9A441" stroke="#702030" stroke-width="2" stroke-linejoin="round"/></svg>';
   var NAV = ['atelier', 'factory', 'boutique', 'botanicals', 'mohamed-abdo'];
   var PAGE = location.pathname.split('/').pop() || 'index.html';
+  if (!/\.html$/.test(PAGE)) PAGE += '.html'; // clean URLs on the live site (/ar-boutique) read as the file name
   // The house's WhatsApp, given by the client on 2026-10-07 (digits only, as wa.me wants them).
   var WA = '252610161810';
   M.whatsapp = 'https://wa.me/' + WA;
@@ -25,7 +26,7 @@
       sub: { atelier: 'Bespoke design', factory: 'Under construction', boutique: 'Curated fragrances', botanicals: 'Raw materials', 'mohamed-abdo': 'Founder and perfumer' },
       cta: 'Partner with us', menu: 'Menu', close: 'Close', langNow: 'EN', langOther: 'العربية', langTitle: 'Arabic version',
       draftTitle: 'A working draft shared for review. This is not the live website.',
-      foot: { blurb: 'A Somali fragrance house in Mogadishu, named after Maydi, the rarest frankincense in the world.',
+      foot: { blurb: 'A Somali fragrance house in Mogadishu, named after Maydi, the most prized frankincense in the world.',
               houses: 'Houses', houseNames: { atelier: 'Maydi Atelier', factory: 'Maydi Factory', boutique: 'Maydi Boutique', botanicals: 'Maydi Botanicals' },
               the: 'The house', contact: 'Contact', where: 'Mogadishu, Somalia', instagram: 'Instagram', whatsapp: 'WhatsApp',
               rights: '© 2026 Maydi House', licensed: 'Officially licensed in Mogadishu' },
@@ -36,9 +37,12 @@
              atelierBtn: 'Request this formula for your brand', atelierNote: 'A ready formula by Mohamed Abdo, released under your own name.',
              add: 'Add to bag', addTitle: 'Online ordering comes later', order: 'Order through the house',
              orderNote: 'Online ordering opens later. For now, the house takes orders on WhatsApp.',
+             payBtn: 'Pay with PayPal', payNote: 'Pay securely with PayPal, or order through the house on WhatsApp.',
+             atHouse: function (p) { return 'Find it at ' + p.houseLabel + ' ↗'; },
+             recNote: 'A personal pick by Mohamed Abdo. Not affiliated with Maydi House.',
              priceAtelier: 'Formula pricing on request', priceShop: 'Prices to be announced', size: 'Size',
              priceFor: function (s) { return 'Price of the ' + s + ' bottle'; },
-             formulaNote: 'Also a ready formula for brands.', formulaLink: 'Request the formula',
+             formulaNote: 'Also a ready formula for brands.', formulaLink: 'Request the formula', gallery: 'In its setting',
              notes: 'The notes', keyNotes: 'Key notes', notesLabel: 'Notes', top: 'Top', heart: 'Heart', base: 'Base', accords: 'Accords', soon: 'To come',
              more: function (h) { return 'More from ' + h; }, homeAtelier: 'Maydi Atelier', homeFounder: 'Mohamed Abdo', homeShop: 'Maydi Boutique' },
       boutique: { one: ' fragrance', many: ' fragrances', plus: ', plus King Maydi above',
@@ -65,9 +69,12 @@
              atelierBtn: 'اطلب هذه التركيبة لعلامتك', atelierNote: 'تركيبة جاهزة من محمد عبده، تُطلق باسم علامتك.',
              add: 'أضف إلى السلة', addTitle: 'الطلب عبر الإنترنت يأتي لاحقاً', order: 'اطلب عبر الدار',
              orderNote: 'يُفتح الطلب عبر الإنترنت لاحقاً. حالياً تستقبل الدار الطلبات عبر واتساب.',
+             payBtn: 'ادفع عبر PayPal', payNote: 'ادفع بأمان عبر PayPal، أو اطلب عبر الدار على واتساب.',
+             atHouse: function (p) { return 'اعرفه عند ' + p.houseLabel + ' ↗'; },
+             recNote: 'ترشيح شخصي من محمد عبده، والدار غير مرتبطة بمايدي هاوس.',
              priceAtelier: 'سعر التركيبة عند الطلب', priceShop: 'تُعلن الأسعار لاحقاً', size: 'الحجم',
              priceFor: function (s) { return 'سعر زجاجة ' + s; },
-             formulaNote: 'وهو أيضاً تركيبة جاهزة للعلامات التجارية.', formulaLink: 'اطلب التركيبة',
+             formulaNote: 'وهو أيضاً تركيبة جاهزة للعلامات التجارية.', formulaLink: 'اطلب التركيبة', gallery: 'في أجوائه',
              notes: 'النوتات', keyNotes: 'النوتات الرئيسية', notesLabel: 'النوتات', top: 'العليا', heart: 'القلب', base: 'القاعدة', accords: 'الأكوردات', soon: 'قريباً',
              more: function (h) { return 'المزيد من ' + h; }, homeAtelier: 'مايدي أتيليه', homeFounder: 'محمد عبده', homeShop: 'مايدي بوتيك' },
       boutique: { plus: '، إضافة إلى كينغ مايدي أعلاه',
@@ -156,9 +163,10 @@
       menuPanel.setAttribute('aria-label', T.menu);
       menuMark.innerHTML = '<a class="mark caps" href="' + link(l, 'home') + '">' + ARCH + T.brand + '</a>';
       menuClose.textContent = T.close;
-      menuLinks.innerHTML = (HASH ? '<a href="' + link(l, 'home') + '">' + T.home + '<small>' + T.homeSub + '</small></a>' : '') +
+      menuLinks.innerHTML = '<a href="' + link(l, 'home') + '">' + T.home + '<small>' + T.homeSub + '</small></a>' +
         NAV.map(function (k) { return '<a href="' + link(l, 'page', k) + '" data-nav="' + k + '"' + cur(k) + '>' + T.nav[k] + '<small>' + T.sub[k] + '</small></a>'; }).join('');
-      menuFoot.innerHTML = '<a class="btn" href="' + link(l, 'contact') + '">' + T.cta + '</a>' + langHtml;
+      menuFoot.innerHTML = '<a class="btn" href="' + link(l, 'contact') + '">' + T.cta + '</a>' +
+        '<a class="btn btn--ghost" href="' + M.whatsapp + '" rel="noopener">' + T.foot.whatsapp + '</a>' + langHtml;
     }
     if (foot) {
       foot.className = 'foot';
@@ -205,15 +213,25 @@
     out.houseLabel = l === 'ar' && p.house === 'Mohamed Abdo' ? 'محمد عبده' : p.house;
     return out;
   }
+  // The house's own perfumes are all listed. A perfume from another house is listed only when it is a pick (`pick: true`);
+  // the rest of the data stays for later picks but is not shown.
+  function listed(p) { return !p.url || p.pick; }
   M.product = function (slug, l) {
     var p = (window.MAYDI_PRODUCTS || []).filter(function (x) { return x.slug === slug; })[0];
-    return p ? localize(p, l || LANG) : null;
+    return p && listed(p) ? localize(p, l || LANG) : null;
   };
-  M.products = function (l) { return (window.MAYDI_PRODUCTS || []).map(function (p) { return localize(p, l || LANG); }); };
+  M.products = function (l) { return (window.MAYDI_PRODUCTS || []).filter(listed).map(function (p) { return localize(p, l || LANG); }); };
   window.maydiProduct = function (slug) { return M.product(slug); };
 
+  // The house's own photographs only. A pick from another house is drawn as a text card (name, house, three notes)
+  // until we have that house's permission for its photographs.
   function frame(p, l, cls) {
     var T = S(l);
+    if (p.url) {
+      var notes = (p.keyNotes || (p.notes && (p.notes.list || [].concat(p.notes.top || [], p.notes.heart || [], p.notes.base || []))) || []).slice(0, 3);
+      return '<div class="frame tc' + (cls || '') + '"><span class="tc-house"><bdi>' + p.houseLabel + '</bdi></span><span class="tc-name"><bdi>' + p.name + '</bdi></span>' +
+        '<span class="tc-rule"></span>' + (notes.length ? '<span class="tc-notes">' + notes.join(T.sep) + '</span>' : '') + '</div>';
+    }
     return p.img
       ? '<div class="frame' + (cls || '') + '"><img src="' + p.img + '" alt="' + (p.alt || T.by(p)) + '" loading="lazy"></div>'
       : '<div class="frame ph' + (cls || '') + '"><span class="ph-name">' + p.name + '</span><span class="ph-note">Image from the house, pending permission</span></div>';
@@ -234,6 +252,7 @@
   M.initBoutique = function (root, l) {
     l = l || LANG; var T = S(l);
     root = root || document;
+    if (!root.querySelector('#grid')) return; // the page shows the pick only, no shelf
     var shelf = M.products(l).filter(function (p) { return p.house === 'Zakir Gafur'; });
     var rest = shelf.filter(function (p) { return !p.featured; });
     var grid = root.querySelector('#grid'), count = root.querySelector('#count'), filters = root.querySelector('#filters');
@@ -257,6 +276,51 @@
     root = root || document;
     root.querySelector('#works').innerHTML = ['timbrose-ii', 'timbrose'].map(function (s) { return M.card(M.product(s, l || LANG), l || LANG); }).join('');
     window.maydiReveal(root.querySelector('#works'));
+  };
+
+  // An article page (.ax): the contents rail (the section being read, how far the reader is), the reading time,
+  // and the cover, which is black and white until the reader starts scrolling and then takes its colour.
+  // Contents entries are buttons that scroll, not #anchors, so they never fight the review site's hash routes.
+  var articleViews = [], articleTick = false;
+  function articleFrame() {
+    articleTick = false;
+    articleViews.forEach(function (f) { f(); });
+  }
+  M.initArticle = function (root, l) {
+    l = l || LANG; root = root || document;
+    var art = root.querySelector('.ax'); if (!art) return;
+    var text = art.querySelector('.ax-text'), rail = art.querySelector('.ax-rail'), now = art.querySelector('.ax-now');
+    var cover = art.querySelector('.ax-cover img'), list = art.querySelector('.ax-toc ol');
+    var heads = [].slice.call(text.querySelectorAll('h2[id]'));
+    var names = heads.map(function (h) { var c = h.cloneNode(true), s = c.querySelector('small'); if (s) s.remove(); return c.textContent.trim().replace(/[:：]$/, ''); });
+    list.innerHTML = names.map(function (n, i) {
+      return '<li><button type="button" data-i="' + i + '"><span>' + (i < 9 ? '0' : '') + (i + 1) + '</span>' + n + '</button></li>'; }).join('');
+    var buttons = [].slice.call(list.querySelectorAll('button'));
+    list.addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (b) heads[+b.getAttribute('data-i')].scrollIntoView({ behavior: 'smooth' });
+    });
+    var words = text.textContent.trim().split(/\s+/).length, mins = Math.max(1, Math.round(words / 200));
+    var time = l === 'ar' ? 'قراءة ' + mins + (mins >= 3 && mins <= 10 ? ' دقائق' : ' دقيقة') : mins + ' min read';
+    [].forEach.call(art.querySelectorAll('[data-ax-time]'), function (t) { t.textContent = time; });
+    var label = art.querySelector('.ax-toc').getAttribute('aria-label');
+    function update() {
+      if (!art.getClientRects().length) return;           // a hidden view of the review site
+      var vh = window.innerHeight, r = text.getBoundingClientRect();
+      rail.style.setProperty('--p', Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - vh * .6))).toFixed(4));
+      var cur = -1;
+      heads.forEach(function (h, i) { if (h.getBoundingClientRect().top < vh * .35) cur = i; });
+      buttons.forEach(function (b, i) { b.setAttribute('aria-current', i === cur ? 'true' : 'false'); });
+      now.textContent = cur < 0 ? label : names[cur];
+      if (cover) cover.style.setProperty('--g', (1 - Math.min(1, Math.max(0, window.scrollY / (cover.offsetHeight * .5)))).toFixed(3));
+    }
+    articleViews.push(update);
+    if (articleViews.length === 1) {
+      var ask = function () { if (!articleTick) { articleTick = true; requestAnimationFrame(articleFrame); } };
+      window.addEventListener('scroll', ask, { passive: true });
+      window.addEventListener('resize', ask);
+      window.addEventListener('hashchange', function () { setTimeout(ask, 0); });
+    }
+    update();
   };
 
   // The enquiry form. topic and item prefill the topic and the message. Sending opens WhatsApp with the message written out
@@ -314,24 +378,34 @@
       : '<div class="pyramid"><h2>' + (p.notes && p.notes.list ? P.notes : flat ? P.keyNotes : P.notes) + '</h2><div class="tier"><b>' + P.notesLabel + '</b><p' +
           (flat ? '>' + join(flat) : ' class="muted">' + P.soon) + '</p></div></div>';
     var atelier = p.group === 'atelier';
-    var buy = atelier
+    var pick = p.url ? '<a class="btn" href="' + p.url + '" target="_blank" rel="noopener noreferrer">' + P.atHouse(p) + '</a><p class="note">' + P.recNote + '</p>' : '';
+    var buy = p.url ? pick : (atelier
       ? '<a class="btn" href="' + link(l, 'contact', 'atelier', p.slug) + '">' + P.atelierBtn + '</a><p class="note">' + P.atelierNote + '</p>'
-      : '<button class="btn" type="button" aria-disabled="true" title="' + P.addTitle + '">' + (p.soldOut ? T.sold : P.add) + '</button>' +
-        '<a class="btn btn--ghost" href="' + link(l, 'contact', 'order', p.slug) + '">' + P.order + '</a><p class="note">' + P.orderNote + '</p>' +
-        (p.formula ? '<p class="note">' + P.formulaNote + ' <a class="text-link" href="' + link(l, 'contact', 'atelier', p.slug) + '">' + P.formulaLink + '</a></p>' : '');
+      : (p.paypal
+          // A PayPal hosted "Buy Now" button (price and product are fixed in the PayPal account).
+          ? '<form class="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"><input type="hidden" name="cmd" value="_s-xclick">' +
+            '<input type="hidden" name="hosted_button_id" value="' + p.paypal + '"><input type="hidden" name="currency_code" value="USD">' +
+            '<button class="btn" type="submit">' + P.payBtn + ' · $' + p.price + '</button></form>'
+          : '<button class="btn" type="button" aria-disabled="true" title="' + P.addTitle + '">' + (p.soldOut ? T.sold : P.add) + '</button>') +
+        '<a class="btn btn--ghost" href="' + link(l, 'contact', 'order', p.slug) + '">' + P.order + '</a><p class="note">' + (p.paypal ? P.payNote : P.orderNote) + '</p>' +
+        (p.formula ? '<p class="note">' + P.formulaNote + ' <a class="text-link" href="' + link(l, 'contact', 'atelier', p.slug) + '">' + P.formulaLink + '</a></p>' : ''));
+    // The house's own photographs of the bottle in a setting: a row of four, scrolled sideways on a phone.
+    var gallery = p.gallery && p.gallery.length ? '<section class="gallery"><h2>' + P.gallery + '</h2><div class="gallery__row">' + p.gallery.map(function (g) {
+      return '<figure><img src="' + g.img + '" width="' + g.w + '" height="' + g.h + '" alt="' + g.alt + '" loading="lazy"></figure>'; }).join('') + '</div></section>' : '';
     var more = M.products(l).filter(function (x) { return x.slug !== p.slug && x.house === p.house && !x.featured; }).slice(0, 4);
     root.innerHTML =
       '<div class="crumbs" style="margin-top:2rem"><a href="' + link(l, 'home') + '">' + T.home + '</a> / <a href="' + link(l, 'page', home[0]) + '">' + home[1] + '</a> / <bdi>' + p.name + '</bdi></div>' +
       '<article class="pdp">' + frame(p, l) + '<div>' +
         '<div class="house">' + T.houseLine(p) + '</div><h1><bdi>' + p.name + '</bdi></h1><p class="kind">' + (p.kind || p.line) + '</p>' +
         (p.edition ? '<p class="edition"><span class="chip">' + p.edition + '</span></p>' : '') +
-        '<div class="price-row">' + priceTag(p, T) + '<small>' + (p.price ? P.priceFor(p.sizes[0]) : atelier ? P.priceAtelier : P.priceShop) + '</small></div>' +
+        (p.url ? '' : '<div class="price-row">' + priceTag(p, T) + '<small>' + (p.price ? P.priceFor(p.sizes[0]) : atelier ? P.priceAtelier : P.priceShop) + '</small></div>' +
         '<div class="sizes"><div class="label">' + P.size + '</div><div class="opts">' +
-          p.sizes.map(function (s, i) { return '<button type="button" aria-pressed="' + (i === 0) + '">' + s + '</button>'; }).join('') + '</div></div>' +
+          p.sizes.map(function (s, i) { return '<button type="button" aria-pressed="' + (i === 0) + '">' + s + '</button>'; }).join('') + '</div></div>') +
         '<div class="buy">' + buy + '</div><p class="story">' + p.summary + '</p>' + notesHtml +
-      '</div></article>' +
+      '</div></article>' + gallery +
       (more.length ? '<section class="more" style="padding-bottom:5rem"><h2>' + P.more(p.houseLabel) + '</h2><div class="grid">' + more.map(function (x) { return M.card(x, l); }).join('') + '</div></section>' : '');
-    root.querySelector('.opts').addEventListener('click', function (e) {
+    var opts = root.querySelector('.opts');
+    if (opts) opts.addEventListener('click', function (e) {
       var b = e.target.closest('button'); if (!b) return;
       this.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
     });

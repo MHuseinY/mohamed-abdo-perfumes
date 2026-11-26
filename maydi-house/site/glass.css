@@ -22,6 +22,8 @@
 
 /* ---------------------------------------------------- the top bar lifts -- */
 .site-bar nav { align-items: center; }
+/* Wide screens: the links spread evenly across the centred column, between the mark and the language switch (as on apple.com). */
+@media (min-width: 1101px) { .site-bar nav { flex: 1; justify-content: space-evenly; margin-inline-start: 0; } }
 .site-bar { isolation: isolate; transition: background-color .35s ease, border-color .35s ease; }
 .site-bar::before { content: ""; position: absolute; z-index: -1; inset: 0; pointer-events: none; opacity: 0;
   border-radius: 0; background: linear-gradient(180deg, var(--glass-tint), var(--glass-tint-2));
@@ -30,7 +32,8 @@
   transition: inset .5s var(--liquid), border-radius .5s var(--liquid), opacity .3s ease; }
 .site-bar.is-glass { background-color: transparent !important; border-bottom-color: transparent !important;
   -webkit-backdrop-filter: none; backdrop-filter: none; }
-.site-bar.is-glass::before { opacity: 1; inset: 8px clamp(8px, 2vw, 24px); border-radius: 999px; }
+/* On a wide screen the bar's contents stay in a centred 1240px column (the inner pages' width), and the pill hugs them. */
+.site-bar.is-glass::before { opacity: 1; inset: 8px max(clamp(8px, 2vw, 24px), calc((100% - 1240px) / 2 - 24px)); border-radius: 999px; }
 
 /* --------------------------------------------------------- phone dock --- */
 .dock { display: none; }
@@ -78,7 +81,8 @@
   .dock__lens.is-on { opacity: 1; }
 
   .dock__more { flex: none; width: var(--dock-h); height: var(--dock-h); border-radius: 50%; cursor: pointer; padding: 0;
-    display: grid; place-items: center; color: #702030; transition: width .45s var(--liquid), height .45s var(--liquid); }
+    display: grid; justify-items: center; align-content: center; gap: 3px; color: #702030; transition: width .45s var(--liquid), height .45s var(--liquid); }
+  .dock__more span { font-size: 10.5px; line-height: 1.1; font-weight: 600; letter-spacing: .02em; white-space: nowrap; text-shadow: 0 0 8px rgba(250, 240, 231, .95), 0 0 2px rgba(250, 240, 231, .9); }
   .dock__more svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
   .dock__more:active { transform: scale(.94); }
 

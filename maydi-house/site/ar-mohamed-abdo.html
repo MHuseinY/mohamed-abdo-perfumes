@@ -5,6 +5,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>محمد عبده · مايدي هاوس</title>
+<link rel="canonical" href="https://maydihouse.com/ar-mohamed-abdo">
+<link rel="alternate" hreflang="en" href="https://maydihouse.com/mohamed-abdo">
+<link rel="alternate" hreflang="ar" href="https://maydihouse.com/ar-mohamed-abdo">
+<link rel="alternate" hreflang="x-default" href="https://maydihouse.com/mohamed-abdo">
 <meta name="description" content="محمد عبده، مصمم عطور صومالي، مؤسس مايدي هاوس وعطّارها.">
 <link rel="stylesheet" href="site.css">
 <link rel="stylesheet" href="glass.css">
@@ -28,6 +32,11 @@
   .archive .slot { border: 1px dashed color-mix(in oklab, var(--accent) 35%, transparent); padding: 1.6rem; min-height: 11rem; display: flex; flex-direction: column; justify-content: space-between; }
   .archive .slot h3 { font-size: 1.35rem; }
   .archive .slot p { color: var(--ink-soft); font-size: .92rem; }
+  .archive a.slot--article { border-style: solid; text-decoration: none; color: inherit; transition: background-color .3s ease; }
+  .archive a.slot--article:hover { background: var(--surface); }
+  .slot--article .series { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--umber); }
+  .slot--article h3 { margin-top: .5rem; }
+  .slot--article .go { margin-top: 1rem; font-size: .8rem; color: var(--accent); border-bottom: 1px solid currentColor; align-self: flex-start; }
   .follow { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.6rem; }
   @media (max-width: 860px) {
     .founder-head, .bio { grid-template-columns: 1fr; }
@@ -54,6 +63,7 @@
   .cred-zoom.on { display: flex; }
   .cred-zoom img { max-width: 100%; max-height: 100%; }
   @media (max-width: 860px) { .cred { grid-template-columns: 1fr; } }
+
 </style>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
@@ -79,7 +89,7 @@
       <div>
         <h1>محمد عبده</h1>
         <span class="lat" lang="en">Mohamed Abdo</span>
-        <p class="role">المؤسس والعطّار · مايدي هاوس</p>
+        <p class="role">مصمم عطور مستقل · مؤسس مايدي هاوس</p>
         <p class="lede">مصمم عطور صومالي، تركيباته مبتكرة بطابع كلاسيكي. أسّس مايدي هاوس في مقديشو ليحمل العطر الصومالي إلى العالم.</p>
       </div>
     </div>
@@ -91,13 +101,11 @@
       <div class="text rv">
         <p>تعلّم محمد عبده تصميم العطور عبر دورات في هذا المجال.</p>
         <p>ابتكر تركيبات عطرية أصيلة، وتعاون مع دور عطور في أنحاء الخليج العربي، ويعمل اليوم مستشاراً في ابتكار العطور.</p>
-        <p>في مايدي هاوس يقود الأتيليه، حيث تأتيه العلامات لتحصل على عطر خاص بها، ويوقّع مجموعة خاصة باسمه.</p>
+        <p>في مايدي هاوس يقود الأتيليه، حيث تأتيه العلامات لتحصل على عطر خاص بها.</p>
       </div>
     </div>
   </section>
-
-  <!-- عطوره: اللون الوحيد في هذه الصفحة يأتي من الزجاجات. -->
-    <section class="section section--surface">
+  <section class="section section--surface">
     <div class="wrap">
       <h2>الاعتمادات</h2>
       <div class="cred">
@@ -112,10 +120,13 @@
     </div>
   </section>
 
-<section class="section">
+
+
+  <!-- عطوره: اللون الوحيد في هذه الصفحة يأتي من الزجاجات. -->
+  <section class="section">
     <div class="wrap">
-      <h2>عطوره</h2>
-      <p class="intro">تركيبات صمّمها محمد عبده. يُعرض عطرا تيمبروز عبر الأتيليه تركيبتين جاهزتين للعلامات، ويوجد تيمبروز ٢ أيضاً في مجموعته الخاصة زجاجاتٍ مرقّمة.</p>
+      <h2>تركيباته</h2>
+      <p class="intro">تركيبات صمّمها محمد عبده. يُعرض عطرا تيمبروز عبر الأتيليه تركيبتين جاهزتين للعلامات.</p>
       <div class="works-wrap">
         <figure class="pair rv">
           <img src="assets/timbrose-pair.webp" width="888" height="1205" loading="lazy" alt="تيمبروز ٢ وتيمبروز جنباً إلى جنب: زجاجتان سوداوان بملصقين ذهبيين، إحداهما بغطاء أسود متسع والأخرى بغطاء خشبي مستدير">
@@ -126,12 +137,25 @@
     </div>
   </section>
 
+  <section class="section">
+    <div class="wrap">
+      <h2>الخدمات</h2>
+      <p class="intro">ما يقدمه محمد عبده بصفته مصمم عطور مستقلاً.</p>
+      <ol class="services">
+        <li>تصميم عطور حصرية</li>
+        <li>استشارات في صناعة وتطوير العطور</li>
+        <li>استشارات في إنشاء شركات العطور</li>
+        <li>دورات في تصميم العطور</li>
+      </ol>
+    </div>
+  </section>
+
   <section class="section section--accent">
     <div class="wrap">
       <h2>السيرة الذاتية</h2>
       <p class="intro">تُنشر السيرة كاملة هنا. وما نستطيع ذكره الآن:</p>
       <ol class="cv">
-        <li><span class="when">التدريب</span><span class="what">دورات في تصميم العطور</span></li>
+        <li><span class="when">التدريب</span><span class="what">حاصل على دورات احترافية في تصميم العطور وفق أعلى معايير الجودة والسلامة، ومعتمد من مؤسسة <bdi>Perfumery Art</bdi> للتدريب على تصميم العطور.</span></li>
         <li><span class="when">التعاون</span><span class="what">دور عطور في أنحاء الخليج العربي</span></li>
         <li><span class="when">اليوم</span><span class="what">مستشار ابتكار عطور؛ ومؤسس مايدي هاوس، مقديشو</span></li>
         <li><span class="when">التواريخ والتفاصيل</span><span class="what todo">تأتي من محمد عبده</span></li>
@@ -143,10 +167,12 @@
     <div class="wrap">
       <h2>الأرشيف والمقابلات والمقالات</h2>
       <p class="intro">أرشيف خاص من الصور، والمقابلات التي أجراها، والمقالات التي كُتبت عنه. يمتلئ هذا الجزء كلما وصلت المواد.</p>
+      <div class="gallery__row gallery__row--3" style="margin-top:2.4rem"><figure><img src="assets/timbrose-ii-plaid.webp" width="1184" height="1776" alt="تيمبروز ٢ مستلقياً على قماش مربعات بني بجانب محفظة جلدية وساعة يد وعملة ذهبية وإطار خشبي" loading="lazy"></figure><figure><img src="assets/timbrose-ii-denim.webp" width="1184" height="1776" alt="تيمبروز ٢ مستلقياً على قماش جينز أزرق داكن بجانب محفظة جلدية وساعة يد وعملة ذهبية" loading="lazy"></figure><figure><img src="assets/timbrose-ii-study.webp" width="1184" height="1776" alt="تيمبروز ٢ مستلقياً على قماش رمادي بجانب نظارة مستديرة وحلقة مفاتيح وبروش ذهبي وكتاب قديم" loading="lazy"></figure><figure><img src="assets/timbrose-ii-gift.webp" width="1184" height="1776" alt="تيمبروز ٢ في خيط من ضوء الشمس على قماش رمادي بجانب ساعة يد وعلبة هدية سوداء مربوطة بشريط" loading="lazy"></figure><figure><img src="assets/timbrose-ii-flatlay.webp" width="1184" height="1776" alt="تيمبروز ٢ من الأعلى على قماش رمادي، مع ساعة يد بأرقام عربية وقلم وكتاب عن هنري كارتييه بريسون وطرف سترة جينز" loading="lazy"></figure><figure><img src="assets/timbrose-ii-label.webp" width="1000" height="1339" alt="لقطة قريبة لملصق تيمبروز ٢ برقم 8 من 12 في إضاءة خافتة" loading="lazy"></figure></div>
+      <p class="gallery__cap">تيمبروز ٢، في صور الدار.</p>
       <div class="archive">
-        <div class="slot rv"><h3>الأرشيف</h3><p>صور من المختبر والأشجار والعمل. قريباً.</p></div>
+        <div class="slot rv"><h3>الأرشيف</h3><p>صور العطور أعلاه. وصور المختبر والأشجار والعمل قريباً.</p></div>
         <div class="slot rv"><h3>المقابلات</h3><p>مقابلات صحفية ومرئية. قريباً.</p></div>
-        <div class="slot rv"><h3>المقالات</h3><p>كتابات له وعنه. قريباً.</p></div>
+        <a class="slot slot--article rv" href="ar-article-frankincense.html"><div><p class="series">المقالات · كنوز الطبيعة 1</p><h3>اللبان.. دموع من ذهب</h3></div><p>بقلم محمد عبده: اللبان الذي تحمل الدار اسمه، وما وجدته فيه دراسة عام 2021 على اثنتي عشرة شجرة.</p><span class="go">اقرأ المقال</span></a>
       </div>
       <div class="follow">
         <a class="btn btn--ghost" href="https://www.instagram.com/ma.perfumer/" rel="noopener">إنستغرام · <bdi>@ma.perfumer</bdi></a>
@@ -173,6 +199,7 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
 })();
 </script>
+
 
 </body>
 </html>

@@ -1,0 +1,247 @@
+<!doctype html>
+<!-- An article on the founder's page (Mohamed Abdo > Articles): «سلسلة كنوز الطبيعة (1) اللبان.. دموع من ذهب» by Mohamed Abdo,
+     from Resources/المقالات (forwarded by the client on 2026-10-09). The Arabic page carries the author's text; the English page is our
+     translation, to be reviewed. The chart is drawn from the article's compound table.
+     The style block must stay identical in article-frankincense.html and ar-article-frankincense.html (the review build checks). -->
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>اللبان.. دموع من ذهب · محمد عبده · مايدي هاوس</title>
+<link rel="canonical" href="https://maydihouse.com/ar-article-frankincense">
+<link rel="alternate" hreflang="en" href="https://maydihouse.com/article-frankincense">
+<link rel="alternate" hreflang="ar" href="https://maydihouse.com/ar-article-frankincense">
+<link rel="alternate" hreflang="x-default" href="https://maydihouse.com/article-frankincense">
+<meta name="description" content="سلسلة كنوز الطبيعة (1): اللبان.. دموع من ذهب. مقال بقلم محمد عبده، مصمم العطور ومؤسس مايدي هاوس.">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="glass.css">
+<style>
+  /* The article page (founder > articles). Scoped under .ax. Pacing: a short head, a three-point brief, then the text in
+     chunks with a break every few paragraphs (a photograph, the four species as cards, a quote, the study, a chart of the
+     compounds, the compounds one by one behind a tap, the house). Desktop keeps a contents rail beside the text that marks
+     the current section and how far the reader is; a phone gets a slim bar with the same. */
+  .ax-head { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(1.6rem, 5vw, 4.5rem); align-items: end; padding-block: clamp(1.6rem, 4vw, 3rem) clamp(2.4rem, 5vw, 4rem); }
+  .ax-series { font-size: .72rem; text-transform: uppercase; letter-spacing: .16em; color: var(--umber); }
+  .ax-head h1 { font-size: clamp(2.6rem, 6.4vw, 5.4rem); line-height: 1.08; margin-top: .9rem; }
+  .ax-stand { font-family: var(--display); font-size: clamp(1.15rem, 1.8vw, 1.42rem); line-height: 1.65; color: var(--ink-soft); margin-top: 1.2rem; max-width: 40ch; }
+  .ax-by { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; margin-top: 1.6rem; font-size: .9rem; color: var(--ink-soft); }
+  .ax-by b { color: var(--accent); font-weight: 600; }
+  .ax-cover { margin: 0; }
+  .ax-cover .arch img { width: 100%; height: auto; aspect-ratio: 736 / 1104; object-fit: cover; filter: grayscale(var(--g, 1)) contrast(1.04); }
+  .ax-cover figcaption { margin-top: .7rem; font-size: .85rem; color: var(--ink-soft); }
+  .ax-note { border-inline-start: 3px solid var(--accent-2); padding: .8rem 1rem; font-size: .9rem; color: var(--ink-soft); margin-bottom: 2rem; background: color-mix(in oklab, var(--accent-2) 6%, transparent); }
+  .ax-brief { background: var(--surface); padding: clamp(1.4rem, 3vw, 2.2rem); margin-bottom: 2.6rem; }
+  .ax-brief h2 { font-size: .72rem; font-family: var(--text); font-weight: 700; text-transform: uppercase; letter-spacing: .16em; color: var(--umber); }
+  .ax-brief ol { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; gap: .9rem; counter-reset: b; }
+  .ax-brief li { position: relative; padding-inline-start: 2.6rem; font-family: var(--display); font-size: 1.1rem; line-height: 1.6; counter-increment: b; }
+  .ax-brief li::before { content: counter(b, decimal-leading-zero); position: absolute; inset-inline-start: 0; top: .3rem; font-family: var(--text); font-size: .78rem; color: var(--accent-2); }
+  .ax-body { display: grid; grid-template-columns: 13rem minmax(0, 42rem); gap: clamp(2rem, 6vw, 5.5rem); justify-content: center; padding-bottom: clamp(3rem, 7vw, 6rem); }
+  .ax-toc { position: sticky; top: calc(var(--bar-h) + 2rem); align-self: start; display: grid; grid-template-columns: 2px 1fr; gap: 1.1rem; }
+  .ax-rail { background: var(--line); position: relative; }
+  .ax-rail i { position: absolute; inset-inline: 0; top: 0; height: calc(var(--p, 0) * 100%); background: var(--accent); }
+  .ax-toc .ax-now { display: none; }
+  .ax-toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: .2rem; }
+  .ax-toc button { all: unset; cursor: pointer; display: grid; grid-template-columns: 1.8rem 1fr; gap: .2rem; padding: .45rem 0; font-size: .88rem; line-height: 1.4; color: var(--ink-soft); }
+  .ax-toc button span { font-size: .72rem; padding-top: .15rem; color: var(--umber); }
+  .ax-toc button:hover, .ax-toc button[aria-current="true"] { color: var(--accent); }
+  .ax-toc button[aria-current="true"] { font-weight: 700; }
+  .ax-toc button:focus-visible { outline: 2px solid var(--resin); outline-offset: 2px; }
+  .ax-text > p { font-size: 1.1rem; line-height: 1.85; }
+  :lang(ar) .ax-text > p { font-size: 1.14rem; line-height: 2.05; }
+  .ax-text > p + p { margin-top: 1.15rem; }
+  .ax-text > p.ax-sign { margin-top: 1.8rem; font-family: var(--display); font-size: 1.05rem; color: var(--accent); }
+  .ax-text > p.ax-lede { font-family: var(--display); font-size: clamp(1.22rem, 2vw, 1.4rem); line-height: 1.8; color: var(--ink); }
+  .ax-text > p.ax-lead { margin-top: 2.4rem; font-size: 1rem; color: var(--ink-soft); }
+  .ax-text h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin: 3.6rem 0 1.2rem; scroll-margin-top: calc(var(--bar-h) + 4rem); }
+  .ax-text h2 small { display: block; font-family: var(--text); font-size: .72rem; font-weight: 700; letter-spacing: .16em; color: var(--umber); margin-bottom: .6rem; }
+  .ax .la { unicode-bidi: isolate; direction: ltr; }
+  .ax-quote { margin: 3.2rem 0; padding: 1.8rem 0; border-block: 1px solid var(--line); font-family: var(--display); font-size: clamp(1.5rem, 3vw, 2.2rem); line-height: 1.45; color: var(--accent); }
+  .ax-quote::before { content: "\201C"; display: block; font-size: 3.4rem; line-height: .6; color: var(--resin); margin-bottom: .6rem; }
+  :lang(ar) .ax-quote::before { content: "\00AB"; font-size: 2.4rem; line-height: 1; }
+  .ax-quote cite { display: block; margin-top: 1rem; font-family: var(--text); font-style: normal; font-size: .8rem; letter-spacing: .08em; color: var(--ink-soft); }
+  .ax-fig { margin: 3rem 0; }
+  .ax-fig img { width: 100%; height: auto; object-fit: cover; }
+  .ax-fig--wide img { aspect-ratio: 16 / 10; object-position: 50% 45%; }
+  .ax-fig figcaption { margin-top: .7rem; font-size: .85rem; color: var(--ink-soft); }
+  .ax-duo { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(.8rem, 2vw, 1.2rem); }
+  .ax-duo img { aspect-ratio: 3 / 4; }
+  /* the four species */
+  .ax-species { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .ax-species li { background: var(--canvas); padding: 1.3rem 1.2rem 1.4rem; display: flex; flex-direction: column; gap: .5rem; }
+  .ax-species .num { font-size: .72rem; color: var(--umber); }
+  .ax-species h3 { font-size: 1.3rem; line-height: 1.3; }
+  .ax-species li > .la { display: block; font-family: var(--display); font-style: italic; font-size: .92rem; color: var(--accent-2); text-align: start; }
+  .ax-species .where { align-self: flex-start; font-size: .72rem; padding: .25rem .6rem; border: 1px solid var(--line); color: var(--ink-soft); }
+  .ax-species p { font-size: .95rem; line-height: 1.75; color: var(--ink-soft); }
+  .ax-species b { color: var(--ink); font-weight: 700; }
+  .ax-species .is-maydi { background: var(--paper); box-shadow: inset 0 3px 0 var(--resin); }
+  .ax-species .tag { align-self: flex-start; font-size: .72rem; padding: .25rem .6rem; background: var(--resin); color: var(--ink); }
+  /* the study */
+  .ax-study { margin: 2rem 0; padding: 1.4rem 1.5rem; border: 1px solid var(--line); background: var(--paper); display: grid; gap: .5rem; }
+  .ax-study small { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--umber); }
+  .ax-study strong { font-family: var(--display); font-weight: 500; font-size: 1.15rem; line-height: 1.45; color: var(--accent); direction: ltr; text-align: start; unicode-bidi: isolate; }
+  .ax-study span { font-size: .88rem; color: var(--ink-soft); }
+  .ax-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); margin: 2.4rem 0; }
+  .ax-facts div { background: var(--canvas); padding: 1.3rem 1.1rem; }
+  .ax-facts b { display: block; font-family: var(--display); font-weight: 500; font-size: clamp(1.8rem, 3.4vw, 2.5rem); line-height: 1.1; color: var(--accent); }
+  .ax-facts span { display: block; margin-top: .5rem; font-size: .85rem; line-height: 1.5; color: var(--ink-soft); }
+  /* the chart: each compound's range, on one shared 0-65% scale, in two panels (the oil, the resin extract) */
+  .ax-chart { margin: 2.6rem 0 0; padding: 1.4rem 0 0; border-top: 2px solid var(--accent); }
+  .ax-chart > figcaption { font-family: var(--display); font-size: 1.3rem; color: var(--accent); line-height: 1.35; }
+  .ax-chart > figcaption small { display: block; margin-top: .4rem; font-family: var(--text); font-size: .8rem; color: var(--ink-soft); }
+  .ax-panel { margin-top: 1.8rem; }
+  .ax-panel h3 { font-size: .8rem; font-family: var(--text); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--umber); margin-bottom: .6rem; }
+  .ax-row, .ax-axis { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) 6.6rem; gap: .8rem; align-items: center; padding-inline: .3rem; }
+  .ax-row { padding-block: .42rem; border-radius: 3px; }
+  .ax-row:hover, .ax-row:focus-visible { background: color-mix(in oklab, var(--accent) 7%, transparent); outline: none; }
+  .ax-row .n { font-size: .9rem; line-height: 1.3; }
+  .ax-row .v { font-size: .82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; text-align: end; white-space: nowrap; }
+  .ax-track { position: relative; height: 14px; }
+  .ax-track::before { content: ""; position: absolute; inset-inline: 0; top: 50%; height: 1px; background: var(--line); }
+  .ax-track .g { position: absolute; top: -4px; bottom: -4px; width: 1px; background: color-mix(in oklab, var(--accent) 12%, transparent); inset-inline-start: calc(var(--x) / 65 * 100%); }
+  .ax-track b { position: absolute; top: 2px; bottom: 2px; border-radius: 4px; background: var(--accent); min-width: 4px;
+    inset-inline-start: calc(var(--a) / 65 * 100%); width: calc((var(--b) - var(--a)) / 65 * 100%); }
+  .ax-row.nd .ax-track b { inset-inline-start: 0; width: 10px; min-width: 10px; background: var(--canvas); border: 1.5px dashed var(--accent-2); border-radius: 999px; }
+  .ax-row.nd .v { color: var(--accent-2); }
+  .ax-axis { margin-top: .3rem; }
+  .ax-axis div { position: relative; height: 1.1rem; font-size: .7rem; color: var(--ink-soft); }
+  .ax-axis div span { position: absolute; inset-inline-start: calc(var(--x) / 65 * 100%); transform: translateX(-50%); }
+  [dir="rtl"] .ax-axis div span { transform: translateX(50%); }
+  .ax-chart .src { margin-top: 1rem; font-size: .78rem; color: var(--ink-soft); }
+  /* the compounds one by one, behind a tap */
+  .ax-comps { margin: 1rem 0 0; border-top: 1px solid var(--line); }
+  .ax-comps details { border-bottom: 1px solid var(--line); }
+  .ax-comps summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 2rem 1fr auto 1.2rem; gap: .6rem; align-items: baseline; padding: 1rem .2rem; }
+  .ax-comps summary::-webkit-details-marker { display: none; }
+  .ax-comps summary .k { font-size: .75rem; color: var(--umber); }
+  .ax-comps summary .t { font-family: var(--display); font-size: 1.2rem; color: var(--accent); }
+  .ax-comps summary .r { font-size: .82rem; color: var(--ink-soft); white-space: nowrap; }
+  .ax-comps summary::after { content: "+"; font-size: 1.2rem; color: var(--accent); text-align: end; line-height: 1; }
+  .ax-comps details[open] summary::after { content: "\2212"; }
+  .ax-comps summary:hover .t { text-decoration: underline; text-underline-offset: 5px; }
+  .ax-comps summary:focus-visible { outline: 2px solid var(--resin); outline-offset: 2px; }
+  .ax-comps dl { margin: 0; padding: 0 0 1.3rem; padding-inline-start: 2.6rem; display: grid; gap: .8rem; }
+  .ax-comps dt { font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--umber); }
+  .ax-comps dd { margin: .2rem 0 0; font-size: .98rem; line-height: 1.8; }
+  .ax-house { display: grid; grid-template-columns: 5.5rem 1fr; gap: 1.3rem; align-items: center; margin: 3.2rem 0; padding: 1.4rem; background: var(--green); color: var(--canvas); text-decoration: none; }
+  .ax-house img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 999px 999px 0 0; }
+  .ax-house small { display: block; font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: #D7E3DA; }
+  .ax-house strong { display: block; font-family: var(--display); font-weight: 500; font-size: 1.25rem; line-height: 1.4; margin-top: .3rem; }
+  .ax-house em { display: inline-block; margin-top: .5rem; font-style: normal; font-size: .8rem; border-bottom: 1px solid currentColor; }
+  .ax-house:hover strong { text-decoration: underline; text-underline-offset: 5px; }
+  .ax-end { border-top: 1px solid var(--line); margin-top: 3.4rem; padding-top: 2rem; display: grid; gap: 1.6rem; }
+  .ax-author { display: grid; grid-template-columns: 4.2rem 1fr; gap: 1.1rem; align-items: center; }
+  .ax-author img { width: 4.2rem; height: 4.2rem; object-fit: cover; object-position: 50% 25%; border-radius: 999px 999px 0 0; filter: grayscale(1); }
+  .ax-author p { font-size: .92rem; color: var(--ink-soft); }
+  .ax-author b { display: block; color: var(--accent); font-size: 1rem; }
+  .ax-refs { font-size: .8rem; color: var(--ink-soft); line-height: 1.7; }
+  .ax-next { display: flex; flex-wrap: wrap; gap: .8rem; }
+  @media (max-width: 900px) {
+    .ax-head { grid-template-columns: 1fr; }
+    .ax-cover { max-width: 24rem; }
+    .ax-body { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .ax-toc { top: var(--bar-h); z-index: 5; grid-template-columns: 1fr; gap: 0; margin-inline: calc(-1 * var(--gutter)); padding: .7rem var(--gutter) 0;
+      background: rgba(245, 230, 218, .96); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); margin-bottom: 1.6rem; }
+    .ax-toc ol { display: none; }
+    .ax-toc .ax-now { display: block; font-size: .82rem; color: var(--accent); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-bottom: .6rem; }
+    .ax-rail { order: 2; height: 2px; margin-inline: calc(-1 * var(--gutter)); }
+    .ax-rail i { inset-block: 0; inset-inline-start: 0; inset-inline-end: auto; height: auto; width: calc(var(--p, 0) * 100%); }
+    .ax-facts { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .ax-species { grid-template-columns: 1fr; }
+    .ax-row, .ax-axis { grid-template-columns: 5.8rem minmax(0, 1fr) 5.4rem; gap: .5rem; }
+    .ax-row .n { font-size: .82rem; } .ax-row .v { font-size: .74rem; }
+    .ax-comps summary { grid-template-columns: 1.6rem 1fr 1rem; }
+    .ax-comps summary .r { grid-column: 2; grid-row: 2; }
+    .ax-comps dl { padding-inline-start: 0; }
+  }
+  @media (max-width: 480px) { .ax-duo { grid-template-columns: 1fr; } .ax-house { grid-template-columns: 4rem 1fr; } }
+</style>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:site_name" content="Maydi House">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:title" content="اللبان.. دموع من ذهب · محمد عبده · مايدي هاوس">
+<meta property="og:description" content="سلسلة كنوز الطبيعة (1): اللبان.. دموع من ذهب. مقال بقلم محمد عبده، مصمم العطور ومؤسس مايدي هاوس.">
+<meta property="og:image" content="https://maydihouse.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body data-section="ar-mohamed-abdo.html">
+<header data-site-bar></header>
+<main>
+
+  <article class="ax">
+    <section class="wrap">
+      <div class="crumbs" style="margin-top:2rem"><a href="ar.html">الرئيسية</a> / <a href="ar-mohamed-abdo.html">محمد عبده</a> / المقالات</div>
+      <header class="ax-head">
+        <div>
+          <p class="ax-series">سلسلة كنوز الطبيعة (1)</p>
+          <h1>اللبان.. دموع من ذهب</h1>
+          <p class="ax-stand">لم يكن اللبان مجرد مادة عطرية عابرة، بل كان عصبًا حيويًا للتجارة، ومكونًا أساسيًا في الطقوس الدينية، وعنصرًا جوهريًا في الطب التقليدي عبر مختلف الحضارات القديمة.</p>
+          <p class="ax-by"><span>بقلم <b>محمد عبده</b> · مصمم عطور</span><span data-ax-time></span></p>
+        </div>
+        <figure class="ax-cover"><div class="arch"><img src="assets/tree-tears.webp" width="736" height="1104" alt="دموع اللبان مفروزة في ملعقة خشبية"></div><figcaption>دموع اللبان، مفروزة باليد.</figcaption></figure>
+      </header>
+    </section>
+
+    <div class="wrap ax-body">
+      <nav class="ax-toc" aria-label="المحتويات">
+        <p class="ax-now" aria-hidden="true"></p>
+        <div class="ax-rail" aria-hidden="true"><i></i></div>
+        <ol></ol>
+      </nav>
+      <div class="ax-text">
+        
+        <aside class="ax-brief"><h2>باختصار</h2><ol><li>لبان «مايدي» هو صمغ شجرة <span class="la">Boswellia frereana</span> المستوطنة في الصومال، ومنه تأخذ الدار اسمها.</li><li>حلّلت دراسة عام 2021 عينات من 12 شجرة فردية، فرسمت بصمته: ألفا-بينين وألفا-ثوجين في زيته، واللوبيول والأُميرينات في راتنجه، ولا أثر لميثوكسي ديكان.</li><li>التباين بين الأشجار كبير، ولذلك يبقى تحليل <span class="la">GC-MS</span> لكل دفعة أدقّ وسيلة لضمان الأصالة وثبات الجودة.</li></ol></aside>
+
+        <h2 id="ar-ax-s1"><small>الجزء 01</small>مقدمة:</h2>
+        <p class="ax-lede">يزخر الوطن العربي بكنوز طبيعية فريدة طالما شكلت عبر العصور إرثاً غنياً ورمزاً للثراء والتميز البيئي، من واحات النخيل المترامية إلى السواحل والجبال التي تجود بأثمن الطيبات العطرية والدوائية. ومن قلب هذه الكنوز الطبيعية المتأصلة في جغرافية المنطقة، يبرز اللبان كواحد من أعظم هدايا الأرض وأكثرها عراقة؛ فعلى مدى آلاف السنين، لم يكن اللبان مجرد مادة عطرية عابرة، بل كان عصبًا حيويًا للتجارة، ومكونًا أساسيًا في الطقوس الدينية، وعنصرًا جوهريًا في الطب التقليدي عبر مختلف الحضارات القديمة.</p>
+        <p>يُعرف اللبان علمياً باسم صمغ <span class="la">Boswellia</span> الراتنجي العطري، وقد شغل مكانة رفيعة في العالم العربي والعالم القديم بأسره؛ حيث اشتُهرت أشجار مثل <span class="la"><i>Boswellia frereana</i></span>، المستوطنة في الصومال، بإنتاج أجود أنواع الراتنج التي تُعرف بقطراته الكبيرة (أو دموعه المتجمدة)، والتي طالما استُخدمت علكة للمضغ تقليدياً في المنطقة العربية وإلى يومنا هذا.</p>
+        <figure class="ax-fig ax-fig--wide rv"><img class="bw" src="assets/tree-cliff.webp" width="800" height="800" alt="شجرة بوسويليا على منحدر كلسي" loading="lazy"><figcaption>شجرة البوسويليا، على الجرف.</figcaption></figure>
+        <p>لقد نسج التاريخ القديم طرق تجارة كبرى خصيصًا لنقل هذه "الدموع الذهبية" من مواطنها في شبه الجزيرة العربية وقرن أفريقيا إلى القصور والمعابد في مصر القديمة، وبلاد ما بين النهرين، والإمبراطوريتين اليونانية والرومانية. واليوم، وبينما يحافظ اللبان على مكانته التاريخية العريقة، فإنه يتخذ أبعادًا حديثة هامة بدخوله في صناعات العطور الفاخرة، والعلاج بالروائح العطرية (<span class="la">Aromatherapy</span>)، والطب البديل. ووسط هذا التراث الغني، تظل الدراسات العلمية الحديثة تسعى لفك شفرات كيمياء هذه الصموغ العطرية، لربط الموروث التاريخي العتيق بالتحليل المخبري الدقيق لتحديد هويتها وأنماطها الكيميائية بدقة متناهية.</p>
+
+        <h2 id="ar-ax-s2"><small>الجزء 02</small>أشهر أنواع اللبان وأسماؤها:</h2>
+        <p>تتعدد أنواع اللبان وتتنوع أسماؤها تبعاً لاختلاف الأنواع النباتية ضمن جنس <span class="la">Boswellia</span> (الفصيلة البوسويلية)، والبيئة الجغرافية التي تنمو فيها هذه الأشجار المتأقلمة مع الظروف القاحلة. وفيما يلي أبرز هذه الأنواع وخصائصها الكيميائية:</p>
+        <ol class="ax-species"><li><span class="num">1.</span><h3>لبان بوسويليا بابيريفيرا</h3><span class="la">(Boswellia papyrifera)</span><span class="where">إثيوبيا · إريتريا · السودان</span><p>يوجد هذا النوع بشكل رئيسي في إثيوبيا وإريتريا والسودان. ويمتاز الزيت العطري المستخلص من صمغ هذه الأشجار بسيادة واضحة لمركب <b>أسيتات الأكتيل</b> (<span class="la">octyl acetate</span>) وبدرجة أقل مركب الأكتانول.</p></li><li><span class="num">2.</span><h3>لبان بوسويليا ساكرا</h3><span class="la">(Boswellia sacra / Boswellia carteri)</span><span class="where">عُمان · اليمن · الصومال</span><p>ينتشر هذا النوع في كل من عمان، اليمن، والصومال. ويتميز الزيت العطري الخاص به بتركيبة متغيرة يغلب عليها غالباً مركبات <b>ألفا-بينين، أو ألفا-ثوجين، أو الليمونين</b>، وغالباً ما تصاحبها كميات معتبرة من الميرسين، أو السابينين، أو الفيريديفلورول، أو بيتا-كاريوفيلين، أو البارا-سيمين.</p></li><li class="is-maydi"><span class="num">3.</span><h3>لبان بوسويليا فريريانا</h3><span class="la">(Boswellia frereana)</span><span class="tag">مايدي</span><span class="where">الصومال</span><p>هذا النوع مستوطن في الصومال، ويُعد واحداً من أكثر أنواع اللبان تداولاً وشهرة على مستوى العالم. يُعرف محلياً وعالمياً باسم <b>"مايدي" (maydi)</b>، ويتميز بإنتاجه لقطرات راتنجية كبيرة شاع استخدامها تقليدياً كعلكة للمضغ في العالم العربي. وتؤكد التحليلات الكيميائية الحديثة للعينات المأخوذة من أشجار فردية أن زيوتها العطرية تتميز بنمط كيميائي واحد ومتغير يغلب عليه مستويات معتدلة إلى مرتفعة من <b>ألفا-ثوجين (14.5% - 43.9%)</b> ومستويات متغيرة وملحوظة من <b>ألفا-بينين (3.0% - 63.0%)</b>، مع خلوها تماماً من <b>الميثوكسي ألكانات</b>.</p></li><li><span class="num">4.</span><h3>لبان بوسويليا أوكولتا</h3><span class="la">(Boswellia occulta)</span><span class="where">الصومال</span><p>نوع تم توثيقه حديثاً في الصومال، ويتميز بكون زيته العطري غنياً بمركب <b>الميثوكسيديكان</b> (<span class="la">methoxydecane</span>) و<b>الميثوكسيولكتان</b> (<span class="la">methoxyoctane</span>) ، وهي مركبات استثنائية وغير معتادة في الزيوت العطرية النباتية. وغالباً ما تختلط صموغ هذا النوع تجارياً مع صموغ <span class="la"><i>B. frereana</i></span> و<span class="la"><i>B. sacra</i></span>.</p></li></ol>
+        <blockquote class="ax-quote rv">وفي سوق تختلط فيه الأنواع والأسماء، تبقى المعرفة العلمية الدقيقة أصدق شاهد على أصالة اللبان الصومالي وقيمته العطرية والعلاجية.<cite>محمد عبده</cite></blockquote>
+
+        <h2 id="ar-ax-s3"><small>الجزء 03</small>ماذا يعني وجود هذه المركبات؟</h2>
+        <p>للإجابة عن هذا التساؤل العلمي، انطلقت الدراسة الحديثة التي أجراها <b>جونسون وآخرون</b> في <b>مركز الأبحاث النباتية العطرية</b> في الولايات المتحدة عام 2021 (<span class="la">Aromatic Plant Research Center</span>) بعنوان:</p>
+        <div class="ax-study"><small>الدراسة · 2021</small><strong lang="en">The Chemical Composition of Single-Tree Boswellia frereana Resin Samples</strong><span>جونسون وآخرون · مركز الأبحاث النباتية العطرية، الولايات المتحدة</span></div>
+        <p>ولتجاوز قصور الدراسات السابقة التي اعتمدت فقط على العينات التجارية المختلطة، ولتقوم بتنفيذ تحليل دقيق لعينات مأخوذة مباشرة من 12 شجرة فردية لنوع بوسويليا فريريانا في الصومال. إن وجود هذه المركبات بتراكيبها الكيميائية المحددة يكشف بدقة عن النمط الكيميائي الحقيقي للنبات، ويوضح طبيعة التوزيع النسبي للمكونات الفعالة سواء في الزيوت العطرية أو في مستخلصات ثنائي كلورو ميثان، وفيما يلي شرح لكل مكون رئيسي وتأثيره الرائحي العلاجي وفقاً للأدبيات العلمية:</p>
+        <div class="ax-facts rv"><div><b>12</b><span>شجرة فردية من بوسويليا فريريانا في الصومال، كل واحدة حُلّلت على حدة</span></div><div><b>8</b><span>مركّبات رئيسية رصدتها الدراسة في الزيت والراتنج</span></div><div><b>لم يُرصد</b><span>ميثوكسي ديكان، بصمة الخلط بلبان أوكولتا</span></div></div>
+        <figure class="ax-chart rv"><figcaption>المركّبات الرئيسية في لبان بوسويليا فريريانا<small>نطاق كل مركّب كما رصدته الدراسة في الأشجار الاثنتي عشرة، على مقياس واحد من 0 إلى 65%.</small></figcaption><div class="ax-panel"><h3>في الزيت العطري</h3><div role="list"><div class="ax-row" tabindex="0" role="listitem" aria-label="ألفا-بينين: 3.0–63.0%" title="ألفا-بينين: 3.0–63.0%"><span class="n">ألفا-بينين</span><span class="ax-track"><i class="g" style="--x:0"></i><i class="g" style="--x:20"></i><i class="g" style="--x:40"></i><i class="g" style="--x:60"></i><b style="--a:3.0;--b:63.0"></b></span><span class="v" dir="ltr">3.0–63.0%</span></div><div class="ax-row" tabindex="0" role="listitem" aria-label="ألفا-ثوجين: 14.5–43.9%" title="ألفا-ثوجين: 14.5–43.9%"><span class="n">ألفا-ثوجين</span><span class="ax-track"><i class="g" style="--x:0"></i><i class="g" style="--x:20"></i><i class="g" style="--x:40"></i><i class="g" style="--x:60"></i><b style="--a:14.5;--b:43.9"></b></span><span class="v" dir="ltr">14.5–43.9%</span></div><div class="ax-row" tabindex="0" role="listitem" aria-label="الليمونين: 0.5–2.7%" title="الليمونين: 0.5–2.7%"><span class="n">الليمونين</span><span class="ax-track"><i class="g" style="--x:0"></i><i class="g" style="--x:20"></i><i class="g" style="--x:40"></i><i class="g" style="--x:60"></i><b style="--a:0.5;--b:2.7"></b></span><span class="v" dir="ltr">0.5–2.7%</span></div><div class="ax-row nd" tabindex="0" role="listitem" aria-label="ميثوكسي ديكان: لم يُرصد" title="ميثوكسي ديكان: لم يُرصد"><span class="n">ميثوكسي ديكان</span><span class="ax-track"><i class="g" style="--x:0"></i><i class="g" style="--x:20"></i><i class="g" style="--x:40"></i><i class="g" style="--x:60"></i><b></b></span><span class="v">لم يُرصد</span></div></div><div class="ax-axis" aria-hidden="true"><span></span><div><span style="--x:0">0%</span><span style="--x:20">20%</span><span style="--x:40">40%</span><span style="--x:60">60%</span></div><span></span></div></div><div class="ax-panel"><h3>في الراتنج (مستخلص ثنائي كلورو ميثان)</h3><div role="list"><div class="ax-row" tabindex="0" role="listitem" aria-label="اللوبيول: 14.7–32.5%" title="اللوبيول: 14.7–32.5%"><span class="n">اللوبيول</span><span class="ax-track"><i class="g" style="--x:0"></i><i class="g" style="--x:20"></i><i class="g" style="--x:40"></i><i class="g" style="--x:60"></i><b style="--a:14.7;--b:32.5"></b></span><span class="v" dir="ltr">14.7–32.5%</span></div><div class="ax-row" tabindex="0" role="listitem" aria-label="ألفا-أُميرين: 13.0–25.2%" title="ألفا-أُميرين: 13.0–25.2%"><span class="n">ألفا-أُميرين</span><span class="ax-track"><i class="g" style="--x:0"></i><i class="g" style="--x:20"></i><i class="g" style="--x:40"></i><i class="g" style="--x:60"></i><b style="--a:13.0;--b:25.2"></b></span><span class="v" dir="ltr">13.0–25.2%</span></div><div class="ax-row" tabindex="0" role="listitem" aria-label="3-إبي-لوبيول: 6.4–14.2%" title="3-إبي-لوبيول: 6.4–14.2%"><span class="n">3-إبي-لوبيول</span><span class="ax-track"><i class="g" style="--x:0"></i><i class="g" style="--x:20"></i><i class="g" style="--x:40"></i><i class="g" style="--x:60"></i><b style="--a:6.4;--b:14.2"></b></span><span class="v" dir="ltr">6.4–14.2%</span></div><div class="ax-row" tabindex="0" role="listitem" aria-label="ألفا-بينين: 0.4–13.9%" title="ألفا-بينين: 0.4–13.9%"><span class="n">ألفا-بينين</span><span class="ax-track"><i class="g" style="--x:0"></i><i class="g" style="--x:20"></i><i class="g" style="--x:40"></i><i class="g" style="--x:60"></i><b style="--a:0.4;--b:13.9"></b></span><span class="v" dir="ltr">0.4–13.9%</span></div><div class="ax-row" tabindex="0" role="listitem" aria-label="ألفا-ثوجين: 3.6–12.9%" title="ألفا-ثوجين: 3.6–12.9%"><span class="n">ألفا-ثوجين</span><span class="ax-track"><i class="g" style="--x:0"></i><i class="g" style="--x:20"></i><i class="g" style="--x:40"></i><i class="g" style="--x:60"></i><b style="--a:3.6;--b:12.9"></b></span><span class="v" dir="ltr">3.6–12.9%</span></div><div class="ax-row" tabindex="0" role="listitem" aria-label="بيتا-أُميرين: 5.3–8.0%" title="بيتا-أُميرين: 5.3–8.0%"><span class="n">بيتا-أُميرين</span><span class="ax-track"><i class="g" style="--x:0"></i><i class="g" style="--x:20"></i><i class="g" style="--x:40"></i><i class="g" style="--x:60"></i><b style="--a:5.3;--b:8.0"></b></span><span class="v" dir="ltr">5.3–8.0%</span></div></div><div class="ax-axis" aria-hidden="true"><span></span><div><span style="--x:0">0%</span><span style="--x:20">20%</span><span style="--x:40">40%</span><span style="--x:60">60%</span></div><span></span></div></div><p class="src">المصدر: جدول المقال، عن جونسون وآخرين (2021).</p></figure>
+        <p class="ax-lead">المركّبات واحداً واحداً. اضغط على أي مركّب لترى أثره في الرائحة والعلاج.</p>
+        <div class="ax-comps"><details><summary><span class="k">1.</span><span class="t">ألفا-ثوجين</span><span class="r"><bdi dir="ltr">14.5–43.9%</bdi> في الزيت</span></summary><dl><div><dt>النسبة في الدراسة</dt><dd>تراوحت بين 14.5% إلى 43.9% في الزيوت العطرية، ومن 3.6% إلى 12.9% في المستخلصات.</dd></div><div><dt>التأثير الرائحي</dt><dd>يُضفي نفحات عطرية خشبية، عشبية، ومنعشة ذات طابع حاد ونقي يشبه رائحة الصنوبر والتوابل الخفيفة.</dd></div><div><dt>التأثير العلاجي</dt><dd>يُعرف بخصائصه المضادة للميكروبات والمخففة للالتهابات، حيث يسهم في تعزيز الفعالية العلاجية للزيوت العطرية عند استخدامها في العلاج بالروائح.</dd></div></dl></details><details><summary><span class="k">2.</span><span class="t">ألفا-بينين</span><span class="r"><bdi dir="ltr">3.0–63.0%</bdi> في الزيت</span></summary><dl><div><dt>النسبة في الدراسة</dt><dd>سجلت مستويات واسعة التباين تراوحت بين 3.0% و63.0% في الزيوت العطرية، ومن 0.4% إلى 13.9% في المستخلصات.</dd></div><div><dt>التأثير الرائحي</dt><dd>يمتلك رائحة صنوبرية قوية ومنعشة ومنظفة، وهي الرائحة الأيقونية المرتبطة بأشجار الصنوبر واللبان التقليدي.</dd></div><div><dt>التأثير العلاجي</dt><dd>تُشير الدراسات إلى أن ألفا-بينين يعمل كموسّع قوي للشعب الهوائية، ومضاد فعال للالتهابات، ومقشع، كما يساعد في تحسين الذاكرة واليقظة العقلية وتقليل التوتر العصبي.</dd></div></dl></details><details><summary><span class="k">3.</span><span class="t">الليمونين</span><span class="r"><bdi dir="ltr">0.5–2.7%</bdi> في الزيت</span></summary><dl><div><dt>النسبة في الدراسة</dt><dd>تراوحت بين 0.5 % إلى 2.7 %</dd></div><div><dt>التأثير الرائحي</dt><dd>يتميز برائحة حمضية منعشة وفواحة تشبه قشور الليمون والبرتقال، مما يمنح العطور طابعاً حيوياً ومشرقاً.</dd></div><div><dt>التأثير العلاجي</dt><dd>تشير الأبحاث إلى امتلاكه خصائص قوية مضادة للأكسدة، ومهدئة للقلق، ومساعدة في تحسين المزاج ودعم الجهاز المناعي.</dd></div></dl></details><details><summary><span class="k">4.</span><span class="t">ميثوكسي ديكان</span><span class="r">لم يُرصد</span></summary><dl><div><dt>النسبة في الدراسة</dt><dd>لم تظهر أي نسب لهذا المكون في الدراسة الحالية، حيث إنهم اعتمدوا على مصدر واحد للعينات المدروسة، مما أثبت سبب وجود هذا المكون في الدراسات الأخرى وهو الغش والخلط مع أنواع أخرى من أشجار اللبان مثل لبان أوكولتا الذي ينمو في الصومال فقط.</dd></div><div><dt>التأثير العلمي والدلالة</dt><dd>يعد من المركبات الألكانية الأثيرية الاستثنائية والنادرة للغاية في النباتات، وقد وُجد أنه يميز نوع بوسويليا أوكولتا بشكل خاص. إن اكتشافه في بعض الزيوت التجارية المنسوبة خطأً لأنواع أخرى يؤكد حدوث خلط تجاري بين صموغ النباتات في المنطقة.</dd></div><div><dt>التأثير الرائحي</dt><dd>يمتلك بصمة عطرية مميزة وحادة تساهم في التغير الواضح للرائحة في المنتجات التجارية المخلوطة.</dd></div></dl></details><details><summary><span class="k">5.</span><span class="t">اللوبيول</span><span class="r"><bdi dir="ltr">14.7–32.5%</bdi> في الراتنج</span></summary><dl><div><dt>النسبة في الدراسة</dt><dd>وُجد كأحد المكونات التريتربينويدية الأساسية بنسب عالية في المستخلصات تراوحت بين 14.7% و32.5%.</dd></div><div><dt>التأثير الرائحي</dt><dd>نظراً لكونه من المركبات غير الطيارة، فإنه لا يساهم بشكل مباشر في الرائحة المتطايرة، لكنه يمنح الصمغ عمقاً وثباتاً.</dd></div><div><dt>التأثير العلاجي</dt><dd>تحظى مركبات اللوبيول باهتمام طبّي واسع لأجل خصائصها الواعدة المضادة للسرطان، ومضادات الأكسدة القوية، وقدرتها على تسريع التئام الجروح وتخفيف الالتهابات الجلدية والمفصلية.</dd></div></dl></details><details><summary><span class="k">6.</span><span class="t">ألفا-أُميرين وبيتا-أُميرين</span><span class="r"><bdi dir="ltr">13.0–25.2%</bdi> · <bdi dir="ltr">5.3–8.0%</bdi></span></summary><dl><div><dt>النسبة في الدراسة</dt><dd>تراوحت نسبة ألفا-أُميرين بين 13.0% و25.2%، بينما تراوحت نسبة بيتا-أُميرين بين 5.3% و8.0% في المستخلصات.</dd></div><div><dt>التأثير الرائحي</dt><dd>مركبات صمغية غير طيارة تساهم في الخصائص الفيزيائية للراتنج وملمسه عند المضغ أو الاحتراق.</dd></div><div><dt>التأثير العلاجي</dt><dd>أثبتت الدراسات الدوائية أن مركبات الأُميرين تمتلك خصائص مضادة للالتهابات ومسكنة للآلام تقارب في فاعليتها بعض المسكنات التقليدية، فضلاً عن دورها في حماية خلايا الكبد وتقليل الإجهاد التأكسدي.</dd></div></dl></details><details><summary><span class="k">7.</span><span class="t">3-إبي-لوبيول</span><span class="r"><bdi dir="ltr">6.4–14.2%</bdi> في الراتنج</span></summary><dl><div><dt>النسبة في الدراسة</dt><dd>سُجل بنسب معتبرة وثابتة في المستخلصات تراوحت بين 6.4% و14.2%.</dd></div><div><dt>التأثير العلاجي</dt><dd>يُعد من مشتقات اللوبيول الهامة التي تعزز القيمة الدوائية للمستخلصات الراتنجية من خلال المساهمة في الفعالية البيولوجية المضادة للالتهاب والخلايا السرطانية.</dd></div></dl></details></div>
+        <figure class="ax-fig rv"><div class="ax-duo"><img src="assets/tree-bark.webp" width="368" height="552" alt="لحاء البوسويليا الرقيق كالورق" loading="lazy"><img src="assets/tree-cut.webp" width="794" height="1192" alt="الراتنج يسيل من شق في اللحاء" loading="lazy"></div><figcaption>من الشجرة إلى الدمعة: لحاء يتقشر كالورق، وشقٌّ خفيف يسيل منه الراتنج.</figcaption></figure>
+
+        <h2 id="ar-ax-s4"><small>الجزء 04</small>الخاتمة</h2>
+        <p>تقدّم هذه الدراسة صورة علمية واضحة لما يميّز لبان بوسويليا فريريانا الأصلي عن غيره. فقد اعتمدت على عينات من مصدر واحد موثوق وحلّلت كل شجرة على حدة، وبذلك أرست بصمة كيميائية مرجعية لهذا النوع، وكشفت في الوقت نفسه عن خلط تجاري ظل يربك نتائج دراسات سابقة.</p>
+        <p>والخلاصة العملية أن لبان فريريانا الأصلي غني بألفا-بينين وألفا-ثوجين في زيته، وباللوبيول والأُميرينات في راتنجه، ويخلو من ميثوكسي ديكان. كما أن التباين الطبيعي بين الأشجار كبير، ولذلك يُعدّ تحليل <span class="la">GC-MS</span> لكل دفعة الوسيلة الأدق لضمان الأصالة وثبات الجودة.</p>
+        <p>وتهمّ هذه النتائج العطّار والمستهلك على السواء. فالأول يحتاج إلى معرفة ما يتوقعه من المادة الخام ليبني تركيبة ثابتة، والثاني يستحق أن يحصل على لبان أصيل كما وُصف له. وفي سوق تختلط فيه الأنواع والأسماء، تبقى المعرفة العلمية الدقيقة أصدق شاهد على أصالة اللبان الصومالي وقيمته العطرية والعلاجية.</p>
+        <p class="ax-sign">كتب المقالة: محمد عبده – مصمم عطور</p>
+        <a class="ax-house rv" href="ar-botanicals.html"><img src="assets/resin.webp" width="684" height="624" alt="" loading="lazy"><span><small>من الدار</small><strong>مايدي بوتانيكالز: لبان المايدي من مصدره في الصومال، يُفرز باليد.</strong><em>زر مايدي بوتانيكالز</em></span></a>
+
+        <footer class="ax-end">
+          <div class="ax-author"><img src="assets/founder.webp" width="900" height="1600" alt="محمد عبده" loading="lazy"><p><b>محمد عبده</b>مصمم عطور، ومؤسس مايدي هاوس. كتب هذا المقال فاتحةً لسلسلة «كنوز الطبيعة».</p></div>
+          <p class="ax-refs">المرجع: جونسون وآخرون (2021)، <span class="la"><i>The Chemical Composition of Single-Tree Boswellia frereana Resin Samples</i></span>، مركز الأبحاث النباتية العطرية، الولايات المتحدة.</p>
+          <div class="ax-next"><a class="btn btn--ghost" href="ar-mohamed-abdo.html">العودة إلى محمد عبده</a><span class="btn btn--ghost" aria-disabled="true">المقال التالي في السلسلة: قريباً</span></div>
+        </footer>
+      </div>
+    </div>
+  </article>
+
+</main>
+<footer data-site-foot></footer>
+<script src="products.js"></script>
+<script src="products-ar.js"></script>
+<script src="site.js"></script>
+<script>MAYDI.initArticle(document);</script>
+<script src="glass.js"></script>
+</body>
+</html>

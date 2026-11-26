@@ -11,7 +11,11 @@
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Maydi House · A Somali fragrance house</title>
-<meta name="description" content="A Somali fragrance house in Mogadishu, named after Maydi, the rarest frankincense in the world.">
+<link rel="canonical" href="https://maydihouse.com/">
+<link rel="alternate" hreflang="en" href="https://maydihouse.com/">
+<link rel="alternate" hreflang="ar" href="https://maydihouse.com/ar">
+<link rel="alternate" hreflang="x-default" href="https://maydihouse.com/">
+<meta name="description" content="A Somali fragrance house in Mogadishu, named after Maydi, the most prized frankincense in the world.">
 <link rel="stylesheet" href="scrollcraft.css">
 <link rel="stylesheet" href="glass.css">
 <style>
@@ -43,7 +47,7 @@
 
   /* ---------------------------------------------------------------- bar -- */
   .site-bar { position: fixed; inset: 0 0 auto 0; z-index: 50; height: var(--bar-h);
-    display: flex; align-items: center; gap: 2rem; padding-inline: clamp(16px, 4vw, 48px);
+    display: flex; align-items: center; gap: 2rem; padding-inline: max(clamp(16px, 4vw, 48px), calc((100% - 1240px) / 2));
     background: rgba(245,230,218,.94);
     backdrop-filter: blur(8px); border-bottom: 1px solid color-mix(in oklab, var(--sc-accent) 18%, transparent); }
   .mark { display: flex; align-items: center; gap: .6rem; color: var(--sc-accent); text-decoration: none;
@@ -58,38 +62,32 @@
   .site-bar nav a.bar-cta, .site-bar nav a.bar-cta:hover { color: var(--sc-accent-ink); }
   .bar-cta { font-size: .72rem; background: var(--sc-accent); color: var(--sc-accent-ink); padding: .55rem .9rem; text-decoration: none; }
 
-  /* ------------------------------------------------------ 1 hero (scrub) --
-     The mockup's arch is a window onto the atelier. Scroll opens it to
-     full-bleed. --o is how open it is, derived from the act's --sc-p. */
-  .hero { --o: clamp(0, calc((var(--sc-p, 0) - 0.1) * 2.8), 1); --c: calc(1 - var(--o));
-    --ax: 38vw; --at: calc(var(--bar-h) + 7vh); --ab: 45vh; --ar: 40vw; }
-  .hero-media { position: absolute; inset: 0; overflow: hidden; }
-  /* The logo film: scroll is the playhead. Black and white until the drop arrives (about 44% of the way in),
-     then the colour blooms, which is the signature move. --g is the grayscale amount. */
-  .hero { --g: clamp(0, calc(1 - (var(--sc-p, 0) - .44) * 7), 1); }
-  .hero-media video, .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%;
-    filter: grayscale(var(--g)) contrast(1.04); }
-  .arch-win { clip-path: inset(calc(var(--at) * var(--c)) calc(var(--ax) * var(--c)) calc(var(--ab) * var(--c)) calc(var(--ax) * var(--c))
-    round calc(var(--ar) * var(--c)) calc(var(--ar) * var(--c)) 0 0); }
-  .hero-drop { position: absolute; z-index: 2; left: 50%; top: calc(var(--at) + (100vh - var(--at) - var(--ab)) * .52);
-    width: 26px; margin-left: -13px; opacity: var(--c); pointer-events: none;
-    filter: drop-shadow(0 0 14px rgba(217,164,65,.55)); }
-  .hero-title { position: absolute; z-index: 3; left: 0; right: 0; bottom: 5vh; text-align: center; padding-inline: 16px; }
-  .hero-title h1 { font-family: var(--sc-font-display); font-weight: 500; color: var(--sc-accent);
-    font-size: clamp(2.4rem, 6vw, 5rem); letter-spacing: .14em; margin: .4rem 0 .8rem; line-height: 1; }
+  /* ------------------------------------------------------------- 1 hero --
+     One screen, no pin. The client found that scrolling through the old film gave the visitor nothing (2026-10-17), so the
+     words come first: who we are, what we offer and why us are on screen at once, and a normal scroll moves on.
+     The logo film plays once on its own in the arch: black and white until the drop, then the colour blooms (the signature
+     move), and it rests on the full logo. --g is the grayscale amount, set by the script at the end of the page. */
+  .hero { min-height: 100svh; display: grid; align-items: center; padding-block: calc(var(--bar-h) + clamp(1.4rem, 4vh, 3rem)) clamp(1.4rem, 4vh, 3rem); }
+  .hero-in { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; }
+  .hero-film { margin: 0; justify-self: center; width: min(100%, 25rem); }
+  .hero-film .arch { position: relative; aspect-ratio: 960 / 1080; background: #EFE6DC; box-shadow: 0 24px 60px rgba(43, 20, 24, .12); }
+  .hero-film img, .hero-film video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%;
+    filter: grayscale(var(--g, 0)) contrast(1.03); }
+  .hero-film video { clip-path: inset(0 round 999px 999px 0 0); }
+  .hero h1 { font-family: var(--sc-font-display); font-weight: 500; color: var(--sc-accent); line-height: 1; margin: .6rem 0 1rem; font-size: clamp(2.6rem, 6vw, 5rem); letter-spacing: .14em; }
+  .hero .lead { margin: 0; max-width: 40ch; color: var(--sc-ink-soft); font-family: var(--sc-font-display); font-size: clamp(1.1rem, 1.6vw, 1.35rem); line-height: 1.6; }
+  .answers { list-style: none; margin: clamp(1.6rem, 4vh, 2.6rem) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid color-mix(in oklab, var(--sc-accent) 25%, transparent); }
+  .answers li { padding-top: 1rem; padding-inline-end: 1.2rem; }
+  .answers li + li { padding-inline-start: 1.2rem; border-inline-start: 1px solid color-mix(in oklab, var(--sc-accent) 18%, transparent); }
+  .answers a { display: block; color: inherit; text-decoration: none; }
+  .answers b { display: block; color: #8A5A3C; font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; }
+  .answers span { display: block; margin-top: .45rem; line-height: 1.55; color: var(--sc-ink); font-size: .95rem; }
+  .answers em { display: inline-block; margin-top: .6rem; font-style: normal; color: var(--sc-accent); border-bottom: 1px solid currentColor; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
+  .answers a:hover em, .answers a:focus-visible em { border-bottom-width: 2px; }
   .eyebrow { font-size: .7rem; color: #8A5A3C; }
-  .hero-title p { margin: 0 auto; max-width: 44ch; color: var(--sc-ink-soft); font-family: var(--sc-font-display); font-size: 1.05rem; }
-  .hero-title p.ar { font-family: "Thmanyah Serif Display", Georgia, serif; font-size: 1.3rem; margin-top: .5rem; color: var(--sc-accent); }
   .btn { display: inline-block; margin-top: 1.2rem; background: var(--sc-accent); color: var(--sc-accent-ink);
     padding: .8rem 1.4rem; font-size: .72rem; text-decoration: none; }
-  .hero-veil { position: absolute; inset: 0; z-index: 1; pointer-events: none;
-    /* Only while the line is on screen (it cues in at 47% and out at 70%), so the film keeps its colour the rest of the time. */
-    opacity: clamp(0, min((var(--sc-p, 0) - .42) * 14, (.78 - var(--sc-p, 0)) * 14), 1);
-    background: radial-gradient(ellipse 50% 56% at 16% 24%, rgba(245,230,218,.92) 0%, rgba(245,230,218,.8) 50%, rgba(245,230,218,0) 82%); }
-  .hero-copy { --sc-ink-soft: #3E2A2B; }
-  /* The logo sits in the middle with its wordmark low, so on a wide screen the line goes in the free top corner. */
-  .hero-copy { top: calc(var(--bar-h) + 6vh); bottom: auto; max-width: 29vw; }
-  .hero-copy .sc-body { max-width: 34ch; }
 
   /* ------------------------------------------------ 2 who (flow+reveal) -- */
   .who { display: grid; grid-template-columns: 5fr 6fr; gap: clamp(2rem, 6vw, 6rem); align-items: center; }
@@ -177,25 +175,22 @@
   @media (max-width: 860px) {
     .site-bar nav a:not(.bar-cta) { display: none; }
     .site-bar { gap: 1rem; }
-    .hero { --ax: 14vw; --at: calc(var(--bar-h) + 4vh); --ab: max(52vh, 23rem); }
-    .hero-title h1 { font-size: 2.1rem; letter-spacing: .1em; }
-    .hero-title p { font-size: 1rem; }
-    /* The film is 16:9 and the phone is not. The phone file keeps the middle 640 of the 1280 columns; the box is as wide as that
-       crop, so by default the phone sees its middle (the same as cover). The clip is still for its last 2.5 seconds, so the camera
-       keeps pulling back on its own (scale) until the whole wordmark is in, and the edges melt into the page (mask). */
-    .hero { --m: clamp(0, calc((var(--sc-p, 0) - .55) * 2.5), 1); }
-    .hero-copy { top: auto; bottom: clamp(3rem, 12vh, 9rem); max-width: none; }
-    .hero .hero-media video { inset: 0 auto 0 50%; width: auto; min-width: 100%; max-width: none; height: 100%;
-      transform: translateX(-50%) scale(calc(1 - .32 * var(--m))); transform-origin: 50% 50%;
-      -webkit-mask-image: radial-gradient(ellipse closest-side at 50% 50%, #000 calc(145% - 59% * var(--m)), transparent calc(145% - 45% * var(--m)));
-              mask-image: radial-gradient(ellipse closest-side at 50% 50%, #000 calc(145% - 59% * var(--m)), transparent calc(145% - 45% * var(--m))); }
-    .hero-title { bottom: 4vh; }
-    .hero-veil { background: linear-gradient(0deg, rgba(245,230,218,.94) 0%, rgba(245,230,218,.86) 48%, rgba(245,230,218,0) 78%); }
+    .hero { min-height: 0; padding-block: calc(var(--bar-h) + 1.4rem) 2.6rem; }
+    .hero-in { grid-template-columns: 1fr; gap: 1.6rem; }
+    .hero-film { order: -1; width: min(64vw, 17rem); }
+    .answers { grid-template-columns: 1fr; }
+    .answers li, .answers li + li { padding: .9rem 0; border-inline-start: 0; border-bottom: 1px solid color-mix(in oklab, var(--sc-accent) 18%, transparent); }
     .who, .trust { grid-template-columns: 1fr; }
     .who figure { max-width: 22rem; }
     .rail__lead { flex-basis: 78vw; } .house { flex-basis: 70vw; } .rail__end { flex-basis: 70vw; }
     .house:nth-of-type(even), .house:nth-of-type(odd) { margin: 0; }
     .house svg { height: 28vh; }
+    .houses-act.is-stacked .rail { display: grid; height: auto; gap: 2.4rem; padding: 3rem var(--sc-gutter, 20px) 4rem; }
+    .houses-act.is-stacked .rail__lead, .houses-act.is-stacked .house, .houses-act.is-stacked .rail__end { flex: none; width: auto; }
+    .houses-act.is-stacked .house svg { height: 22vh; margin-inline: auto; }
+    .houses-act.is-stacked .house__in { text-align: center; }
+    .houses-act.is-stacked .house p { margin-inline: auto; }
+    .houses-act.is-stacked .house .num { display: none; }
     .tree-stage { grid-template-columns: 1fr; grid-template-rows: 34vh auto; align-content: center; gap: 1.4rem; padding-inline: 16px; }
     .stack { height: 34vh; width: min(100%, 26vh); justify-self: center; }
     .tree-lines { gap: .7rem; }
@@ -224,7 +219,11 @@
   .menu-foot .lang { justify-self: start; display: flex !important; }
   @media (max-width: 860px) {
     .menu-btn { display: inline-flex; }
-    .site-bar nav, .site-bar .lang { display: none; }
+    .site-bar nav { display: none; }
+    /* The language switch stays in the bar on a phone, as a 44px tap target, not hidden in the menu. */
+    .site-bar .lang { display: flex; align-items: center; gap: 0; margin-inline-start: auto; padding: 0; border-radius: 999px; font-size: .78rem; }
+    .site-bar .lang > * { display: flex; align-items: center; min-height: 44px; padding-inline: .8rem; }
+    .foot a { display: inline-flex; align-items: center; min-height: 44px; }
     .site-bar .mark { white-space: nowrap; font-size: .85rem; }
   }
 </style>
@@ -235,7 +234,7 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="Maydi House · A Somali fragrance house">
-<meta property="og:description" content="A Somali fragrance house in Mogadishu, named after Maydi, the rarest frankincense in the world.">
+<meta property="og:description" content="A Somali fragrance house in Mogadishu, named after Maydi, the most prized frankincense in the world.">
 <meta property="og:image" content="https://maydihouse.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -260,36 +259,35 @@
     <a class="ar" lang="ar" href="ar.html" style="color:inherit;text-decoration:none">العربية</a></div>
   <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i>Menu</button>
 </header>
-<div class="menu-panel" id="menu" role="dialog" aria-modal="true" aria-label="Maydi House" hidden><div class="menu-head"><span class="mark">Maydi House</span><button class="menu-close" id="menu-close" type="button">Close</button></div><nav class="menu-links"><a href="atelier.html">Atelier<small>Bespoke design</small></a><a href="factory.html">Factory<small>Under construction</small></a><a href="boutique.html">Boutique<small>Curated fragrances</small></a><a href="botanicals.html">Botanicals<small>Raw materials</small></a><a href="mohamed-abdo.html">Mohamed Abdo<small>Founder and perfumer</small></a></nav><div class="menu-foot"><a class="btn caps" href="contact.html">Partner with us</a><div class="lang"><span aria-current="true">EN</span><span aria-hidden="true">|</span><a class="ar" lang="ar" href="ar.html" style="color:inherit;text-decoration:none">العربية</a></div></div></div>
+<div class="menu-panel" id="menu" role="dialog" aria-modal="true" aria-label="Maydi House" hidden><div class="menu-head"><span class="mark">Maydi House</span><button class="menu-close" id="menu-close" type="button">Close</button></div><nav class="menu-links"><a href="atelier.html">Atelier<small>Bespoke design</small></a><a href="factory.html">Factory<small>Under construction</small></a><a href="boutique.html">Boutique<small>Curated fragrances</small></a><a href="botanicals.html">Botanicals<small>Raw materials</small></a><a href="mohamed-abdo.html">Mohamed Abdo<small>Founder and perfumer</small></a></nav><div class="menu-foot"><a class="btn caps" href="contact.html">Partner with us</a><a class="btn btn--ghost caps" href="https://wa.me/252610161810" rel="noopener">WhatsApp</a><div class="lang"><span aria-current="true">EN</span><span aria-hidden="true">|</span><a class="ar" lang="ar" href="ar.html" style="color:inherit;text-decoration:none">العربية</a></div></div></div>
 
 <main id="top">
 
-  <!-- 1 · WHO WE ARE, at a glance: pin. The arch opens onto the Boswellia tree, in black and white,
-       with a slow push-in on the photo as it opens.
-       The resin drop is the only colour on screen. -->
-  <section class="hero" data-sc-act="pin" data-sc-span="2.4" data-sc-clip-map="travel" data-sc-drift="#F5E6DA">
-    <div data-sc-stage>
-      <div class="hero-media arch-win" role="img" aria-label="The Maydi House mark, close up: an arch, a tree and a drop of resin">
-        <img class="sc-stage__poster" src="assets/hero-film-poster.webp" width="1920" height="1080" alt="">
-        <video data-sc-scrub data-sc-src="assets/hero-film.mp4" data-sc-src-mobile="assets/hero-film-m.mp4" muted playsinline preload="none" aria-hidden="true"></video>
-      </div>
-      <div class="hero-veil" aria-hidden="true"></div>
-      <div class="hero-title" data-sc-cue="0 0.16 0">
+  <!-- 1 · WHO, WHAT, WHY at a glance: one screen. The three answers are on screen at once; the logo film plays once in the arch. -->
+  <section class="sc-section hero" data-sc-act="flow" data-sc-drift="#F5E6DA">
+    <div class="sc-wrap hero-in">
+      <div>
         <div class="eyebrow caps">Mogadishu · Somalia</div>
         <h1>MAYDI HOUSE</h1>
-        <p>A Somali fragrance house, named after Maydi, the rarest frankincense in the world.</p>
-        <p class="ar" lang="ar" dir="rtl">دار عطور صومالية فاخرة، تحمل اسم أندر لبان في العالم</p>
-        <a class="btn caps" href="#houses">Discover our houses</a>
+        <p class="lead">A Somali fragrance house, named after Maydi, the most prized frankincense in the world.</p>
+        <p class="ar" lang="ar" dir="rtl">دار عطور صومالية فاخرة، تحمل اسم أثمن لبان في العالم</p>
+        <ul class="answers">
+          <li><a href="#who"><b>Who we are</b><span>A fragrance house in Mogadishu, founded by the perfume designer Mohamed Abdo.</span><em>The founder</em></a></li>
+          <li><a href="#houses"><b>What we offer</b><span>Four houses: perfume design, manufacturing, a boutique and raw materials.</span><em>Our houses</em></a></li>
+          <li><a href="#why"><b>Why us</b><span>An identity drawn from Somali land and its aromatic resources, and a house officially licensed in Mogadishu.</span><em>Why partners trust us</em></a></li>
+        </ul>
       </div>
-      <div class="sc-copy sc-copy--lead hero-copy" data-sc-cue="0.47 0.7">
-        <h2 class="sc-display sc-display--lg">Perfume is an art before it is a product.</h2>
-        <p class="sc-body">Design, manufacturing, retail and raw materials, under one roof in Mogadishu.</p>
-      </div>
+      <figure class="hero-film">
+        <div class="arch">
+          <img src="assets/hero-film-end.webp" width="960" height="1080" alt="The Maydi House logo: a pointed arch with an M, a tree and a drop of amber resin">
+          <video src="assets/hero-film-m.mp4" poster="assets/hero-film-start.webp" muted playsinline preload="auto" aria-hidden="true"></video>
+        </div>
+      </figure>
     </div>
   </section>
 
   <!-- 2 · WHO WE ARE, in person: flow + reveal. The founder, framed in the arch. -->
-  <section class="sc-section" data-sc-act="flow" data-sc-drift="#F5E6DA">
+  <section id="who" class="sc-section" data-sc-act="flow" data-sc-drift="#F5E6DA">
     <div class="sc-wrap who">
       <figure data-sc-reveal="up" data-sc-reveal-at="0.1 0.55">
         <div class="arch"><img class="bw" src="assets/founder.webp" width="900" height="1600" alt="Mohamed Abdo smelling a perfume blotter"></div>
@@ -364,10 +362,9 @@
           </svg>
           <div class="num">03</div>
           <h3>MAYDI BOUTIQUE</h3>
-          <p>A curated selection of international luxury fragrances.</p>
-          <p class="ar" lang="ar" dir="rtl">تشكيلة مختارة من العطور العالمية الفاخرة</p>
-          <!-- Experiment: the shop does not exist yet, so this leads nowhere on purpose. -->
-          <a class="text-link caps" href="boutique.html">Shop the collection</a>
+          <p>Perfumes from other houses that Mohamed Abdo has tried and recommends.</p>
+          <p class="ar" lang="ar" dir="rtl">عطور من دور أخرى يرشحها محمد عبده</p>
+          <a class="text-link caps" href="boutique.html">See the pick</a>
         </div></article>
 
         <article class="house"><div class="house__in">
@@ -387,17 +384,26 @@
           <a class="text-link caps" href="botanicals.html">Order raw materials</a>
         </div></article>
 
-        <p class="rail__end">Every house carries the name of the rarest frankincense on earth.</p>
+        <p class="rail__end">Every house carries the name of the most prized frankincense on earth.</p>
       </div>
     </div>
   </section>
 
   <!-- 4 · WHY US, the origin: pin, in the approved green. Lines accumulate (v7 of the
        smoke test) and the arch beside them follows the tree from cliff to tear. -->
+  <!-- On a phone the four houses stack one below the other, as the rest of the page does. They slide in from the side only on a wide screen. -->
+  <script>
+    if (matchMedia('(max-width: 860px)').matches) {
+      var hs = document.getElementById('houses');
+      hs.setAttribute('data-sc-act', 'flow'); hs.removeAttribute('data-sc-span'); hs.classList.add('is-stacked');
+      var rl = hs.querySelector('[data-sc-pan]'); if (rl) rl.removeAttribute('data-sc-pan');
+      var sg = hs.querySelector('[data-sc-stage]'); if (sg) sg.removeAttribute('data-sc-stage');
+    }
+  </script>
   <section data-sc-act="pin" data-sc-span="4.6" data-sc-drift="#3A6351" class="tree-act">
     <div data-sc-stage class="tree-stage">
       <div class="tree-lines">
-        <p class="sci" data-sc-cue="0 1 0 0">Boswellia</p>
+        <p class="sci" data-sc-cue="0 1 0 0"><i>Boswellia frereana</i></p>
         <p data-step="0" data-sc-cue="0 1 0 0">Maydi grows on one tree, on the limestone cliffs of northern Somalia.</p>
         <p data-step="1" data-sc-cue="0.2 1 0.05 0">Its bark peels like paper.</p>
         <p data-step="2" data-sc-cue="0.42 1 0.05 0">A shallow cut, and the resin weeps.</p>
@@ -413,7 +419,7 @@
   </section>
 
   <!-- 5 · WHY US, the proof: flow. The one reading section, and the second (and last) eyebrow. -->
-  <section class="sc-section" data-sc-act="flow" data-sc-drift="#F5E6DA">
+  <section id="why" class="sc-section" data-sc-act="flow" data-sc-drift="#F5E6DA">
     <div class="sc-wrap trust">
       <div class="sc-stack" data-sc-in data-sc-stagger="80">
         <div class="eyebrow caps">Officially licensed</div>
@@ -520,6 +526,25 @@
       requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
+  })();
+</script>
+<script>
+  // The hero film: plays once on its own, black and white until the drop arrives (about 40% in), then the colour blooms,
+  // and it rests on the full logo. With reduced motion, or if the browser will not play it, the full logo shows in colour.
+  (function () {
+    var box = document.querySelector('.hero-film'); if (!box) return;
+    var v = box.querySelector('video');
+    var still = function () { if (v) v.remove(); box.style.setProperty('--g', 0); };
+    if (!v || matchMedia('(prefers-reduced-motion: reduce)').matches) { still(); return; }
+    box.style.setProperty('--g', 1);
+    var tick = function () {
+      if (v.duration) box.style.setProperty('--g', Math.min(1, Math.max(0, 1 - (v.currentTime / v.duration - .4) / .16)).toFixed(3));
+      if (!v.ended && !v.paused) requestAnimationFrame(tick);
+    };
+    v.addEventListener('playing', function () { requestAnimationFrame(tick); });
+    v.addEventListener('ended', function () { box.style.setProperty('--g', 0); });
+    v.addEventListener('error', still);
+    var p = v.play(); if (p && p.catch) p.catch(still);
   })();
 </script>
 </body>

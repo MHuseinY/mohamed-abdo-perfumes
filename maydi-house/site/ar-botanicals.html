@@ -5,34 +5,163 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>مايدي بوتانيكالز · مايدي هاوس</title>
+<link rel="canonical" href="https://maydihouse.com/ar-botanicals">
+<link rel="alternate" hreflang="en" href="https://maydihouse.com/botanicals">
+<link rel="alternate" hreflang="ar" href="https://maydihouse.com/ar-botanicals">
+<link rel="alternate" hreflang="x-default" href="https://maydihouse.com/botanicals">
 <meta name="description" content="لبان ومرّ وراتنجات وزيوت عطرية صومالية نادرة، يقودها المايدي.">
 <link rel="stylesheet" href="site.css">
 <link rel="stylesheet" href="glass.css">
 <style>
-  .resin-head .frame { max-width: 380px; justify-self: end; background: #111; }
-  .resin-head .frame img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
-  .tree-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2.6rem; }
-  .tree-strip figure { margin: 0; }
-  .tree-strip img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
-  .tree-strip figcaption { margin-top: .6rem; font-family: var(--display); font-size: 1.05rem; color: #D7E3DA; }
+  /* Maydi Botanicals, the green house: the approved green, the leaf and the arch, in the site's own line language.
+     The review build pools every page's style into one document, so everything here hangs from .bt and cannot leak.
+     The sprigs are drawn by brand/tools/make-botanicals-art.py. */
+  .bt {
+    --bt-sage: color-mix(in oklab, #D7E3DA 62%, var(--canvas));          /* the light green-tinted ground */
+    --bt-on: #D7E3DA;                                                   /* soft text on the green */
+    --bt-gold: color-mix(in oklab, var(--resin) 62%, var(--canvas));    /* resin gold that still reads on the green */
+    --bt-line: color-mix(in oklab, var(--green) 30%, transparent);
+    --bt-leaf: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19C4 10 10 4 20 4c1 10-5 16-15 15z'/%3E%3Cpath d='M5 19L15 9'/%3E%3C/svg%3E");
+    --bt-tear: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.5c0 0-6 7.5-6 12a6 6 0 0 0 12 0c0-4.5-6-12-6-12z'/%3E%3C/svg%3E");
+    --bt-tooth: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 28' preserveAspectRatio='none'%3E%3Cpath fill='%233A6351' d='M0 0H64C64 11 47 17 39 22C36 24.2 34 26.2 32 28C30 26.2 28 24.2 25 22C17 17 0 11 0 0z'/%3E%3C/svg%3E");
+    --bt-tooth-up: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 28' preserveAspectRatio='none'%3E%3Cpath fill='%233A6351' d='M0 28H64C64 17 47 11 39 6C36 3.8 34 1.8 32 0C30 1.8 28 3.8 25 6C17 11 0 17 0 28z'/%3E%3C/svg%3E");
+    --bt-pattern: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22260%22 height=%22260%22 viewBox=%220 0 260 260%22 fill=%22none%22 stroke=%22%23F5E6DA%22 stroke-opacity=%22.075%22 stroke-width=%221.1%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cg transform=%22translate%2860 110%29 rotate%28-28%29 scale%281.00%29%22%3E%3Cpath d=%22M0.0 0.0C6.0 -18.0 -6.0 -36.0 2.0 -56.0%22/%3E%3Cpath d=%22M1.5 -16.8L-2.9 -19.1%22/%3E%3Cpath d=%22M-2.9 -19.1C-9.3 -15.2 -17.6 -20.4 -20.3 -28.0C-12.5 -30.3 -3.5 -26.5 -2.9 -19.1ZM-2.9 -19.1L-18.5 -27.1M-8.1 -21.8L-12.0 -20.6M-8.1 -21.8L-9.4 -25.6M-11.6 -23.6L-15.4 -22.6M-11.6 -23.6L-13.0 -27.2M-15.1 -25.4L-18.8 -24.6M-15.1 -25.4L-16.6 -28.8%22/%3E%3Cpath d=%22M1.4 -17.7L5.4 -20.8%22/%3E%3Cpath d=%22M5.4 -20.8C4.7 -28.2 12.9 -33.5 20.9 -32.6C19.7 -24.6 12.4 -18.1 5.4 -20.8ZM5.4 -20.8L19.4 -31.4M10.1 -24.3L10.7 -28.3M10.1 -24.3L14.1 -23.8M13.2 -26.7L13.9 -30.5M13.2 -26.7L17.1 -26.4M16.3 -29.0L17.2 -32.7M16.3 -29.0L20.0 -28.9%22/%3E%3Cpath d=%22M0.1 -28.1L-4.3 -30.3%22/%3E%3Cpath d=%22M-4.3 -30.3C-10.4 -26.5 -18.4 -31.3 -21.0 -38.6C-13.6 -40.9 -5.0 -37.4 -4.3 -30.3ZM-4.3 -30.3L-19.3 -37.8M-9.3 -32.8L-13.0 -31.6M-9.3 -32.8L-10.6 -36.4M-12.7 -34.4L-16.3 -33.5M-12.7 -34.4L-14.1 -37.9M-16.0 -36.1L-19.5 -35.3M-16.0 -36.1L-17.5 -39.4%22/%3E%3Cpath d=%22M0.0 -29.0L3.8 -32.3%22/%3E%3Cpath d=%22M3.8 -32.3C2.2 -41.7 12.2 -49.2 22.6 -48.8C21.6 -38.5 12.9 -29.5 3.8 -32.3ZM3.8 -32.3L20.7 -47.2M9.4 -37.2L9.8 -42.4M9.4 -37.2L14.6 -37.0M13.2 -40.5L13.8 -45.5M13.2 -40.5L18.2 -40.5M16.9 -43.8L17.7 -48.6M16.9 -43.8L21.7 -44.0%22/%3E%3Cpath d=%22M-0.8 -39.4L-4.9 -42.2%22/%3E%3Cpath d=%22M-4.9 -42.2C-13.0 -38.7 -21.9 -46.1 -23.8 -55.4C-14.3 -56.8 -4.4 -51.0 -4.9 -42.2ZM-4.9 -42.2L-21.9 -54.1M-10.6 -46.2L-15.3 -45.4M-10.6 -46.2L-11.5 -50.9M-14.4 -48.8L-18.9 -48.3M-14.4 -48.8L-15.4 -53.3M-18.1 -51.5L-22.5 -51.2M-18.1 -51.5L-19.3 -55.7%22/%3E%3Cpath d=%22M-0.9 -40.3L3.2 -43.2%22/%3E%3Cpath d=%22M3.2 -43.2C2.6 -50.7 11.1 -55.9 19.2 -54.8C17.7 -46.8 10.2 -40.3 3.2 -43.2ZM3.2 -43.2L17.6 -53.7M8.0 -46.7L8.7 -50.7M8.0 -46.7L12.1 -46.1M11.2 -49.0L12.0 -52.9M11.2 -49.0L15.1 -48.6M14.4 -51.3L15.4 -55.0M14.4 -51.3L18.2 -51.1%22/%3E%3Cpath d=%22M2.0 -56.0C-4.4 -63.8 1.2 -74.9 11.1 -78.9C15.6 -69.2 12.0 -57.3 2.0 -56.0ZM2.0 -56.0L10.2 -76.6M4.7 -62.9L2.5 -67.7M4.7 -62.9L9.7 -64.9M6.5 -67.5L4.5 -72.2M6.5 -67.5L11.2 -69.6M8.4 -72.0L6.6 -76.7M8.4 -72.0L12.8 -74.3%22/%3E%3C/g%3E%3Cg transform=%22translate%28190 70%29 rotate%2842%29 scale%280.80%29%22%3E%3Cpath d=%22M0.0 0.0C6.0 -18.0 -6.0 -36.0 2.0 -56.0%22/%3E%3Cpath d=%22M1.5 -16.8L-2.9 -19.1%22/%3E%3Cpath d=%22M-2.9 -19.1C-9.3 -15.2 -17.6 -20.4 -20.3 -28.0C-12.5 -30.3 -3.5 -26.5 -2.9 -19.1ZM-2.9 -19.1L-18.5 -27.1M-8.1 -21.8L-12.0 -20.6M-8.1 -21.8L-9.4 -25.6M-11.6 -23.6L-15.4 -22.6M-11.6 -23.6L-13.0 -27.2M-15.1 -25.4L-18.8 -24.6M-15.1 -25.4L-16.6 -28.8%22/%3E%3Cpath d=%22M1.4 -17.7L5.4 -20.8%22/%3E%3Cpath d=%22M5.4 -20.8C4.7 -28.2 12.9 -33.5 20.9 -32.6C19.7 -24.6 12.4 -18.1 5.4 -20.8ZM5.4 -20.8L19.4 -31.4M10.1 -24.3L10.7 -28.3M10.1 -24.3L14.1 -23.8M13.2 -26.7L13.9 -30.5M13.2 -26.7L17.1 -26.4M16.3 -29.0L17.2 -32.7M16.3 -29.0L20.0 -28.9%22/%3E%3Cpath d=%22M0.1 -28.1L-4.3 -30.3%22/%3E%3Cpath d=%22M-4.3 -30.3C-10.4 -26.5 -18.4 -31.3 -21.0 -38.6C-13.6 -40.9 -5.0 -37.4 -4.3 -30.3ZM-4.3 -30.3L-19.3 -37.8M-9.3 -32.8L-13.0 -31.6M-9.3 -32.8L-10.6 -36.4M-12.7 -34.4L-16.3 -33.5M-12.7 -34.4L-14.1 -37.9M-16.0 -36.1L-19.5 -35.3M-16.0 -36.1L-17.5 -39.4%22/%3E%3Cpath d=%22M0.0 -29.0L3.8 -32.3%22/%3E%3Cpath d=%22M3.8 -32.3C2.2 -41.7 12.2 -49.2 22.6 -48.8C21.6 -38.5 12.9 -29.5 3.8 -32.3ZM3.8 -32.3L20.7 -47.2M9.4 -37.2L9.8 -42.4M9.4 -37.2L14.6 -37.0M13.2 -40.5L13.8 -45.5M13.2 -40.5L18.2 -40.5M16.9 -43.8L17.7 -48.6M16.9 -43.8L21.7 -44.0%22/%3E%3Cpath d=%22M-0.8 -39.4L-4.9 -42.2%22/%3E%3Cpath d=%22M-4.9 -42.2C-13.0 -38.7 -21.9 -46.1 -23.8 -55.4C-14.3 -56.8 -4.4 -51.0 -4.9 -42.2ZM-4.9 -42.2L-21.9 -54.1M-10.6 -46.2L-15.3 -45.4M-10.6 -46.2L-11.5 -50.9M-14.4 -48.8L-18.9 -48.3M-14.4 -48.8L-15.4 -53.3M-18.1 -51.5L-22.5 -51.2M-18.1 -51.5L-19.3 -55.7%22/%3E%3Cpath d=%22M-0.9 -40.3L3.2 -43.2%22/%3E%3Cpath d=%22M3.2 -43.2C2.6 -50.7 11.1 -55.9 19.2 -54.8C17.7 -46.8 10.2 -40.3 3.2 -43.2ZM3.2 -43.2L17.6 -53.7M8.0 -46.7L8.7 -50.7M8.0 -46.7L12.1 -46.1M11.2 -49.0L12.0 -52.9M11.2 -49.0L15.1 -48.6M14.4 -51.3L15.4 -55.0M14.4 -51.3L18.2 -51.1%22/%3E%3Cpath d=%22M2.0 -56.0C-4.4 -63.8 1.2 -74.9 11.1 -78.9C15.6 -69.2 12.0 -57.3 2.0 -56.0ZM2.0 -56.0L10.2 -76.6M4.7 -62.9L2.5 -67.7M4.7 -62.9L9.7 -64.9M6.5 -67.5L4.5 -72.2M6.5 -67.5L11.2 -69.6M8.4 -72.0L6.6 -76.7M8.4 -72.0L12.8 -74.3%22/%3E%3C/g%3E%3Cg transform=%22translate%28210 215%29 rotate%28-150%29 scale%281.00%29%22%3E%3Cpath d=%22M0.0 0.0C6.0 -18.0 -6.0 -36.0 2.0 -56.0%22/%3E%3Cpath d=%22M1.5 -16.8L-2.9 -19.1%22/%3E%3Cpath d=%22M-2.9 -19.1C-9.3 -15.2 -17.6 -20.4 -20.3 -28.0C-12.5 -30.3 -3.5 -26.5 -2.9 -19.1ZM-2.9 -19.1L-18.5 -27.1M-8.1 -21.8L-12.0 -20.6M-8.1 -21.8L-9.4 -25.6M-11.6 -23.6L-15.4 -22.6M-11.6 -23.6L-13.0 -27.2M-15.1 -25.4L-18.8 -24.6M-15.1 -25.4L-16.6 -28.8%22/%3E%3Cpath d=%22M1.4 -17.7L5.4 -20.8%22/%3E%3Cpath d=%22M5.4 -20.8C4.7 -28.2 12.9 -33.5 20.9 -32.6C19.7 -24.6 12.4 -18.1 5.4 -20.8ZM5.4 -20.8L19.4 -31.4M10.1 -24.3L10.7 -28.3M10.1 -24.3L14.1 -23.8M13.2 -26.7L13.9 -30.5M13.2 -26.7L17.1 -26.4M16.3 -29.0L17.2 -32.7M16.3 -29.0L20.0 -28.9%22/%3E%3Cpath d=%22M0.1 -28.1L-4.3 -30.3%22/%3E%3Cpath d=%22M-4.3 -30.3C-10.4 -26.5 -18.4 -31.3 -21.0 -38.6C-13.6 -40.9 -5.0 -37.4 -4.3 -30.3ZM-4.3 -30.3L-19.3 -37.8M-9.3 -32.8L-13.0 -31.6M-9.3 -32.8L-10.6 -36.4M-12.7 -34.4L-16.3 -33.5M-12.7 -34.4L-14.1 -37.9M-16.0 -36.1L-19.5 -35.3M-16.0 -36.1L-17.5 -39.4%22/%3E%3Cpath d=%22M0.0 -29.0L3.8 -32.3%22/%3E%3Cpath d=%22M3.8 -32.3C2.2 -41.7 12.2 -49.2 22.6 -48.8C21.6 -38.5 12.9 -29.5 3.8 -32.3ZM3.8 -32.3L20.7 -47.2M9.4 -37.2L9.8 -42.4M9.4 -37.2L14.6 -37.0M13.2 -40.5L13.8 -45.5M13.2 -40.5L18.2 -40.5M16.9 -43.8L17.7 -48.6M16.9 -43.8L21.7 -44.0%22/%3E%3Cpath d=%22M-0.8 -39.4L-4.9 -42.2%22/%3E%3Cpath d=%22M-4.9 -42.2C-13.0 -38.7 -21.9 -46.1 -23.8 -55.4C-14.3 -56.8 -4.4 -51.0 -4.9 -42.2ZM-4.9 -42.2L-21.9 -54.1M-10.6 -46.2L-15.3 -45.4M-10.6 -46.2L-11.5 -50.9M-14.4 -48.8L-18.9 -48.3M-14.4 -48.8L-15.4 -53.3M-18.1 -51.5L-22.5 -51.2M-18.1 -51.5L-19.3 -55.7%22/%3E%3Cpath d=%22M-0.9 -40.3L3.2 -43.2%22/%3E%3Cpath d=%22M3.2 -43.2C2.6 -50.7 11.1 -55.9 19.2 -54.8C17.7 -46.8 10.2 -40.3 3.2 -43.2ZM3.2 -43.2L17.6 -53.7M8.0 -46.7L8.7 -50.7M8.0 -46.7L12.1 -46.1M11.2 -49.0L12.0 -52.9M11.2 -49.0L15.1 -48.6M14.4 -51.3L15.4 -55.0M14.4 -51.3L18.2 -51.1%22/%3E%3Cpath d=%22M2.0 -56.0C-4.4 -63.8 1.2 -74.9 11.1 -78.9C15.6 -69.2 12.0 -57.3 2.0 -56.0ZM2.0 -56.0L10.2 -76.6M4.7 -62.9L2.5 -67.7M4.7 -62.9L9.7 -64.9M6.5 -67.5L4.5 -72.2M6.5 -67.5L11.2 -69.6M8.4 -72.0L6.6 -76.7M8.4 -72.0L12.8 -74.3%22/%3E%3C/g%3E%3Cg transform=%22translate%2880 235%29 rotate%28118%29 scale%280.75%29%22%3E%3Cpath d=%22M0.0 0.0C6.0 -18.0 -6.0 -36.0 2.0 -56.0%22/%3E%3Cpath d=%22M1.5 -16.8L-2.9 -19.1%22/%3E%3Cpath d=%22M-2.9 -19.1C-9.3 -15.2 -17.6 -20.4 -20.3 -28.0C-12.5 -30.3 -3.5 -26.5 -2.9 -19.1ZM-2.9 -19.1L-18.5 -27.1M-8.1 -21.8L-12.0 -20.6M-8.1 -21.8L-9.4 -25.6M-11.6 -23.6L-15.4 -22.6M-11.6 -23.6L-13.0 -27.2M-15.1 -25.4L-18.8 -24.6M-15.1 -25.4L-16.6 -28.8%22/%3E%3Cpath d=%22M1.4 -17.7L5.4 -20.8%22/%3E%3Cpath d=%22M5.4 -20.8C4.7 -28.2 12.9 -33.5 20.9 -32.6C19.7 -24.6 12.4 -18.1 5.4 -20.8ZM5.4 -20.8L19.4 -31.4M10.1 -24.3L10.7 -28.3M10.1 -24.3L14.1 -23.8M13.2 -26.7L13.9 -30.5M13.2 -26.7L17.1 -26.4M16.3 -29.0L17.2 -32.7M16.3 -29.0L20.0 -28.9%22/%3E%3Cpath d=%22M0.1 -28.1L-4.3 -30.3%22/%3E%3Cpath d=%22M-4.3 -30.3C-10.4 -26.5 -18.4 -31.3 -21.0 -38.6C-13.6 -40.9 -5.0 -37.4 -4.3 -30.3ZM-4.3 -30.3L-19.3 -37.8M-9.3 -32.8L-13.0 -31.6M-9.3 -32.8L-10.6 -36.4M-12.7 -34.4L-16.3 -33.5M-12.7 -34.4L-14.1 -37.9M-16.0 -36.1L-19.5 -35.3M-16.0 -36.1L-17.5 -39.4%22/%3E%3Cpath d=%22M0.0 -29.0L3.8 -32.3%22/%3E%3Cpath d=%22M3.8 -32.3C2.2 -41.7 12.2 -49.2 22.6 -48.8C21.6 -38.5 12.9 -29.5 3.8 -32.3ZM3.8 -32.3L20.7 -47.2M9.4 -37.2L9.8 -42.4M9.4 -37.2L14.6 -37.0M13.2 -40.5L13.8 -45.5M13.2 -40.5L18.2 -40.5M16.9 -43.8L17.7 -48.6M16.9 -43.8L21.7 -44.0%22/%3E%3Cpath d=%22M-0.8 -39.4L-4.9 -42.2%22/%3E%3Cpath d=%22M-4.9 -42.2C-13.0 -38.7 -21.9 -46.1 -23.8 -55.4C-14.3 -56.8 -4.4 -51.0 -4.9 -42.2ZM-4.9 -42.2L-21.9 -54.1M-10.6 -46.2L-15.3 -45.4M-10.6 -46.2L-11.5 -50.9M-14.4 -48.8L-18.9 -48.3M-14.4 -48.8L-15.4 -53.3M-18.1 -51.5L-22.5 -51.2M-18.1 -51.5L-19.3 -55.7%22/%3E%3Cpath d=%22M-0.9 -40.3L3.2 -43.2%22/%3E%3Cpath d=%22M3.2 -43.2C2.6 -50.7 11.1 -55.9 19.2 -54.8C17.7 -46.8 10.2 -40.3 3.2 -43.2ZM3.2 -43.2L17.6 -53.7M8.0 -46.7L8.7 -50.7M8.0 -46.7L12.1 -46.1M11.2 -49.0L12.0 -52.9M11.2 -49.0L15.1 -48.6M14.4 -51.3L15.4 -55.0M14.4 -51.3L18.2 -51.1%22/%3E%3Cpath d=%22M2.0 -56.0C-4.4 -63.8 1.2 -74.9 11.1 -78.9C15.6 -69.2 12.0 -57.3 2.0 -56.0ZM2.0 -56.0L10.2 -76.6M4.7 -62.9L2.5 -67.7M4.7 -62.9L9.7 -64.9M6.5 -67.5L4.5 -72.2M6.5 -67.5L11.2 -69.6M8.4 -72.0L6.6 -76.7M8.4 -72.0L12.8 -74.3%22/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .bt h2 { color: var(--green); }
+  /* a small leaf before every section heading */
+  .bt h2::before { content: ""; display: inline-block; width: .82em; height: .82em; margin-inline-end: .42em; vertical-align: -.02em; background: currentColor;
+    -webkit-mask: var(--bt-leaf) center / contain no-repeat; mask: var(--bt-leaf) center / contain no-repeat; }
+
+  /* ---------------------------------------------------------------- hero -- */
+  .bt-hero { position: relative; background: var(--green) var(--bt-pattern); color: var(--canvas); overflow-x: clip; }
+  /* the green ends in a row of hanging leaf tips instead of a straight line */
+  .bt-hero::after { content: ""; position: absolute; z-index: 3; inset-inline: 0; bottom: -27px; height: 28px; pointer-events: none;
+    background: var(--bt-tooth) repeat-x 0 0 / 64px 28px; }
+  .bt-hero .page-head { padding-bottom: clamp(2.8rem, 5vw, 4.4rem); }
+  .bt-hero .split { align-items: center; }
+  .bt-hero .crumbs, .bt-hero .crumbs a { color: var(--bt-on); }
+  .bt-hero .crumbs a:hover { color: var(--canvas); }
+  .bt-hero .chip { border-color: color-mix(in oklab, var(--canvas) 50%, transparent); color: var(--bt-on); }
+  .bt-hero h1 { color: var(--canvas); }
+  .bt .bt-hero .page-head .ar, .bt .bt-hero .page-head .lat { color: var(--bt-gold); }
+  .bt .bt-hero .page-head .lede { color: var(--bt-on); }
+  .bt .btn--on { background: var(--canvas); color: var(--green); border-color: var(--canvas); }
+  .bt .btn--on:hover { background: #FFF7EF; color: color-mix(in oklab, var(--green) 78%, black); }
+
+  /* the plate: the resin tear in its arch, a second arch drawn around it, and Boswellia growing up the sides */
+  .bt-plate { position: relative; justify-self: center; width: min(100%, 340px); }
+  .bt-plate__arch { position: relative; }
+  .bt-plate__arch::before { content: ""; position: absolute; inset: -13px -13px 0; pointer-events: none; border: 1px solid color-mix(in oklab, var(--canvas) 38%, transparent);
+    border-bottom: 0; border-radius: 999px 999px 0 0; }
+  .bt-plate .frame { position: relative; z-index: 1; margin: 0; background: #111; }
+  .bt-plate .frame img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+  .bt-sp { margin: 0 -13px; padding-top: .7rem; border-top: 1px solid color-mix(in oklab, var(--canvas) 38%, transparent); text-align: center;
+    font-family: var(--display); font-size: 1.05rem; color: var(--bt-on); }
+  .bt-sprig { position: absolute; z-index: 2; height: auto; pointer-events: none; user-select: none; }
+  .bt-sprig--a { width: 190px; inset-inline-start: -118px; bottom: 38px; }
+  .bt-sprig--b { width: 150px; inset-inline-end: -92px; bottom: 38px; }
+  /* the sprigs grow up from their base when they arrive */
+  @media (prefers-reduced-motion: no-preference) {
+    .js .bt-grow { clip-path: inset(100% 0 0 0);
+      transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1), clip-path 2.6s cubic-bezier(.3,.1,.2,1) .25s; }
+    .js .bt-grow.in { clip-path: inset(0); }
+  }
+
+  /* -------------------------------------------------------------- origin -- */
+  .bt-origin { position: relative; padding-top: clamp(4.2rem, 8vw, 7.4rem); }
+  .bt-origin .wrap { position: relative; }
+  .bt-sprig--g { width: 78px; inset-inline-end: var(--gutter); top: -3.2rem; }
+  .js .bt-sprig--g.rv, .js .bt-sprig--s.rv { opacity: 0; }
+  .js .bt-sprig--g.rv.in { opacity: .8; }
+  .js .bt-sprig--s.rv.in { opacity: .55; }
+  .bt-path { list-style: none; margin: 2.8rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem clamp(.9rem, 2vw, 1.6rem); }
+  .bt-path li { border-top: 1px solid var(--bt-line); padding-top: 1rem; min-width: 0; }
+  .bt-path b { display: block; margin-bottom: 1rem; font-family: var(--display); font-weight: 500; font-size: 2rem; line-height: 1; color: var(--green); }
+  .bt-path figure { margin: 0; }
+  /* the three black-and-white photographs take the house green; the tears, at the end, keep their own colour */
+  .bt-path .arch { position: relative; isolation: isolate; background: var(--green); }
+  .bt-path .arch img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+  .bt-path .duo::after { content: ""; position: absolute; inset: 0; background: var(--green); mix-blend-mode: color; opacity: .8; pointer-events: none; }
+  .bt-path figcaption { margin-top: .85rem; font-family: var(--display); font-size: 1.08rem; line-height: 1.35; color: var(--ink); }
+
+  /* ------------------------------------------------------------- compare -- */
+  .bt-compare { background: var(--bt-sage); }
   .compare { width: 100%; min-width: 620px; border-collapse: collapse; margin-top: 2.4rem; }
   .compare thead th { width: 38%; }
-  .compare th, .compare td { text-align: start; padding: 1rem 0; padding-inline-end: 1.2rem; border-bottom: 1px solid var(--line); vertical-align: top; }
-  .compare thead th { font-family: var(--display); font-weight: 500; font-size: 1.4rem; color: var(--accent); }
+  .compare th, .compare td { text-align: start; padding: 1rem 0; padding-inline-end: 1.2rem; border-bottom: 1px solid var(--bt-line); vertical-align: baseline; }
+  .compare thead th { font-family: var(--display); font-weight: 500; font-size: 1.4rem; color: var(--green); }
   .compare thead th:last-child { color: var(--umber); }
   .compare tbody th { font-size: .72rem; text-transform: uppercase; letter-spacing: .16em; color: var(--umber); font-weight: 500; width: 11rem; }
   .compare td:nth-child(2) { font-family: var(--display); font-size: 1.1rem; }
   .compare td:last-child { color: var(--ink-soft); }
+  /* the Maydi column is lifted: lighter paper, and a green line along its head */
+  .compare tr > :nth-child(2) { background: var(--paper); padding-inline-start: 1.2rem; }
+  .compare thead th:nth-child(2) { border-top: 3px solid var(--green); }
+  .compare tr > :nth-child(3) { padding-inline-start: 1.8rem; }
+  .compare thead th:nth-child(2)::before { content: ""; display: inline-block; width: .8em; height: .8em; margin-inline-end: .4em; vertical-align: -.02em; background: currentColor;
+    -webkit-mask: var(--bt-leaf) center / contain no-repeat; mask: var(--bt-leaf) center / contain no-repeat; }
   .table-wrap { overflow-x: auto; }
-  .materials { list-style: none; margin: 2.4rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 3rem; }
-  .materials li { padding-block: 1.4rem; border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr auto; gap: .4rem 1rem; }
-  .materials h3 { font-size: 1.45rem; }
-  .materials p { grid-column: 1 / -1; color: var(--ink-soft); }
-  .materials .lead h3::after { content: attr(data-tag); font-family: var(--text); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--resin); }
+  /* on a phone the table becomes one card per row: the Maydi value, then the common resin's where it has one */
+  @media (max-width: 640px) {
+    .table-wrap { overflow: visible; }
+    .compare { display: block; min-width: 0; margin-top: 1.6rem; }
+    .compare thead { display: none; }
+    .compare tbody, .compare tr { display: block; }
+    .compare tr { padding-block: 1.2rem; border-bottom: 1px solid var(--bt-line); }
+    .compare tbody th { display: block; width: auto; padding: 0 0 .7rem; border: 0; }
+    .compare td { display: block; padding: .7rem 1rem; border: 0; }
+    .compare tr > :nth-child(2) { border-inline-start: 3px solid var(--green); padding-inline-start: 1rem; }
+    .compare tr > :nth-child(3) { padding-inline-start: calc(1rem + 3px); }
+    .compare td::before { content: attr(data-l); display: block; margin-bottom: .3rem; font-family: var(--text); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--green); }
+    .compare td:last-child { padding-block: .8rem 0; }
+    .compare td:last-child::before { color: var(--umber); }
+    .compare td.na { display: none; }
+  }
+
+  /* -------------------------------------------------------------- supply -- */
+  .bt-supply { position: relative; background: var(--green) var(--bt-pattern); color: var(--canvas); }
+  /* the green rises into the section above in leaf tips */
+  .bt-supply::before { content: ""; position: absolute; z-index: 3; inset-inline: 0; top: -27px; height: 28px; pointer-events: none;
+    background: var(--bt-tooth-up) repeat-x 0 100% / 64px 28px; }
+  .bt-supply .wrap { position: relative; }
+  .bt-supply h2 { color: var(--canvas); }
+  .bt-supply .intro { color: var(--bt-on); }
+  .bt-sprig--s { width: 170px; inset-inline-end: var(--gutter); bottom: -1rem; }
+  .materials { list-style: none; margin: 2.4rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 3rem; }
+  .materials li { padding-block: 1.4rem; border-top: 1px solid color-mix(in oklab, var(--canvas) 28%, transparent);
+    display: grid; grid-template-columns: 1.7rem minmax(0, 1fr) auto; column-gap: .6rem; row-gap: .4rem; align-items: baseline; }
+  .materials li::before { content: ""; width: 1.1rem; height: 1.1rem; align-self: start; margin-top: .5rem; background: var(--bt-on);
+    -webkit-mask: var(--bt-leaf) center / contain no-repeat; mask: var(--bt-leaf) center / contain no-repeat; }
+  .materials h3 { font-size: 1.45rem; color: var(--canvas); }
+  .materials p { grid-column: 2 / -1; color: var(--bt-on); }
+  .materials .price-slot { color: var(--bt-on); }
+  /* Maydi frankincense is the house's own material: it takes the full width, and the resin tear for a bullet */
+  .materials .lead { grid-column: 1 / -1; padding-block: 2rem; }
+  .materials .lead::before { width: 1.3rem; height: 1.3rem; margin-top: .7rem; background: var(--resin);
+    -webkit-mask: var(--bt-tear) center / contain no-repeat; mask: var(--bt-tear) center / contain no-repeat; }
+  .materials .lead h3 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
+  .materials .lead h3::after { content: attr(data-tag); margin-inline-start: .7em; font-family: var(--text); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--bt-gold); }
+
+  /* Arabic joins its letters: no tracking and no capitals on the generated labels */
+  html[lang="ar"] .bt .materials .lead h3::after, html[lang="ar"] .bt .compare td::before { letter-spacing: 0; text-transform: none; font-size: .9rem; }
+
+  /* mid-size screens: the sprigs sit closer to the arch, so they stay clear of the words and of the screen's edge */
+  @media (max-width: 1240px) {
+    .bt-sprig--a { width: 160px; inset-inline-start: -72px; }
+    .bt-sprig--b { width: 120px; inset-inline-end: -52px; }
+  }
+  @media (max-width: 1000px) {
+    .bt-sprig--a { width: 130px; inset-inline-start: -48px; }
+    .bt-sprig--b { width: 100px; inset-inline-end: -36px; }
+  }
   @media (max-width: 860px) {
-    .resin-head .frame { justify-self: start; max-width: 300px; }
-    .tree-strip { grid-template-columns: 1fr 1fr; }
+    .bt-plate { width: min(100%, 260px); margin-top: 1.4rem; }
+    .bt-sprig--a { width: 118px; inset-inline-start: -44px; }
+    .bt-sprig--b { width: 92px; inset-inline-end: -40px; }
+    .bt-path { grid-template-columns: 1fr 1fr; }
+    .bt-sprig--g { display: none; }
     .materials { grid-template-columns: 1fr; }
+    .bt-sprig--s { display: none; }
   }
 </style>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -51,35 +180,46 @@
 <body data-section="ar-botanicals.html">
 <header data-site-bar></header>
 <main>
+<div class="bt">
 
-  <section class="wrap page-head resin-head">
-    <div class="crumbs"><a href="ar.html">الرئيسية</a> / مايدي بوتانيكالز</div>
-    <div class="split">
-      <div>
-        <span class="chip">٠٤ · مايدي بوتانيكالز</span>
-        <h1 style="margin-top:1.2rem">مواد صومالية خام، يقودها المايدي.</h1>
-        <span class="lat" lang="en">Maydi Botanicals</span>
-        <p class="lede">لبان ومرّ وراتنجات وزيوت عطرية أحادية النوتة من الصومال، نادرة، تُورَّد لمصممي العطور ومصنّعيها حول العالم.</p>
-        <p style="margin-top:2rem"><a class="btn" href="ar-contact.html?topic=botanicals">اطلب المواد الخام</a></p>
+  <section class="bt-hero">
+    <div class="wrap page-head resin-head">
+      <div class="crumbs"><a href="ar.html">الرئيسية</a> / مايدي بوتانيكالز</div>
+      <div class="split">
+        <div class="bt-copy">
+          <span class="chip">٠٤ · مايدي بوتانيكالز</span>
+          <h1 style="margin-top:1.2rem">مواد صومالية خام، يقودها المايدي.</h1>
+          <span class="lat" lang="en">Maydi Botanicals</span>
+          <p class="lede">لبان ومرّ وراتنجات وزيوت عطرية أحادية النوتة من الصومال، نادرة، تُورَّد لمصممي العطور ومصنّعيها حول العالم.</p>
+          <p style="margin-top:2rem"><a class="btn btn--on" href="ar-contact.html?topic=botanicals">اطلب المواد الخام</a></p>
+        </div>
+        <div class="bt-plate">
+          <div class="bt-plate__arch">
+            <figure class="frame arch rv"><img src="assets/resin.webp" alt="دمعة واحدة من لبان المايدي، تتوهج بلون العنبر"></figure>
+          </div>
+          <img class="bt-sprig bt-sprig--a rv bt-grow" src="assets/botanicals-sprig-a.svg" alt="" aria-hidden="true" width="190" height="472">
+          <img class="bt-sprig bt-sprig--b rv bt-grow" src="assets/botanicals-sprig-b.svg" alt="" aria-hidden="true" width="150" height="220">
+          <p class="bt-sp"><i dir="ltr" lang="la">Boswellia frereana</i></p>
+        </div>
       </div>
-      <figure class="frame arch rv" style="margin:0"><img src="assets/resin.webp" alt="دمعة واحدة من لبان المايدي، تتوهج بلون العنبر"></figure>
     </div>
   </section>
 
-  <section class="section section--green">
+  <section class="section bt-origin">
     <div class="wrap">
+      <img class="bt-sprig bt-sprig--g rv bt-grow" src="assets/botanicals-sprig-a-green.svg" alt="" aria-hidden="true" width="130" height="323">
       <h2>من المنحدر إلى الدمعة</h2>
       <p class="intro">ينمو المايدي على أشجار البوسويليا المتجذّرة في منحدرات الحجر الجيري الرأسية في شمال الصومال، ولا ينمو في غيرها.</p>
-      <div class="tree-strip">
-        <figure class="rv"><img class="bw" src="assets/tree-cliff.webp" alt="شجرة بوسويليا على منحدر من الحجر الجيري"><figcaption>الشجرة، على المنحدر.</figcaption></figure>
-        <figure class="rv"><img class="bw" src="assets/tree-bark.webp" alt="لحاء بوسويليا رقيق كالورق"><figcaption>لحاء يتقشّر كالورق.</figcaption></figure>
-        <figure class="rv"><img class="bw" src="assets/tree-cut.webp" alt="راتنج يسيل من جرح في اللحاء"><figcaption>جرحٌ خفيف، فيسيل الراتنج.</figcaption></figure>
-        <figure class="rv"><img src="assets/tree-tears.webp" alt="دموع اللبان تُفرز في ملعقة خشبية"><figcaption>يجفّ دموعاً، ويُفرز باليد.</figcaption></figure>
-      </div>
+      <ol class="bt-path">
+        <li class="rv"><b>٠١</b><figure><div class="arch duo"><img class="bw" src="assets/tree-cliff.webp" alt="شجرة بوسويليا على منحدر من الحجر الجيري"></div><figcaption>الشجرة، على المنحدر.</figcaption></figure></li>
+        <li class="rv"><b>٠٢</b><figure><div class="arch duo"><img class="bw" src="assets/tree-bark.webp" alt="لحاء بوسويليا رقيق كالورق"></div><figcaption>لحاء يتقشّر كالورق.</figcaption></figure></li>
+        <li class="rv"><b>٠٣</b><figure><div class="arch duo"><img class="bw" src="assets/tree-cut.webp" alt="راتنج يسيل من جرح في اللحاء"></div><figcaption>جرحٌ خفيف، فيسيل الراتنج.</figcaption></figure></li>
+        <li class="rv"><b>٠٤</b><figure><div class="arch"><img src="assets/tree-tears.webp" alt="دموع اللبان تُفرز في ملعقة خشبية"></div><figcaption>يجفّ دموعاً، ويُفرز باليد.</figcaption></figure></li>
+      </ol>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section bt-compare">
     <div class="wrap">
       <h2>لماذا يختلف المايدي</h2>
       <p class="intro">من ورقة المواد الخاصة بالدار.</p>
@@ -87,19 +227,20 @@
         <table class="compare">
           <thead><tr><td></td><th scope="col">راتنج المايدي الصافي</th><th scope="col">الراتنج الصمغي الشائع</th></tr></thead>
           <tbody>
-            <tr><th scope="row">النوع</th><td><i dir="ltr" lang="la">Boswellia frereana</i></td><td><i dir="ltr" lang="la">Boswellia carterii</i></td></tr>
-            <tr><th scope="row">الصمغ</th><td>شبه خالٍ من الصمغ</td><td>صمغ يذوب في الماء</td></tr>
-            <tr><th scope="row">الاحتراق والملمس</th><td>احتراق نظيف، وملمس مخملي</td><td>—</td></tr>
-            <tr><th scope="row">الرائحة</th><td>بلسمية وخشبية عميقة، بنوتات علوية من الليمون والحمضيات، ودفء يشبه العسل</td><td>—</td></tr>
-            <tr><th scope="row">الاستعمالات</th><td>زيت عطري ونوتة قاعدة في العطور الراقية؛ والبخور والطقوس؛ وعلكة تقليدية</td><td>—</td></tr>
+            <tr><th scope="row">النوع</th><td data-l="راتنج المايدي الصافي"><i dir="ltr" lang="la">Boswellia frereana</i></td><td data-l="الراتنج الصمغي الشائع"><i dir="ltr" lang="la">Boswellia carterii</i></td></tr>
+            <tr><th scope="row">الصمغ</th><td data-l="راتنج المايدي الصافي">شبه خالٍ من الصمغ</td><td data-l="الراتنج الصمغي الشائع">صمغ يذوب في الماء</td></tr>
+            <tr><th scope="row">الاحتراق والملمس</th><td data-l="راتنج المايدي الصافي">احتراق نظيف، وملمس مخملي</td><td data-l="الراتنج الصمغي الشائع" class="na">—</td></tr>
+            <tr><th scope="row">الرائحة</th><td data-l="راتنج المايدي الصافي">بلسمية وخشبية عميقة، بنوتات علوية من الليمون والحمضيات، ودفء يشبه العسل</td><td data-l="الراتنج الصمغي الشائع" class="na">—</td></tr>
+            <tr><th scope="row">الاستعمالات</th><td data-l="راتنج المايدي الصافي">زيت عطري ونوتة قاعدة في العطور الراقية؛ والبخور والطقوس؛ وعلكة تقليدية</td><td data-l="الراتنج الصمغي الشائع" class="na">—</td></tr>
           </tbody>
         </table>
       </div>
     </div>
   </section>
 
-  <section class="section section--surface">
+  <section class="section bt-supply">
     <div class="wrap">
+      <img class="bt-sprig bt-sprig--s rv bt-grow" src="assets/botanicals-sprig-b.svg" alt="" aria-hidden="true" width="170" height="250">
       <h2>ما نورّده</h2>
       <p class="intro">تُحدَّد الدرجات والحد الأدنى للطلب والأسعار عند كل طلب.</p>
       <ul class="materials">
@@ -108,10 +249,11 @@
         <li class="rv"><h3>الراتنجات</h3><span class="price-slot">السعر</span><p>راتنجات عطرية صومالية أخرى عند الطلب.</p></li>
         <li class="rv"><h3>زيوت عطرية أحادية النوتة</h3><span class="price-slot">السعر</span><p>زيوت طبيعية لمصممي العطور، يقودها المايدي.</p></li>
       </ul>
-      <p style="margin-top:2.4rem"><a class="btn" href="ar-contact.html?topic=botanicals">اطلب المواد الخام</a></p>
+      <p style="margin-top:2.4rem"><a class="btn btn--on" href="ar-contact.html?topic=botanicals">اطلب المواد الخام</a></p>
     </div>
   </section>
 
+</div>
 </main>
 <footer data-site-foot></footer>
 <script src="products.js"></script>

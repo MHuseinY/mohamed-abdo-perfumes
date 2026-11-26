@@ -6,6 +6,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mohamed Abdo · Maydi House</title>
+<link rel="canonical" href="https://maydihouse.com/mohamed-abdo">
+<link rel="alternate" hreflang="en" href="https://maydihouse.com/mohamed-abdo">
+<link rel="alternate" hreflang="ar" href="https://maydihouse.com/ar-mohamed-abdo">
+<link rel="alternate" hreflang="x-default" href="https://maydihouse.com/mohamed-abdo">
 <meta name="description" content="Mohamed Abdo, Somali perfume designer, founder and perfumer of Maydi House.">
 <link rel="stylesheet" href="site.css">
 <link rel="stylesheet" href="glass.css">
@@ -29,6 +33,11 @@
   .archive .slot { border: 1px dashed color-mix(in oklab, var(--accent) 35%, transparent); padding: 1.6rem; min-height: 11rem; display: flex; flex-direction: column; justify-content: space-between; }
   .archive .slot h3 { font-size: 1.35rem; }
   .archive .slot p { color: var(--ink-soft); font-size: .92rem; }
+  .archive a.slot--article { border-style: solid; text-decoration: none; color: inherit; transition: background-color .3s ease; }
+  .archive a.slot--article:hover { background: var(--surface); }
+  .slot--article .series { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--umber); }
+  .slot--article h3 { margin-top: .5rem; }
+  .slot--article .go { margin-top: 1rem; font-size: .8rem; color: var(--accent); border-bottom: 1px solid currentColor; align-self: flex-start; }
   .follow { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.6rem; }
   @media (max-width: 860px) {
     .founder-head, .bio { grid-template-columns: 1fr; }
@@ -55,6 +64,7 @@
   .cred-zoom.on { display: flex; }
   .cred-zoom img { max-width: 100%; max-height: 100%; }
   @media (max-width: 860px) { .cred { grid-template-columns: 1fr; } }
+
 </style>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
@@ -80,7 +90,7 @@
       <div>
         <h1>Mohamed Abdo</h1>
         <p class="ar-name" lang="ar" dir="rtl">محمد عبده</p>
-        <p class="role">Founder and perfumer · Maydi House</p>
+        <p class="role">Independent perfumer · Founder of Maydi House</p>
         <p class="lede">A Somali perfume designer whose compositions are inventive, with a classic character. He founded Maydi House in Mogadishu to carry Somali fragrance to the world.</p>
       </div>
     </div>
@@ -92,11 +102,10 @@
       <div class="text rv">
         <p>Mohamed Abdo trained in perfume design through courses in the craft.</p>
         <p>He has created original fragrance compositions, collaborated with perfume houses across the Arab Gulf, and serves today as a fragrance innovation consultant.</p>
-        <p>At Maydi House he leads the Atelier, where brands come to him for a fragrance of their own, and he signs a private collection under his name.</p>
+        <p>At Maydi House he leads the Atelier, where brands come to him for a fragrance of their own.</p>
       </div>
     </div>
   </section>
-
   <section class="section section--surface">
     <div class="wrap">
       <h2>Credentials</h2>
@@ -112,11 +121,13 @@
     </div>
   </section>
 
+
+
   <!-- His perfumes: the only colour on this page comes from the bottles. -->
   <section class="section">
     <div class="wrap">
-      <h2>His perfumes</h2>
-      <p class="intro">Compositions designed by Mohamed Abdo. Both Timbroses are offered through the Atelier as ready formulas for brands, and Timbrose II also sits in his private collection as numbered bottles.</p>
+      <h2>His compositions</h2>
+      <p class="intro">Compositions designed by Mohamed Abdo. Both Timbroses are offered through the Atelier as ready formulas for brands.</p>
       <div class="works-wrap">
         <figure class="pair rv">
           <img src="assets/timbrose-pair.webp" width="888" height="1205" loading="lazy" alt="Timbrose II and Timbrose side by side: two black bottles with gold labels, one with a flared black cap and one with a round wooden cap">
@@ -127,12 +138,25 @@
     </div>
   </section>
 
+  <section class="section">
+    <div class="wrap">
+      <h2>Services</h2>
+      <p class="intro">What Mohamed Abdo offers, as an independent perfumer.</p>
+      <ol class="services">
+        <li>Exclusive perfume design</li>
+        <li>Consultations in perfume making and development</li>
+        <li>Consultations in establishing perfume companies</li>
+        <li>Perfume design courses</li>
+      </ol>
+    </div>
+  </section>
+
   <section class="section section--accent">
     <div class="wrap">
       <h2>Curriculum vitae</h2>
       <p class="intro">The full CV will be published here. What we can already state:</p>
       <ol class="cv">
-        <li><span class="when">Training</span><span class="what">Courses in perfume design</span></li>
+        <li><span class="when">Training</span><span class="what">Certified by the Perfumery Art Training in professional perfume design in accordance with the highest quality and safety standards.</span></li>
         <li><span class="when">Collaborations</span><span class="what">Perfume houses across the Arab Gulf</span></li>
         <li><span class="when">Today</span><span class="what">Fragrance innovation consultant; founder of Maydi House, Mogadishu</span></li>
         <li><span class="when">Dates and details</span><span class="what todo">To come from Mohamed Abdo</span></li>
@@ -144,10 +168,12 @@
     <div class="wrap">
       <h2>Archive, interviews and articles</h2>
       <p class="intro">A private archive of photographs, the interviews he has given and the articles written about him. This part of the page fills as material arrives.</p>
+      <div class="gallery__row gallery__row--3" style="margin-top:2.4rem"><figure><img src="assets/timbrose-ii-plaid.webp" width="1184" height="1776" alt="Timbrose II lying on brown tartan cloth beside a leather wallet, a wristwatch, a gold coin and a wooden frame" loading="lazy"></figure><figure><img src="assets/timbrose-ii-denim.webp" width="1184" height="1776" alt="Timbrose II lying on dark blue denim beside a leather wallet, a wristwatch and a gold coin" loading="lazy"></figure><figure><img src="assets/timbrose-ii-study.webp" width="1184" height="1776" alt="Timbrose II lying on grey cloth beside round spectacles, a key ring, a gold brooch and an old book" loading="lazy"></figure><figure><img src="assets/timbrose-ii-gift.webp" width="1184" height="1776" alt="Timbrose II in a slant of sunlight on grey cloth beside a wristwatch and a black gift box tied with ribbon" loading="lazy"></figure><figure><img src="assets/timbrose-ii-flatlay.webp" width="1184" height="1776" alt="Timbrose II seen from above on grey cloth, with a wristwatch with Arabic numerals, a pen, a book on Henri Cartier-Bresson and the edge of a denim jacket" loading="lazy"></figure><figure><img src="assets/timbrose-ii-label.webp" width="1000" height="1339" alt="A close view of the Timbrose II label, numbered 8 of 12, in low light" loading="lazy"></figure></div>
+      <p class="gallery__cap">Timbrose II, in the house's own photographs.</p>
       <div class="archive">
-        <div class="slot rv"><h3>Archive</h3><p>Photographs from the lab, the trees and the work. To come.</p></div>
+        <div class="slot rv"><h3>Archive</h3><p>Photographs of the perfumes are above. More from the lab, the trees and the work to come.</p></div>
         <div class="slot rv"><h3>Interviews</h3><p>Press and video interviews. To come.</p></div>
-        <div class="slot rv"><h3>Articles</h3><p>Writing by and about Mohamed Abdo. To come.</p></div>
+        <a class="slot slot--article rv" href="article-frankincense.html"><div><p class="series">Articles · Treasures of Nature 1</p><h3>Frankincense, tears of gold</h3></div><p>By Mohamed Abdo: the frankincense the house is named after, and what a 2021 study of twelve trees found in it.</p><span class="go">Read the article</span></a>
       </div>
       <div class="follow">
         <a class="btn btn--ghost" href="https://www.instagram.com/ma.perfumer/" rel="noopener">Instagram · @ma.perfumer</a>
@@ -173,6 +199,7 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
 })();
 </script>
+
 
 </body>
 </html>

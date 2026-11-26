@@ -3,6 +3,7 @@
   var ar = document.documentElement.lang === 'ar';
   var home = !!document.querySelector('[data-sc-act]');
   var section = document.body.getAttribute('data-section') || location.pathname.split('/').pop() || 'index.html';
+  if (!/\.html$/.test(section)) section += '.html';
 
   // Each house's mark, cut down from its arch drawing. The tear is the resin: it fills with colour when active.
   var TEAR = function (x, y) { return '<path class="tear" d="M' + x + ' ' + y + 'c0 0-1.6 2.2-1.6 3.1a1.6 1.6 0 0 0 3.2 0c0-.9-1.6-3.1-1.6-3.1z"/>'; };
@@ -36,7 +37,7 @@
   dock.innerHTML =
     '<div class="dock__pill"></div>' +
     '<button class="dock__more" type="button" aria-haspopup="dialog">' +
-      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9.5h14M5 14.5h14"/></svg></button>';
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9.5h14M5 14.5h14"/></svg><span></span></button>';
   document.body.appendChild(dock);
   document.documentElement.classList.add('has-dock');
 
@@ -45,6 +46,7 @@
   function renderItems(l) {
     dock.setAttribute('aria-label', l === 'ar' ? 'أقسام الدار' : 'Houses');
     more.setAttribute('aria-label', l === 'ar' ? 'القائمة' : 'Menu');
+    more.querySelector('span').textContent = l === 'ar' ? 'القائمة' : 'Menu';
     pill.innerHTML = '<span class="dock__lens" aria-hidden="true"></span>' +
       itemsFor(l).map(function (it) {
         var here = !home && it[0] === section;
@@ -106,6 +108,14 @@
     var r = housesAct.getBoundingClientRect();
     if (r.top > innerHeight * .5 || r.bottom < innerHeight * .5) { setActive(-1); return; }
     var best = -1, dist = Infinity;
+    if (housesAct.classList.contains('is-stacked')) {   // a phone: the houses stack, so the nearest one to the middle of the screen is current
+      houses.forEach(function (h, i) {
+        var b = h.getBoundingClientRect(), d = Math.abs(b.top + b.height / 2 - innerHeight / 2);
+        if (b.bottom > 0 && b.top < innerHeight && d < dist) { dist = d; best = i; }
+      });
+      setActive(dist < innerHeight * .4 ? best : -1);
+      return;
+    }
     houses.forEach(function (h, i) {
       var b = h.getBoundingClientRect();
       if (b.right < 0 || b.left > innerWidth) return;
@@ -118,6 +128,7 @@
   // The Arabic homepage keeps the four houses in one pan, so each button scrolls the pan to its own house.
   var goToken = 0;
   function goHouse(i) {
+    if (housesAct.classList.contains('is-stacked')) { houses[i].scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
     var tok = ++goToken, sign = 1, prevErr = null, tries = 0, still = 0, lastX = null;
     var track0 = houses[0] && houses[0].parentElement;
     var ratio = (housesAct.offsetHeight - innerHeight) / Math.max(1, (track0.scrollWidth - innerWidth));
@@ -153,8 +164,8 @@
     var y = scrollY;
     if (bar) bar.classList.toggle('is-glass', y > 8);
     var dy = y - lastY;
-    if (Math.abs(dy) > 6) { dock.classList.toggle('is-min', dy > 0 && y > 160); lastY = y; }
-    if (innerHeight + y >= document.documentElement.scrollHeight - 4) dock.classList.remove('is-min');
+    // The dock keeps its labels while scrolling: a phone visitor should always see where each button goes.
+    if (Math.abs(dy) > 6) lastY = y;
   }
   // The pan eases behind the scroll, so the arch keeps following for a moment after the scroll stops.
   var followUntil = 0, following = false;

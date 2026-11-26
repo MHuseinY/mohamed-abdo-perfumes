@@ -46,7 +46,7 @@ p { margin: 0; }
 
 /* ------------------------------------------------------------------ bar -- */
 .site-bar { position: sticky; top: 0; z-index: 50; height: var(--bar-h);
-  display: flex; align-items: center; gap: 2rem; padding-inline: clamp(16px, 4vw, 48px);
+  display: flex; align-items: center; gap: 2rem; padding-inline: max(clamp(16px, 4vw, 48px), calc((100% - 1240px) / 2));
   background: rgba(245,230,218,.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
 .bar-main { display: contents; }
 .mark { display: flex; align-items: center; gap: .6rem; color: var(--accent); text-decoration: none; font-family: var(--display); font-size: .95rem; }
@@ -131,11 +131,48 @@ p { margin: 0; }
 .card .house { margin-top: .9rem; font-size: .68rem; text-transform: uppercase; letter-spacing: .16em; color: var(--umber); }
 .card h3 { font-size: 1.12rem; margin-top: .25rem; color: var(--ink); line-height: 1.25; }
 .card:hover h3 { color: var(--accent); }
+/* A pick from another house: a text card in place of that house's photograph. */
+.frame.tc { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .9rem; padding: 2.4rem 1.6rem 1.8rem; text-align: center; text-decoration: none; color: inherit; }
+.tc-house { font-size: .64rem; text-transform: uppercase; letter-spacing: .18em; color: var(--umber); }
+.tc-name { font-family: var(--display); font-size: clamp(1.3rem, 2.4vw, 1.8rem); line-height: 1.15; color: var(--ink); }
+.pdp .tc-name, .feature .tc-name { font-size: clamp(1.8rem, 3.6vw, 2.8rem); }
+.tc-rule { width: 2.4rem; height: 1px; background: var(--accent-2); }
+.tc-notes { max-width: 20ch; font-size: .82rem; line-height: 1.55; color: var(--ink-soft); display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.pdp .tc-notes, .feature .tc-notes { max-width: 26ch; font-size: .95rem; -webkit-line-clamp: 4; line-clamp: 4; }
+.card:hover .tc-name { color: var(--accent); }
+html[lang="ar"] .tc-house { letter-spacing: 0; text-transform: none; font-size: .8rem; }
+/* A numbered list of services, two columns on a wide screen. */
+.services { list-style: none; counter-reset: sv; margin: 2rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(1.4rem, 4vw, 3rem); border-top: 1px solid var(--line); }
+.services li { counter-increment: sv; display: grid; grid-template-columns: 2.4rem 1fr; gap: .6rem; padding-block: 1.1rem; border-bottom: 1px solid var(--line); font-family: var(--display); font-size: 1.2rem; line-height: 1.4; color: var(--accent); }
+.services li::before { content: counter(sv, decimal-leading-zero); font: 500 .72rem/1.9 var(--text); letter-spacing: .12em; color: var(--umber); }
+@media (max-width: 860px) { .services { grid-template-columns: 1fr; } }
+.rec-note { margin-top: 1.1rem; max-width: 58ch; font-size: .88rem; line-height: 1.75; color: var(--umber); }
+.note.rec { margin: 0 0 1rem; }
+/* The Kuwaiti houses: one text card each, with a slot for Mohamed Abdo's own words. */
+.picks { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr)); gap: clamp(1.4rem, 3vw, 2.4rem); margin-top: 2.4rem; }
+.pick .frame { background: var(--paper); aspect-ratio: 4 / 5; border-radius: 999px 999px 0 0; overflow: hidden; border: 1px solid color-mix(in oklab, var(--accent) 10%, transparent); }
+.pick-label { margin-top: .9rem; font-size: .68rem; text-transform: uppercase; letter-spacing: .16em; color: var(--umber); }
+.pick-note { margin-top: .3rem; font-size: .9rem; line-height: 1.6; color: var(--ink-soft); }
+.pick-note.todo { opacity: .6; }
+html[lang="ar"] .pick-label { letter-spacing: 0; text-transform: none; font-size: .85rem; }
 .card .meta { display: flex; justify-content: space-between; gap: 1rem; margin-top: .35rem; font-size: .85rem; color: var(--ink-soft); }
 .price { color: var(--ink); font-weight: 600; font-variant-numeric: lining-nums; white-space: nowrap; }
 .price-row .price { font-family: var(--display); font-size: 1.5rem; font-weight: 500; }
 .price-slot { color: var(--ink-soft); }
 .price-slot::before { content: ""; display: inline-block; width: 1.6em; height: 1px; background: currentColor; vertical-align: middle; margin-inline-end: .4em; opacity: .6; }
+
+/* a row of photographs; four across on a wide screen, scrolled sideways (snapping) on a phone */
+.gallery { padding-bottom: 4rem; }
+.gallery h2 { font-size: 1.5rem; margin: 0 0 1.2rem; }
+.gallery__row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(.8rem, 2vw, 1.4rem); }
+.gallery__row--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.gallery__row figure { margin: 0; min-width: 0; }
+.gallery__row img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 58%; background: var(--surface); }
+.gallery__cap { margin-top: .9rem; font-size: .9rem; color: var(--ink-soft); }
+@media (max-width: 860px) {
+  /* One photo below the other on a phone: nothing slides in from the side. */
+  .gallery__row, .gallery__row--3 { grid-template-columns: 1fr; gap: 14px; }
+}
 
 .filters { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; justify-content: space-between; padding-block: 1.2rem; border-block: 1px solid var(--line); margin-bottom: 2.4rem; }
 .filters .set { display: flex; flex-wrap: wrap; gap: .5rem; }
@@ -217,7 +254,12 @@ p { margin: 0; }
 .menu-foot .lang { justify-self: start; display: flex !important; }
 @media (max-width: 1100px) { .menu-btn { display: inline-flex; } }
 @media (max-width: 860px) {
-  .site-bar nav, .site-bar .lang { display: none; }
+  .site-bar nav { display: none; }
+  /* The language switch stays in the bar on a phone, as a 44px tap target, not hidden in the menu. */
+  .site-bar .lang { display: flex; align-items: center; gap: 0; margin-inline-start: auto; padding: 0; border-radius: 999px; font-size: .78rem; }
+  .site-bar .lang > * { display: flex; align-items: center; min-height: 44px; padding-inline: .8rem; }
+  .foot ul { gap: 0; }
+  .foot ul a { display: inline-block; padding-block: .75rem; }
   .site-bar .mark { font-size: .85rem; }
 }
 
