@@ -1,0 +1,551 @@
+<!doctype html>
+<!-- Maydi House homepage, experiment v2: the "Imagen the first page" mockup merged with scroll-craft.
+     Score: pin (who) > reveal (who, founder) > pan (what) > pin (why, the tree) > flow (trust) > pin (peak + close). -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>
+  // Opened as ".../v2" without the trailing slash, every relative path (assets/, scrollcraft.js)
+  // resolves one folder too high and the images fail. Add the slash before anything loads.
+  if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maydi House · A Somali fragrance house</title>
+<link rel="canonical" href="https://maydihouse.com/">
+<link rel="alternate" hreflang="en" href="https://maydihouse.com/">
+<link rel="alternate" hreflang="ar" href="https://maydihouse.com/ar">
+<link rel="alternate" hreflang="x-default" href="https://maydihouse.com/">
+<meta name="description" content="A Somali fragrance house in Mogadishu, named after Maydi, the most prized frankincense in the world.">
+<link rel="stylesheet" href="scrollcraft.css">
+<link rel="stylesheet" href="glass.css">
+<style>
+  /* Thmanyah: LOCAL PREVIEW ONLY. Its license forbids hosting the font files, so the
+     font files must never be published as artifact files. Do not publish fonts-local/. */
+  @font-face { font-family: "Thmanyah Serif Display"; font-weight: 400; font-display: swap; src: url("fonts-local/thmanyahserifdisplay-Regular.woff2") format("woff2"); }
+  @font-face { font-family: "Thmanyah Serif Display"; font-weight: 500; font-display: swap; src: url("fonts-local/thmanyahserifdisplay-Medium.woff2") format("woff2"); }
+  @font-face { font-family: "Thmanyah Serif Display"; font-weight: 700; font-display: swap; src: url("fonts-local/thmanyahserifdisplay-Bold.woff2") format("woff2"); }
+  @font-face { font-family: "Thmanyah Sans"; font-weight: 400; font-display: swap; src: url("fonts-local/thmanyahsans-Regular.woff2") format("woff2"); }
+  @font-face { font-family: "Thmanyah Sans"; font-weight: 500; font-display: swap; src: url("fonts-local/thmanyahsans-Medium.woff2") format("woff2"); }
+  @font-face { font-family: "Thmanyah Sans"; font-weight: 700; font-display: swap; src: url("fonts-local/thmanyahsans-Bold.woff2") format("woff2"); }
+  :root {
+    --sc-canvas:     #F5E6DA;
+    --sc-surface:    #DFD3C3;
+    --sc-ink:        #2B1418;
+    --sc-ink-soft:   #5E4A47;
+    --sc-accent:     #702030;
+    --sc-accent-ink: #F5E6DA;
+    --sc-font-display: "Thmanyah Serif Display", Georgia, serif;
+    --sc-font-text:    "Thmanyah Sans", system-ui, sans-serif;
+    --resin: #D9A441;
+    --green: #3A6351;
+    --bar-h: 64px;
+  }
+  body { font-synthesis: none; }
+  .ar { font-family: "Thmanyah Serif Display", Georgia, serif; letter-spacing: 0; }
+  .caps { text-transform: uppercase; letter-spacing: .16em; }
+  .bw { filter: grayscale(1) contrast(1.05); }
+
+  /* ---------------------------------------------------------------- bar -- */
+  .site-bar { position: fixed; inset: 0 0 auto 0; z-index: 50; height: var(--bar-h);
+    display: flex; align-items: center; gap: 2rem; padding-inline: max(clamp(16px, 4vw, 48px), calc((100% - 1240px) / 2));
+    background: rgba(245,230,218,.94);
+    backdrop-filter: blur(8px); border-bottom: 1px solid color-mix(in oklab, var(--sc-accent) 18%, transparent); }
+  .mark { display: flex; align-items: center; gap: .6rem; color: var(--sc-accent); text-decoration: none;
+    font-family: var(--sc-font-display); font-size: .95rem; }
+  .mark svg { width: 20px; height: 24px; }
+  .site-bar nav { display: flex; gap: 1.6rem; margin-inline-start: auto; }
+  .site-bar nav a { font-size: .72rem; color: var(--sc-ink); text-decoration: none; }
+  .site-bar nav a:hover { color: var(--sc-accent); }
+  .lang { display: flex; align-items: center; gap: .5rem; font-size: .75rem; border: 1px solid var(--sc-accent);
+    padding: .3rem .6rem; color: var(--sc-accent); }
+  .lang [aria-disabled] { cursor: not-allowed; opacity: .75; }
+  .site-bar nav a.bar-cta, .site-bar nav a.bar-cta:hover { color: var(--sc-accent-ink); }
+  .bar-cta { font-size: .72rem; background: var(--sc-accent); color: var(--sc-accent-ink); padding: .55rem .9rem; text-decoration: none; }
+
+  /* ------------------------------------------------------------- 1 hero --
+     One screen, no pin. The client found that scrolling through the old film gave the visitor nothing (2026-10-17), so the
+     words come first: who we are, what we offer and why us are on screen at once, and a normal scroll moves on.
+     The logo film plays once on its own in the arch: black and white until the drop, then the colour blooms (the signature
+     move), and it rests on the full logo. --g is the grayscale amount, set by the script at the end of the page. */
+  .hero { min-height: 100svh; display: grid; align-items: center; padding-block: calc(var(--bar-h) + clamp(1.4rem, 4vh, 3rem)) clamp(1.4rem, 4vh, 3rem); }
+  .hero-in { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; }
+  .hero-film { margin: 0; justify-self: center; width: min(100%, 25rem); }
+  .hero-film .arch { position: relative; aspect-ratio: 960 / 1080; background: #EFE6DC; box-shadow: 0 24px 60px rgba(43, 20, 24, .12); }
+  .hero-film img, .hero-film video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%;
+    filter: grayscale(var(--g, 0)) contrast(1.03); }
+  .hero-film video { clip-path: inset(0 round 999px 999px 0 0); }
+  .hero h1 { font-family: var(--sc-font-display); font-weight: 500; color: var(--sc-accent); line-height: 1; margin: .6rem 0 1rem; font-size: clamp(2.6rem, 6vw, 5rem); letter-spacing: .14em; }
+  .hero .lead { margin: 0; max-width: 40ch; color: var(--sc-ink-soft); font-family: var(--sc-font-display); font-size: clamp(1.1rem, 1.6vw, 1.35rem); line-height: 1.6; }
+  .answers { list-style: none; margin: clamp(1.6rem, 4vh, 2.6rem) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid color-mix(in oklab, var(--sc-accent) 25%, transparent); }
+  .answers li { padding-top: 1rem; padding-inline-end: 1.2rem; }
+  .answers li + li { padding-inline-start: 1.2rem; border-inline-start: 1px solid color-mix(in oklab, var(--sc-accent) 18%, transparent); }
+  .answers a { display: block; color: inherit; text-decoration: none; }
+  .answers b { display: block; color: #8A5A3C; font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; }
+  .answers span { display: block; margin-top: .45rem; line-height: 1.55; color: var(--sc-ink); font-size: .95rem; }
+  .answers em { display: inline-block; margin-top: .6rem; font-style: normal; color: var(--sc-accent); border-bottom: 1px solid currentColor; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
+  .answers a:hover em, .answers a:focus-visible em { border-bottom-width: 2px; }
+  .eyebrow { font-size: .7rem; color: #8A5A3C; }
+  .btn { display: inline-block; margin-top: 1.2rem; background: var(--sc-accent); color: var(--sc-accent-ink);
+    padding: .8rem 1.4rem; font-size: .72rem; text-decoration: none; }
+
+  /* ------------------------------------------------ 2 who (flow+reveal) -- */
+  .who { display: grid; grid-template-columns: 5fr 6fr; gap: clamp(2rem, 6vw, 6rem); align-items: center; }
+  .arch { border-radius: 999px 999px 0 0; overflow: hidden; }
+  /* If a photo ever fails to load, show the empty arch, not a clipped line of alt text. */
+  .arch img { color: transparent; }
+  .who figure { margin: 0; }
+  .who .arch img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 30%; display: block; }
+  .who figcaption { margin-top: .8rem; font-size: .8rem; color: var(--sc-ink-soft); display: flex; justify-content: space-between; }
+  .who h2 { color: var(--sc-accent); }
+  .who .sc-body { max-width: 52ch; }
+  .text-link { color: var(--sc-accent); font-size: .78rem; text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+  .text-link[aria-disabled] { cursor: default; }
+
+  /* ------------------------------------------------------- 3 what (pan) -- */
+  .rail { display: flex; gap: clamp(2rem, 4vw, 4rem); align-items: center; height: 100%; padding-inline: 8vw; padding-top: var(--bar-h); }
+  .rail__lead { flex: 0 0 min(26rem, 32vw); }
+  .rail__lead h2 { color: var(--sc-accent); }
+  .rail__end { flex: 0 0 min(20rem, 26vw); font-family: var(--sc-font-display); font-size: clamp(1.3rem, 2.2vw, 1.8rem); color: var(--sc-accent); }
+  .house { flex: 0 0 min(21rem, 26vw); }
+  .house:nth-of-type(even) { margin-top: 12vh; }
+  .house:nth-of-type(odd)  { margin-bottom: 12vh; }
+  .house__in { --draw: 1; }
+  .house svg { display: block; height: 34vh; width: auto; max-width: 100%; margin-bottom: 1rem; overflow: visible; }
+  .house svg * { fill: none; stroke: var(--sc-accent); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+    stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--draw)); }
+  .house svg .frame { stroke-width: 1.2; stroke: #A64452; }
+  .house svg .tear { stroke: var(--resin); stroke-width: 1.8; }
+  .house .num { font-size: .72rem; color: #A64452; }
+  .house h3 { font-family: var(--sc-font-display); font-weight: 500; color: var(--sc-accent); font-size: 1.35rem; letter-spacing: .08em; margin: .3rem 0 .5rem; }
+  .house p { margin: 0 0 .4rem; font-size: .9rem; color: var(--sc-ink-soft); max-width: 32ch; }
+  .house p.ar { font-family: "Thmanyah Sans", system-ui, sans-serif; color: var(--sc-ink); font-size: .95rem; line-height: 1.6; }
+  .house .text-link { display: inline-block; margin-top: .7rem; }
+  @media (prefers-reduced-motion: no-preference) {
+    .house__in { opacity: calc((.55 + .45 * var(--draw)) * var(--exit, 1)); transform: translate3d(0, calc((1 - var(--draw)) * 26px), 0); }
+  }
+
+  /* ---------------------------------------------------- 4 why (pin, tree) --
+     The approved green belongs to this act only. */
+  .tree-stage { display: grid; grid-template-columns: 1fr minmax(0, 30vw); gap: 6vw; align-items: center;
+    padding: var(--bar-h) 8vw 0; background: var(--green); color: #F5E6DA; }
+  .tree-lines { display: grid; gap: 1.1rem; }
+  .tree-lines .sci { font-family: var(--sc-font-display); color: #CFDDD3; margin: 0; font-size: 1rem; }
+  .tree-lines p[data-step] { font-family: var(--sc-font-display); font-size: clamp(1.4rem, 2.8vw, 2.4rem); line-height: 1.2;
+    max-width: 26ch; margin: 0; transition: color .4s ease; }
+  .tree-lines p.is-past { color: #CFDDD3; }
+  .stack { position: relative; height: min(70vh, 44vw); margin: 0; }
+  .stack img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .6s ease; }
+  .stack img.is-current { opacity: 1; }
+
+  /* ---------------------------------------------------- 5 trust (flow) --- */
+  .trust { display: grid; grid-template-columns: 5fr 6fr; gap: clamp(2rem, 6vw, 6rem); align-items: start; }
+  .trust h2 { color: var(--sc-accent); }
+  .license { font-family: var(--sc-font-display); font-size: 1.15rem; line-height: 1.5; color: var(--sc-ink); max-width: 34ch; }
+  .values { list-style: none; margin: 0; padding: 0; border-top: 1px solid color-mix(in oklab, var(--sc-accent) 25%, transparent); }
+  .values li { display: grid; grid-template-columns: 3.2rem 1fr; gap: 1rem; padding: 1.4rem 0;
+    border-bottom: 1px solid color-mix(in oklab, var(--sc-accent) 25%, transparent); }
+  .values b { font-family: var(--sc-font-display); font-weight: 500; color: #A64452; font-size: 1.3rem; }
+  .values h3 { font-family: var(--sc-font-display); font-weight: 500; color: var(--sc-accent); margin: 0 0 .3rem; font-size: 1.25rem; }
+  .values p { margin: 0; color: var(--sc-ink-soft); }
+
+  /* -------------------------------------------- 6 peak + close (pin, last) --
+     The mockup's burgundy name band becomes the peak: the resin is the only
+     thing on the page that earns its colour, and it does it under the wheel. */
+  .finale { --sc-ink: #F5E6DA; --sc-ink-soft: #EAD3CB; background: var(--sc-accent); color: #F5E6DA;
+    display: grid; grid-template-rows: 1fr auto; padding-top: var(--bar-h); }
+  .finale__in { display: grid; place-items: center; align-content: center; gap: 1.1rem; text-align: center; padding-inline: 16px; }
+  .resin { position: relative; width: min(30vh, 60vw); }
+  .resin::before { content: ""; position: absolute; inset: -30%; border-radius: 50%; pointer-events: none;
+    background: radial-gradient(circle, rgba(217,164,65,.45), rgba(217,164,65,0) 65%);
+    opacity: clamp(0, calc(var(--sc-p, 0) * 1.6 - .2), 1); }
+  .resin .arch { position: relative; border: 1px solid rgba(245,230,218,.5); }
+  .resin img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover;
+    filter: grayscale(clamp(0, calc(1 - var(--sc-p, 0) * 1.8), 1)) brightness(calc(.75 + .25 * min(1, var(--sc-p, 0) * 1.8))); }
+  .finale h2 { font-family: var(--sc-font-display); font-weight: 400; font-size: clamp(1.4rem, 2.8vw, 2.2rem); max-width: 30ch; margin: 0; line-height: 1.3; }
+  .finale p.ar { margin: 0; font-size: 1.4rem; color: #EAD3CB; }
+  .btn--light { background: #F5E6DA; color: var(--sc-accent); margin-top: .4rem; }
+  .foot { display: flex; flex-wrap: wrap; gap: .6rem 2rem; justify-content: space-between; align-items: center;
+    padding: 1.1rem clamp(16px, 4vw, 48px); font-size: .75rem; border-top: 1px solid rgba(245,230,218,.25); color: #EAD3CB; }
+  .foot a { color: #F5E6DA; }
+  .foot .caps { font-family: var(--sc-font-display); color: #F5E6DA; }
+  .foot .soon { opacity: .7; }
+
+  /* ----------------------------------------------------------- mobile ---- */
+  @media (max-width: 860px) {
+    .site-bar nav a:not(.bar-cta) { display: none; }
+    .site-bar { gap: 1rem; }
+    .hero { min-height: 0; padding-block: calc(var(--bar-h) + 1.4rem) 2.6rem; }
+    .hero-in { grid-template-columns: 1fr; gap: 1.6rem; }
+    .hero-film { order: -1; width: min(64vw, 17rem); }
+    .answers { grid-template-columns: 1fr; }
+    .answers li, .answers li + li { padding: .9rem 0; border-inline-start: 0; border-bottom: 1px solid color-mix(in oklab, var(--sc-accent) 18%, transparent); }
+    .who, .trust { grid-template-columns: 1fr; }
+    .who figure { max-width: 22rem; }
+    .rail__lead { flex-basis: 78vw; } .house { flex-basis: 70vw; } .rail__end { flex-basis: 70vw; }
+    .house:nth-of-type(even), .house:nth-of-type(odd) { margin: 0; }
+    .house svg { height: 28vh; }
+    .houses-act.is-stacked .rail { display: grid; height: auto; gap: 2.4rem; padding: 3rem var(--sc-gutter, 20px) 4rem; }
+    .houses-act.is-stacked .rail__lead, .houses-act.is-stacked .house, .houses-act.is-stacked .rail__end { flex: none; width: auto; }
+    .houses-act.is-stacked .house svg { height: 22vh; margin-inline: auto; }
+    .houses-act.is-stacked .house__in { text-align: center; }
+    .houses-act.is-stacked .house p { margin-inline: auto; }
+    .houses-act.is-stacked .house .num { display: none; }
+    .tree-stage { grid-template-columns: 1fr; grid-template-rows: 34vh auto; align-content: center; gap: 1.4rem; padding-inline: 16px; }
+    .stack { height: 34vh; width: min(100%, 26vh); justify-self: center; }
+    .tree-lines { gap: .7rem; }
+    .tree-lines p[data-step] { font-size: 1.15rem; }
+  }
+  @media (max-width: 480px) { .lang { display: none; } }
+  /* ---------------------------------------------------- phone menu ---- */
+  .menu-btn { display: none; align-items: center; gap: .55rem; margin-inline-start: auto; cursor: pointer;
+    background: transparent; color: #702030; border: 1px solid #702030; padding: .55rem .8rem;
+    font: 600 .72rem/1 var(--sc-font-text); letter-spacing: .14em; text-transform: uppercase; }
+  .menu-btn i { width: 16px; height: 8px; border-block: 1.5px solid currentColor; }
+  .menu-panel { position: fixed; inset: 0; z-index: 90; overflow-y: auto; background: #F5E6DA; color: #2B1418;
+    display: grid; grid-template-rows: auto 1fr auto; gap: 1.4rem;
+    padding: calc(env(safe-area-inset-top, 0px) + 14px) 20px calc(env(safe-area-inset-bottom, 0px) + 24px); }
+  .menu-panel[hidden] { display: none; }
+  .menu-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .menu-close { background: transparent; border: 1px solid #702030; color: #702030; padding: .55rem .8rem; cursor: pointer;
+    font: 600 .72rem/1 var(--sc-font-text); letter-spacing: .14em; text-transform: uppercase; }
+  .menu-links { display: grid; align-content: start; }
+  .menu-links a { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 1rem 0;
+    border-bottom: 1px solid rgba(112,32,48,.2); color: #702030; text-decoration: none;
+    font-family: var(--sc-font-display); font-size: 1.7rem; line-height: 1.2; }
+  .menu-links a small { font-family: var(--sc-font-text); font-size: .8rem; color: #8A5A3C; letter-spacing: 0; text-transform: none; }
+  .menu-foot { display: grid; gap: 1rem; }
+  .menu-foot .btn { text-align: center; margin: 0; }
+  .menu-foot .lang { justify-self: start; display: flex !important; }
+  @media (max-width: 860px) {
+    .menu-btn { display: inline-flex; }
+    .site-bar nav { display: none; }
+    /* The language switch stays in the bar on a phone, as a 44px tap target, not hidden in the menu. */
+    .site-bar .lang { display: flex; align-items: center; gap: 0; margin-inline-start: auto; padding: 0; border-radius: 999px; font-size: .78rem; }
+    .site-bar .lang > * { display: flex; align-items: center; min-height: 44px; padding-inline: .8rem; }
+    .foot a { display: inline-flex; align-items: center; min-height: 44px; }
+    .site-bar .mark { white-space: nowrap; font-size: .85rem; }
+  }
+</style>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:site_name" content="Maydi House">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Maydi House · A Somali fragrance house">
+<meta property="og:description" content="A Somali fragrance house in Mogadishu, named after Maydi, the most prized frankincense in the world.">
+<meta property="og:image" content="https://maydihouse.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<span data-sc-progress></span>
+
+<header class="site-bar">
+  <a class="mark caps" href="#top" aria-label="Maydi House, home">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 76" aria-hidden="true"><g fill="none" stroke="#702030" stroke-linecap="round" stroke-linejoin="round"><path d="M20 64H2V31C2 17 15 8 32 1C49 8 62 17 62 31V64H44" stroke-width="2.6"/><path d="M14 64V27L32 47L50 27V64" stroke-width="2.4"/></g><path d="M32 54V20" fill="none" stroke="#3A6351" stroke-width="2" stroke-linecap="round"/><g fill="#3A6351"><ellipse cx="32" cy="14" rx="2.9" ry="6"/><ellipse cx="26.2" cy="25.5" rx="4.6" ry="2.3" transform="rotate(-38 26.2 25.5)"/><ellipse cx="37.8" cy="25.5" rx="4.6" ry="2.3" transform="rotate(38 37.8 25.5)"/><ellipse cx="26.6" cy="34.5" rx="4.4" ry="2.2" transform="rotate(-32 26.6 34.5)"/><ellipse cx="37.4" cy="34.5" rx="4.4" ry="2.2" transform="rotate(32 37.4 34.5)"/></g><path d="M32 53C32 53 25.5 61.5 25.5 66.2A6.5 6.5 0 0 0 38.5 66.2C38.5 61.5 32 53 32 53Z" fill="#D9A441" stroke="#702030" stroke-width="2" stroke-linejoin="round"/></svg>
+    Maydi House
+  </a>
+  <nav aria-label="Houses">
+    <a class="caps" href="atelier.html">Atelier</a>
+    <a class="caps" href="factory.html">Factory</a>
+    <a class="caps" href="boutique.html">Boutique</a>
+    <a class="caps" href="botanicals.html">Botanicals</a>
+    <a class="caps bar-cta" href="contact.html">Partner with us</a>
+  </nav>
+  <div class="lang"><span aria-current="true">EN</span><span aria-hidden="true">|</span>
+    <a class="ar" lang="ar" href="ar.html" style="color:inherit;text-decoration:none">العربية</a></div>
+  <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i>Menu</button>
+</header>
+<div class="menu-panel" id="menu" role="dialog" aria-modal="true" aria-label="Maydi House" hidden><div class="menu-head"><span class="mark">Maydi House</span><button class="menu-close" id="menu-close" type="button">Close</button></div><nav class="menu-links"><a href="atelier.html">Atelier<small>Bespoke design</small></a><a href="factory.html">Factory<small>Under construction</small></a><a href="boutique.html">Boutique<small>Curated fragrances</small></a><a href="botanicals.html">Botanicals<small>Raw materials</small></a><a href="mohamed-abdo.html">Mohamed Abdo<small>Founder and perfumer</small></a></nav><div class="menu-foot"><a class="btn caps" href="contact.html">Partner with us</a><a class="btn btn--ghost caps" href="https://wa.me/252610161810" rel="noopener">WhatsApp</a><div class="lang"><span aria-current="true">EN</span><span aria-hidden="true">|</span><a class="ar" lang="ar" href="ar.html" style="color:inherit;text-decoration:none">العربية</a></div></div></div>
+
+<main id="top">
+
+  <!-- 1 · WHO, WHAT, WHY at a glance: one screen. The three answers are on screen at once; the logo film plays once in the arch. -->
+  <section class="sc-section hero" data-sc-act="flow" data-sc-drift="#F5E6DA">
+    <div class="sc-wrap hero-in">
+      <div>
+        <div class="eyebrow caps">Mogadishu · Somalia</div>
+        <h1>MAYDI HOUSE</h1>
+        <p class="lead">A Somali fragrance house, named after Maydi, the most prized frankincense in the world.</p>
+        <p class="ar" lang="ar" dir="rtl">دار عطور صومالية فاخرة، تحمل اسم أثمن لبان في العالم</p>
+        <ul class="answers">
+          <li><a href="#who"><b>Who we are</b><span>A fragrance house in Mogadishu, founded by the perfume designer Mohamed Abdo.</span><em>The founder</em></a></li>
+          <li><a href="#houses"><b>What we offer</b><span>Four houses: perfume design, manufacturing, a boutique and raw materials.</span><em>Our houses</em></a></li>
+          <li><a href="#why"><b>Why us</b><span>An identity drawn from Somali land and its aromatic resources, and a house officially licensed in Mogadishu.</span><em>Why partners trust us</em></a></li>
+        </ul>
+      </div>
+      <figure class="hero-film">
+        <div class="arch">
+          <img src="assets/hero-film-end.webp" width="960" height="1080" alt="The Maydi House logo: a pointed arch with an M, a tree and a drop of amber resin">
+          <video src="assets/hero-film-m.mp4" poster="assets/hero-film-start.webp" muted playsinline preload="auto" aria-hidden="true"></video>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 2 · WHO WE ARE, in person: flow + reveal. The founder, framed in the arch. -->
+  <section id="who" class="sc-section" data-sc-act="flow" data-sc-drift="#F5E6DA">
+    <div class="sc-wrap who">
+      <figure data-sc-reveal="up" data-sc-reveal-at="0.1 0.55">
+        <div class="arch"><img class="bw" src="assets/founder.webp" width="900" height="1600" alt="Mohamed Abdo smelling a perfume blotter"></div>
+        <figcaption><span>Mohamed Abdo, founder and perfumer</span><span class="ar" lang="ar" dir="rtl">محمد عبده</span></figcaption>
+      </figure>
+      <div class="sc-stack" data-sc-in data-sc-stagger="80">
+        <h2 class="sc-display sc-display--lg">Founded by a perfumer.</h2>
+        <p class="sc-body">Maydi House was founded in Mogadishu by Mohamed Abdo, a Somali perfume designer who trained through courses in perfume design.</p>
+        <p class="sc-body">He has created original compositions, worked with perfume houses across the Arab Gulf, and consults on fragrance innovation. The house carries his signature: inventive, with a classic character.</p>
+        <p><a class="text-link caps" href="mohamed-abdo.html">Meet Mohamed Abdo</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · WHAT WE OFFER: pan. The four houses from the mockup, as a gallery you walk
+       past rather than a row of equal cards. Each arch draws itself as it arrives. -->
+  <section id="houses" data-sc-act="pan" data-sc-span="3.6" data-sc-drift="#DFD3C3" class="houses-act">
+    <div data-sc-stage>
+      <div class="rail" data-sc-pan="0.05">
+        <div class="rail__lead sc-stack">
+          <h2 class="sc-display sc-display--lg">Four houses. One origin.</h2>
+          <p class="sc-body">Each house serves a different partner. All of them begin with Somali land.</p>
+          <p class="ar" lang="ar" dir="rtl">أقسام مايدي هاوس</p>
+        </div>
+
+        <article class="house"><div class="house__in">
+          <svg viewBox="0 0 200 260" aria-hidden="true">
+            <path class="frame" pathLength="1" d="M24 252V104a76 76 0 0 1 152 0v148"/>
+            <path pathLength="1" d="M14 252H186"/>
+            <path pathLength="1" d="M88 120H112M92 120v30M108 120v30"/>
+            <path pathLength="1" d="M92 150A34 34 0 1 0 108 150"/>
+            <path pathLength="1" d="M70 196c15-6 45 6 60 0"/>
+            <path pathLength="1" d="M100 58v42M95 58a5 7 0 1 1 10 0z"/>
+            <path class="tear" pathLength="1" d="M100 104c0 0-4 6-4 8a4 4 0 0 0 8 0c0-2-4-8-4-8z"/>
+            <path pathLength="1" d="M140 118l12 116 8-1-12-116z"/>
+          </svg>
+          <div class="num">01</div>
+          <h3>MAYDI ATELIER</h3>
+          <p>Bespoke perfume design and custom fragrance development.</p>
+          <p class="ar" lang="ar" dir="rtl">تصميم العطور وتطوير التركيبات العطرية حسب الطلب</p>
+          <a class="text-link caps" href="atelier.html">Start a project</a>
+        </div></article>
+
+        <article class="house"><div class="house__in">
+          <svg viewBox="0 0 200 260" aria-hidden="true">
+            <path class="frame" pathLength="1" d="M24 252V104a76 76 0 0 1 152 0v148"/>
+            <path pathLength="1" d="M14 252H186"/>
+            <path pathLength="1" d="M40 226H160"/>
+            <path pathLength="1" d="M46 236a6 6 0 1 0 12 0a6 6 0 1 0-12 0M142 236a6 6 0 1 0 12 0a6 6 0 1 0-12 0"/>
+            <path pathLength="1" d="M56 226v-30h16v30M60 196v-8h8v8M92 226v-30h16v30M96 196v-8h8v8M128 226v-30h16v30M132 196v-8h8v8"/>
+            <path pathLength="1" d="M100 96v22M90 118h20v28l-6 12h-8l-6-12z"/>
+            <path class="tear" pathLength="1" d="M100 164c0 0-3 5-3 7a3 3 0 0 0 6 0c0-2-3-7-3-7z"/>
+            <path pathLength="1" d="M48 132a12 12 0 1 0 24 0a12 12 0 1 0-24 0M56 132a4 4 0 1 0 8 0a4 4 0 1 0-8 0"/>
+          </svg>
+          <div class="num">02</div>
+          <h3>MAYDI FACTORY</h3>
+          <p>Perfume manufacturing, filling and private-label production.</p>
+          <p class="ar" lang="ar" dir="rtl">تصنيع العطور وتعبئتها وإنتاجها لحساب العلامات التجارية</p>
+          <a class="text-link caps" href="factory.html">Under construction · Register interest</a>
+        </div></article>
+
+        <article class="house"><div class="house__in">
+          <svg viewBox="0 0 200 260" aria-hidden="true">
+            <path class="frame" pathLength="1" d="M24 252V104a76 76 0 0 1 152 0v148"/>
+            <path pathLength="1" d="M14 252H186"/>
+            <path pathLength="1" d="M82 128v-24a18 18 0 0 1 36 0v24z"/>
+            <path pathLength="1" d="M44 170H156M44 226H156"/>
+            <path pathLength="1" d="M58 170v-28h16v28M62 142v-8h8v8"/>
+            <path pathLength="1" d="M88 170a14 14 0 1 1 24 0zM96 150v-8h8v8"/>
+            <path pathLength="1" d="M126 170l-4-20h16l-4 20zM127 150v-6h6v6"/>
+            <path pathLength="1" d="M56 226v-22h28v22M100 226v-20h24v20M98 206h28M138 226v-16h12v16"/>
+          </svg>
+          <div class="num">03</div>
+          <h3>MAYDI BOUTIQUE</h3>
+          <p>Perfumes from other houses that Mohamed Abdo has tried and recommends.</p>
+          <p class="ar" lang="ar" dir="rtl">عطور من دور أخرى يرشحها محمد عبده</p>
+          <a class="text-link caps" href="boutique.html">See the pick</a>
+        </div></article>
+
+        <article class="house"><div class="house__in">
+          <svg viewBox="0 0 200 260" aria-hidden="true">
+            <path class="frame" pathLength="1" d="M24 252V104a76 76 0 0 1 152 0v148"/>
+            <path pathLength="1" d="M14 252H186"/>
+            <path pathLength="1" d="M100 250c-2-22 4-42-4-64-6-18 0-36 4-50 3-14 0-26 8-38"/>
+            <path pathLength="1" d="M97 186c-13-10-25-20-35-38M99 160c13-10 25-20 33-40M100 128c-10-6-18-14-22-26"/>
+            <path pathLength="1" d="M62 148l-9-5M62 148l-3-10M62 148l6-8M132 120l-2-10M132 120l8-6M132 120l9 2M78 102l-8-4M78 102l-1-10M108 98l-3-9M108 98l7-6"/>
+            <path class="tear" pathLength="1" d="M104 200c0 0-3 5-3 7a3 3 0 0 0 6 0c0-2-3-7-3-7zM92 174c0 0-3 5-3 7a3 3 0 0 0 6 0c0-2-3-7-3-7z"/>
+            <path class="tear" pathLength="1" d="M66 246a5 3.5 0 1 0 10 0a5 3.5 0 1 0-10 0M126 246a5 3.5 0 1 0 10 0a5 3.5 0 1 0-10 0M140 248a4 3 0 1 0 8 0a4 3 0 1 0-8 0"/>
+          </svg>
+          <div class="num">04</div>
+          <h3>MAYDI BOTANICALS</h3>
+          <p>Rare Somali frankincense, myrrh, resins and natural aromatic oils.</p>
+          <p class="ar" lang="ar" dir="rtl">اللبان والمر والراتنجات والزيوت العطرية الطبيعية النادرة من الصومال</p>
+          <a class="text-link caps" href="botanicals.html">Order raw materials</a>
+        </div></article>
+
+        <p class="rail__end">Every house carries the name of the most prized frankincense on earth.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · WHY US, the origin: pin, in the approved green. Lines accumulate (v7 of the
+       smoke test) and the arch beside them follows the tree from cliff to tear. -->
+  <!-- On a phone the four houses stack one below the other, as the rest of the page does. They slide in from the side only on a wide screen. -->
+  <script>
+    if (matchMedia('(max-width: 860px)').matches) {
+      var hs = document.getElementById('houses');
+      hs.setAttribute('data-sc-act', 'flow'); hs.removeAttribute('data-sc-span'); hs.classList.add('is-stacked');
+      var rl = hs.querySelector('[data-sc-pan]'); if (rl) rl.removeAttribute('data-sc-pan');
+      var sg = hs.querySelector('[data-sc-stage]'); if (sg) sg.removeAttribute('data-sc-stage');
+    }
+  </script>
+  <section data-sc-act="pin" data-sc-span="4.6" data-sc-drift="#3A6351" class="tree-act">
+    <div data-sc-stage class="tree-stage">
+      <div class="tree-lines">
+        <p class="sci" data-sc-cue="0 1 0 0"><i>Boswellia frereana</i></p>
+        <p data-step="0" data-sc-cue="0 1 0 0">Maydi grows on one tree, on the limestone cliffs of northern Somalia.</p>
+        <p data-step="1" data-sc-cue="0.2 1 0.05 0">Its bark peels like paper.</p>
+        <p data-step="2" data-sc-cue="0.42 1 0.05 0">A shallow cut, and the resin weeps.</p>
+        <p data-step="3" data-sc-cue="0.64 1 0.05 0">It dries into tears in the air, then it is sorted by hand.</p>
+      </div>
+      <figure class="stack arch">
+        <img class="bw is-current" src="assets/tree-cliff.webp" alt="A Boswellia tree growing from a limestone slope">
+        <img class="bw" src="assets/tree-bark.webp" alt="Pale, papery Boswellia bark">
+        <img class="bw" src="assets/tree-cut.webp" alt="Resin weeping from a cut in the bark">
+        <img class="bw" src="assets/tree-tears.webp" alt="Frankincense tears sorted in a wooden spoon">
+      </figure>
+    </div>
+  </section>
+
+  <!-- 5 · WHY US, the proof: flow. The one reading section, and the second (and last) eyebrow. -->
+  <section id="why" class="sc-section" data-sc-act="flow" data-sc-drift="#F5E6DA">
+    <div class="sc-wrap trust">
+      <div class="sc-stack" data-sc-in data-sc-stagger="80">
+        <div class="eyebrow caps">Officially licensed</div>
+        <h2 class="sc-display sc-display--lg">Why partners trust the house.</h2>
+        <p class="license">Licensed by the Municipality of Mogadishu, and authenticated by the Somali Ministry of Foreign Affairs and the Benadir Regional Governor's Office.</p>
+      </div>
+      <ol class="values" data-sc-in data-sc-stagger="90">
+        <li><b>01</b><div><h3>Authenticity</h3><p>Our identity comes from Somali land and its rare aromatic resources. We do not compromise on it.</p></div></li>
+        <li><b>02</b><div><h3>Craftsmanship</h3><p>Professional design expertise, with a deliberate creative touch.</p></div></li>
+        <li><b>03</b><div><h3>Partnership</h3><p>Clients are partners in building their brands, from the first idea to the market.</p></div></li>
+        <li><b>04</b><div><h3>Quality</h3><p>The highest standard at every stage, from the raw material to the final product.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 6 · PEAK and CLOSE: pin, last element on the page. The mockup's name band.
+       Colour is born from the resin, then the invitation and the footer. -->
+  <section id="partner" data-sc-act="pin" data-sc-span="2.2" data-sc-drift="#702030">
+    <div data-sc-stage class="finale">
+      <div class="finale__in">
+        <div class="resin"><div class="arch"><img src="assets/resin.webp" width="684" height="624" alt="A single tear of Maydi frankincense, glowing amber"></div></div>
+        <h2 data-sc-cue="0.22">Maydi is the most prized frankincense on earth, and it grows only in Somalia.</h2>
+        <p class="ar" lang="ar" dir="rtl" data-sc-cue="0.3">مايدي أثمن أنواع اللبان في العالم، ولا ينمو إلا في الصومال</p>
+        <p data-sc-cue="0.4"><a class="btn btn--light caps" href="contact.html">Partner with us</a></p>
+      </div>
+      <footer class="foot">
+        <span class="caps">Maydi House</span>
+        <span>Mogadishu, Somalia</span>
+        <a href="mailto:maydihouse@gmail.com">maydihouse@gmail.com</a>
+        <a href="https://www.instagram.com/maydihouse/" rel="noopener">Instagram</a>
+        <a href="https://wa.me/252610161810" rel="noopener">WhatsApp</a>
+      </footer>
+    </div>
+  </section>
+
+</main>
+<script>
+  // Phone menu: the section links, the CTA and the language switch, full screen.
+  (function () {
+    var btn = document.getElementById('menu-btn'), panel = document.getElementById('menu'), close = document.getElementById('menu-close');
+    function set(open) {
+      panel.hidden = !open; btn.setAttribute('aria-expanded', String(open));
+      document.documentElement.style.overflow = open ? 'hidden' : '';
+      (open ? close : btn).focus();
+    }
+    btn.addEventListener('click', function () { set(true); });
+    close.addEventListener('click', function () { set(false); });
+    panel.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) set(false); });
+  })();
+</script>
+<script src="scrollcraft.js"></script>
+<script src="glass.js"></script>
+<script>ScrollCraft.mount(document.body);</script>
+<script>
+  // Bespoke, page-side (the engine is untouched).
+  (function () {
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Inert links for pages that do not exist yet: no navigation, no jump to top.
+    document.querySelectorAll('[aria-disabled="true"]').forEach(function (a) {
+      a.addEventListener('click', function (e) { e.preventDefault(); });
+    });
+
+    // Tree act: soften every line whose successor has arrived, and swap the arch photo with it.
+    var tree = document.querySelector('.tree-act');
+    var lines = tree.querySelectorAll('[data-step]');
+    var photos = tree.querySelectorAll('.stack img');
+    var starts = [0, 0.2, 0.42, 0.64];
+
+    // Houses: each arch draws itself from where the item actually sits on screen,
+    // so it works at any rail width and would survive an RTL mirror too.
+    var houses = document.querySelectorAll('.house__in');
+    // Lead and closing note have no drawing; they only fade as they leave.
+    var railText = document.querySelectorAll('.rail__lead, .rail__end');
+    // Any rail item crossing either screen edge fades with how much of it is cut off,
+    // gone by the time a fifth of it is outside, so no text is read half cut.
+    function exitOf(el, vw) {
+      var r = el.getBoundingClientRect();
+      var over = Math.max(0, -r.left) + Math.max(0, r.right - vw);
+      return Math.min(1, Math.max(0, 1 - over / (r.width * 0.2)));
+    }
+
+    var lastStep = -1;
+    function tick() {
+      var p = parseFloat(getComputedStyle(tree).getPropertyValue('--sc-p')) || 0;
+      var step = 0;
+      for (var i = 0; i < starts.length; i++) if (p >= starts[i]) step = i;
+      if (step !== lastStep) {
+        lines.forEach(function (el, i) { el.classList.toggle('is-past', i < step); });
+        photos.forEach(function (el, i) { el.classList.toggle('is-current', i === step); });
+        lastStep = step;
+      }
+      if (!reduce) {
+        var vw = innerWidth;
+        houses.forEach(function (h) {
+          var left = h.getBoundingClientRect().left;
+          var d = Math.min(1, Math.max(0, (vw * 0.98 - left) / (vw * 0.55)));
+          h.style.setProperty('--draw', d.toFixed(3));
+          h.style.setProperty('--exit', exitOf(h, vw).toFixed(3));
+        });
+        railText.forEach(function (el) { el.style.opacity = exitOf(el, vw).toFixed(3); });
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  })();
+</script>
+<script>
+  // The hero film: plays once on its own, black and white until the drop arrives (about 40% in), then the colour blooms,
+  // and it rests on the full logo. With reduced motion, or if the browser will not play it, the full logo shows in colour.
+  (function () {
+    var box = document.querySelector('.hero-film'); if (!box) return;
+    var v = box.querySelector('video');
+    var still = function () { if (v) v.remove(); box.style.setProperty('--g', 0); };
+    if (!v || matchMedia('(prefers-reduced-motion: reduce)').matches) { still(); return; }
+    box.style.setProperty('--g', 1);
+    var tick = function () {
+      if (v.duration) box.style.setProperty('--g', Math.min(1, Math.max(0, 1 - (v.currentTime / v.duration - .4) / .16)).toFixed(3));
+      if (!v.ended && !v.paused) requestAnimationFrame(tick);
+    };
+    v.addEventListener('playing', function () { requestAnimationFrame(tick); });
+    v.addEventListener('ended', function () { box.style.setProperty('--g', 0); });
+    v.addEventListener('error', still);
+    var p = v.play(); if (p && p.catch) p.catch(still);
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!doctype html>
+<!-- محمد عبده (نسخة عربية): قسم المؤسس: الصورة والتعريف، والسيرة، والأعمال، والأرشيف، والمقالات. -->
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>محمد عبده · مايدي هاوس</title>
+<link rel="canonical" href="https://maydihouse.com/ar-mohamed-abdo">
+<link rel="alternate" hreflang="en" href="https://maydihouse.com/mohamed-abdo">
+<link rel="alternate" hreflang="ar" href="https://maydihouse.com/ar-mohamed-abdo">
+<link rel="alternate" hreflang="x-default" href="https://maydihouse.com/mohamed-abdo">
+<meta name="description" content="محمد عبده، مصمم عطور صومالي، مؤسس مايدي هاوس وعطّارها.">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="glass.css">
+<style>
+  .founder-head { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(2rem, 6vw, 6rem); align-items: end; padding-block: clamp(2.5rem, 6vw, 5rem); }
+  .founder-head .portrait img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 28%; }
+  .founder-head h1 { font-size: clamp(3rem, 7.4vw, 6.4rem); line-height: 1; }
+  .founder-head .ar-name { font-family: var(--display); font-weight: 700; font-size: clamp(2rem, 4.6vw, 3.8rem); color: var(--accent-2); margin-top: .5rem; line-height: 1.3; }
+  .founder-head .role { margin-top: 1.4rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .16em; color: var(--umber); }
+  .founder-head .lede { font-family: var(--display); font-size: clamp(1.15rem, 1.8vw, 1.4rem); line-height: 1.6; color: var(--ink-soft); max-width: 40ch; margin-top: 1rem; }
+  .bio { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(2rem, 6vw, 6rem); }
+  .bio .pull { margin: 0; font-family: var(--display); font-size: clamp(1.5rem, 2.6vw, 2.2rem); line-height: 1.35; color: var(--accent); }
+  .bio .text p + p { margin-top: 1rem; }
+  .works { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.4rem, 4vw, 3rem); margin-top: 2.6rem; max-width: 880px; }
+  .cv { list-style: none; margin: 2rem 0 0; padding: 0; border-top: 1px solid rgba(245,230,218,.3); }
+  .cv li { display: grid; grid-template-columns: 9rem 1fr; gap: 1.4rem; padding-block: 1.1rem; border-bottom: 1px solid rgba(245,230,218,.3); }
+  .cv .when { font-size: .72rem; text-transform: uppercase; letter-spacing: .16em; color: #EAD3CB; padding-top: .3rem; }
+  .cv .what { font-family: var(--display); font-size: 1.2rem; color: var(--canvas); }
+  .cv .what.todo { opacity: .6; }
+  .archive { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 2.4rem; }
+  .archive .slot { border: 1px dashed color-mix(in oklab, var(--accent) 35%, transparent); padding: 1.6rem; min-height: 11rem; display: flex; flex-direction: column; justify-content: space-between; }
+  .archive .slot h3 { font-size: 1.35rem; }
+  .archive .slot p { color: var(--ink-soft); font-size: .92rem; }
+  .archive a.slot--article { border-style: solid; text-decoration: none; color: inherit; transition: background-color .3s ease; }
+  .archive a.slot--article:hover { background: var(--surface); }
+  .slot--article .series { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--umber); }
+  .slot--article h3 { margin-top: .5rem; }
+  .slot--article .go { margin-top: 1rem; font-size: .8rem; color: var(--accent); border-bottom: 1px solid currentColor; align-self: flex-start; }
+  .follow { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.6rem; }
+  @media (max-width: 860px) {
+    .founder-head, .bio { grid-template-columns: 1fr; }
+    .founder-head .portrait { max-width: 22rem; }
+    .archive { grid-template-columns: 1fr; }
+    .cv li { grid-template-columns: 1fr; gap: .2rem; }
+  }
+  .works-wrap { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(1.6rem, 5vw, 4rem); align-items: start; margin-top: 2.6rem; }
+  .works-wrap .works { margin-top: 0; max-width: none; }
+  .pair { margin: 0; }
+  .pair img { display: block; width: 100%; height: auto; aspect-ratio: 888 / 1205; object-fit: cover; }
+  .pair figcaption { margin-top: .8rem; font-size: .9rem; line-height: 1.6; color: var(--ink-soft); }
+  .pair figcaption b { color: var(--accent); font-weight: 600; }
+  @media (max-width: 860px) { .works-wrap { grid-template-columns: 1fr; } .pair { max-width: 26rem; } }
+  @media (max-width: 480px) { .works { grid-template-columns: 1fr; } }
+  .cred { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(1.6rem, 5vw, 4rem); align-items: center; margin-top: 2.2rem; }
+  .cred .cert { margin: 0; display: block; padding: 0; border: 0; background: none; cursor: zoom-in; }
+  .cred .cert img { display: block; width: 100%; height: auto; box-shadow: 0 1.2rem 3rem -1.2rem rgba(0,0,0,.45); border: 1px solid color-mix(in oklab, var(--accent) 30%, transparent); }
+  .cred .seal { display: inline-block; font-size: .72rem; text-transform: uppercase; letter-spacing: .16em; color: var(--accent); border: 1px solid currentColor; padding: .35rem .8rem; border-radius: 999px; }
+  .cred h3 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); margin-top: 1rem; }
+  .cred p { color: var(--ink-soft); margin-top: .7rem; }
+  .cred .meta { font-size: .85rem; color: var(--umber); }
+  .cred-zoom { position: fixed; inset: 0; z-index: 90; display: none; align-items: center; justify-content: center; padding: 1rem; background: rgba(20,12,8,.88); cursor: zoom-out; }
+  .cred-zoom.on { display: flex; }
+  .cred-zoom img { max-width: 100%; max-height: 100%; }
+  @media (max-width: 860px) { .cred { grid-template-columns: 1fr; } }
+
+</style>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:site_name" content="مايدي هاوس">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:title" content="محمد عبده · مايدي هاوس">
+<meta property="og:description" content="محمد عبده، مصمم عطور صومالي، مؤسس مايدي هاوس وعطّارها.">
+<meta property="og:image" content="https://maydihouse.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body data-section="ar-mohamed-abdo.html">
+<header data-site-bar></header>
+<main>
+
+  <section class="wrap">
+    <div class="crumbs" style="margin-top:2rem"><a href="ar.html">الرئيسية</a> / محمد عبده</div>
+    <div class="founder-head">
+      <figure class="portrait arch rv" style="margin:0"><img class="bw" src="assets/founder.webp" width="900" height="1600" alt="محمد عبده يشمّ شريط عطر"></figure>
+      <div>
+        <h1>محمد عبده</h1>
+        <span class="lat" lang="en">Mohamed Abdo</span>
+        <p class="role">مصمم عطور مستقل · مؤسس مايدي هاوس</p>
+        <p class="lede">مصمم عطور صومالي، تركيباته مبتكرة بطابع كلاسيكي. أسّس مايدي هاوس في مقديشو ليحمل العطر الصومالي إلى العالم.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="wrap bio">
+      <p class="pull rv">تؤمن الدار بأن العطر فنٌّ قبل أن يكون منتجاً.</p>
+      <div class="text rv">
+        <p>تعلّم محمد عبده تصميم العطور عبر دورات في هذا المجال.</p>
+        <p>ابتكر تركيبات عطرية أصيلة، وتعاون مع دور عطور في أنحاء الخليج العربي، ويعمل اليوم مستشاراً في ابتكار العطور.</p>
+        <p>في مايدي هاوس يقود الأتيليه، حيث تأتيه العلامات لتحصل على عطر خاص بها.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section section--surface">
+    <div class="wrap">
+      <h2>الاعتمادات</h2>
+      <div class="cred">
+        <button class="cert rv" type="button" aria-label="تكبير الشهادة"><img src="assets/certificate-cpd.webp" width="1400" height="1059" loading="lazy" alt="شهادة إتمام الدورة المتقدمة في صناعة العطور، صادرة باسم محمد علمي عبده من Perfumery Art Training بتاريخ 21 ديسمبر 2024، ومعتمدة من CPD في المملكة المتحدة"></button>
+        <div class="rv">
+          <span class="seal">CPD Certified · UK</span>
+          <h3>الدورة المتقدمة في صناعة العطور</h3>
+          <p>أتمّها محمد عبده لدى Perfumery Art Training، وهي دورة معتمدة من خدمة CPD للتطوير المهني المستمر في المملكة المتحدة.</p>
+          <p class="meta">تاريخ المنح: 21 ديسمبر 2024. اضغط على الشهادة لتكبيرها.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- عطوره: اللون الوحيد في هذه الصفحة يأتي من الزجاجات. -->
+  <section class="section">
+    <div class="wrap">
+      <h2>تركيباته</h2>
+      <p class="intro">تركيبات صمّمها محمد عبده. يُعرض عطرا تيمبروز عبر الأتيليه تركيبتين جاهزتين للعلامات.</p>
+      <div class="works-wrap">
+        <figure class="pair rv">
+          <img src="assets/timbrose-pair.webp" width="888" height="1205" loading="lazy" alt="تيمبروز ٢ وتيمبروز جنباً إلى جنب: زجاجتان سوداوان بملصقين ذهبيين، إحداهما بغطاء أسود متسع والأخرى بغطاء خشبي مستدير">
+          <figcaption><b>إبداعات تنتظر الشتاء.</b> تيمبروز ٢ وتيمبروز، 30 مل لكل منهما. وكل زجاجة من تيمبروز ٢ تحمل رقمها من 12.</figcaption>
+        </figure>
+        <div class="works" id="works"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>الخدمات</h2>
+      <p class="intro">ما يقدمه محمد عبده بصفته مصمم عطور مستقلاً.</p>
+      <ol class="services">
+        <li>تصميم عطور حصرية</li>
+        <li>استشارات في صناعة وتطوير العطور</li>
+        <li>استشارات في إنشاء شركات العطور</li>
+        <li>دورات في تصميم العطور</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--accent">
+    <div class="wrap">
+      <h2>السيرة الذاتية</h2>
+      <p class="intro">تُنشر السيرة كاملة هنا. وما نستطيع ذكره الآن:</p>
+      <ol class="cv">
+        <li><span class="when">التدريب</span><span class="what">حاصل على دورات احترافية في تصميم العطور وفق أعلى معايير الجودة والسلامة، ومعتمد من مؤسسة <bdi>Perfumery Art</bdi> للتدريب على تصميم العطور.</span></li>
+        <li><span class="when">التعاون</span><span class="what">دور عطور في أنحاء الخليج العربي</span></li>
+        <li><span class="when">اليوم</span><span class="what">مستشار ابتكار عطور؛ ومؤسس مايدي هاوس، مقديشو</span></li>
+        <li><span class="when">التواريخ والتفاصيل</span><span class="what todo">تأتي من محمد عبده</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>الأرشيف والمقابلات والمقالات</h2>
+      <p class="intro">أرشيف خاص من الصور، والمقابلات التي أجراها، والمقالات التي كُتبت عنه. يمتلئ هذا الجزء كلما وصلت المواد.</p>
+      <div class="gallery__row gallery__row--3" style="margin-top:2.4rem"><figure><img src="assets/timbrose-ii-plaid.webp" width="1184" height="1776" alt="تيمبروز ٢ مستلقياً على قماش مربعات بني بجانب محفظة جلدية وساعة يد وعملة ذهبية وإطار خشبي" loading="lazy"></figure><figure><img src="assets/timbrose-ii-denim.webp" width="1184" height="1776" alt="تيمبروز ٢ مستلقياً على قماش جينز أزرق داكن بجانب محفظة جلدية وساعة يد وعملة ذهبية" loading="lazy"></figure><figure><img src="assets/timbrose-ii-study.webp" width="1184" height="1776" alt="تيمبروز ٢ مستلقياً على قماش رمادي بجانب نظارة مستديرة وحلقة مفاتيح وبروش ذهبي وكتاب قديم" loading="lazy"></figure><figure><img src="assets/timbrose-ii-gift.webp" width="1184" height="1776" alt="تيمبروز ٢ في خيط من ضوء الشمس على قماش رمادي بجانب ساعة يد وعلبة هدية سوداء مربوطة بشريط" loading="lazy"></figure><figure><img src="assets/timbrose-ii-flatlay.webp" width="1184" height="1776" alt="تيمبروز ٢ من الأعلى على قماش رمادي، مع ساعة يد بأرقام عربية وقلم وكتاب عن هنري كارتييه بريسون وطرف سترة جينز" loading="lazy"></figure><figure><img src="assets/timbrose-ii-label.webp" width="1000" height="1339" alt="لقطة قريبة لملصق تيمبروز ٢ برقم 8 من 12 في إضاءة خافتة" loading="lazy"></figure></div>
+      <p class="gallery__cap">تيمبروز ٢، في صور الدار.</p>
+      <div class="archive">
+        <div class="slot rv"><h3>الأرشيف</h3><p>صور العطور أعلاه. وصور المختبر والأشجار والعمل قريباً.</p></div>
+        <div class="slot rv"><h3>المقابلات</h3><p>مقابلات صحفية ومرئية. قريباً.</p></div>
+        <a class="slot slot--article rv" href="ar-article-frankincense.html"><div><p class="series">المقالات · كنوز الطبيعة 1</p><h3>اللبان.. دموع من ذهب</h3></div><p>بقلم محمد عبده: اللبان الذي تحمل الدار اسمه، وما وجدته فيه دراسة عام 2021 على اثنتي عشرة شجرة.</p><span class="go">اقرأ المقال</span></a>
+      </div>
+      <div class="follow">
+        <a class="btn btn--ghost" href="https://www.instagram.com/ma.perfumer/" rel="noopener">إنستغرام · <bdi>@ma.perfumer</bdi></a>
+        <a class="btn btn--ghost" href="https://www.tiktok.com/@ma.perfumer" rel="noopener">تيك توك · <bdi>@ma.perfumer</bdi></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+<footer data-site-foot></footer>
+<script src="products.js"></script>
+<script src="products-ar.js"></script>
+<script src="site.js"></script>
+<script>MAYDI.initFounder(document);</script>
+<script src="glass.js"></script>
+<div class="cred-zoom" id="cred-zoom" role="dialog" aria-modal="true" hidden><img alt="الشهادة بحجم كبير"></div>
+<script>
+(function () {
+  var z = document.getElementById('cred-zoom'), b = document.querySelector('.cred .cert');
+  if (!z || !b) return;
+  function set(on) { z.hidden = !on; z.classList.toggle('on', on); if (on) z.querySelector('img').src = b.querySelector('img').src; }
+  b.addEventListener('click', function () { set(true); });
+  z.addEventListener('click', function () { set(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
+})();
+</script>
+
+
+</body>
+</html>

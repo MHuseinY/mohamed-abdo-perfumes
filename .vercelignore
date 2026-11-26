@@ -1,0 +1,16 @@
+# Development & Agent directories
+.claude/
+.agents/
+.vscode/
+
+# Internal assets, Client voice notes & raw media
+Resources/
+
+# Archives & raw documents
+*.zip
+*.docx
+*.pdf
+*.md
+
+# Reference WhatsApp images
+WhatsApp Image*

@@ -1,3 +1,14 @@
+# Reference images (not used in the site)
+WhatsApp Image*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.code-workspace
+
 # ffmpeg binary (large, not needed in repo)
 ffmpeg-*/
 *.7z

@@ -1,0 +1,97 @@
+<!doctype html>
+<!-- ابدأ شراكة (نسخة عربية). النموذج للتصميم فقط: لا يُرسل شيء بعد. -->
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ابدأ شراكة · مايدي هاوس</title>
+<link rel="canonical" href="https://maydihouse.com/ar-contact">
+<link rel="alternate" hreflang="en" href="https://maydihouse.com/contact">
+<link rel="alternate" hreflang="ar" href="https://maydihouse.com/ar-contact">
+<link rel="alternate" hreflang="x-default" href="https://maydihouse.com/contact">
+<meta name="description" content="ابدأ مشروعاً، أو اطلب مواد خاماً، أو اسأل البوتيك. مايدي هاوس، مقديشو.">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="glass.css">
+<style>
+  .contact { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(2rem, 6vw, 6rem); align-items: start; padding-bottom: 5rem; }
+  .direct { display: grid; gap: 1.6rem; }
+  .direct dt { font-size: .72rem; text-transform: uppercase; letter-spacing: .16em; color: var(--umber); }
+  .direct dd { margin: .3rem 0 0; font-family: var(--display); font-size: 1.3rem; }
+  .direct dd a { text-decoration: none; border-bottom: 1px solid var(--line); }
+  .license { margin-top: 2.4rem; padding-top: 1.4rem; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: .95rem; max-width: 40ch; }
+  .form-wrap { background: var(--paper); padding: clamp(1.4rem, 3vw, 2.6rem); border: 1px solid color-mix(in oklab, var(--accent) 12%, transparent); }
+  .form-wrap h2 { font-size: 1.8rem; margin-bottom: 1.4rem; }
+  .form input, .form select, .form textarea { background: #fff; }
+  @media (max-width: 860px) { .contact { grid-template-columns: 1fr; } }
+</style>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:site_name" content="مايدي هاوس">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:title" content="ابدأ شراكة · مايدي هاوس">
+<meta property="og:description" content="ابدأ مشروعاً، أو اطلب مواد خاماً، أو اسأل البوتيك. مايدي هاوس، مقديشو.">
+<meta property="og:image" content="https://maydihouse.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body data-section="ar-contact.html">
+<header data-site-bar></header>
+<main>
+
+  <section class="wrap page-head">
+    <div class="crumbs"><a href="ar.html">الرئيسية</a> / ابدأ شراكة</div>
+    <h1>كن شريكاً للدار.</h1>
+    <span class="lat" lang="en">Partner with us</span>
+    <p class="lede">للعلامات والمصممين والمشترين: أخبرنا بما تحتاجه وبأي قسم يتعلق.</p>
+  </section>
+
+  <section class="wrap contact">
+    <div>
+      <dl class="direct">
+        <div><dt>البريد الإلكتروني</dt><dd><a href="mailto:maydihouse@gmail.com"><bdi>maydihouse@gmail.com</bdi></a></dd></div>
+        <div><dt>واتساب</dt><dd><a href="https://wa.me/252610161810" rel="noopener"><bdi dir="ltr">+252 610 161 810</bdi></a></dd></div>
+        <div><dt>إنستغرام</dt><dd><a href="https://www.instagram.com/maydihouse/" rel="noopener"><bdi>@maydihouse</bdi></a></dd></div>
+        <div><dt>الموقع</dt><dd>مقديشو، الصومال</dd></div>
+      </dl>
+      <p class="license">مرخّصة من بلدية مقديشو، ومصدّقة من وزارة الخارجية الصومالية ومكتب محافظ إقليم بنادر.</p>
+    </div>
+
+    <div class="form-wrap">
+      <h2>أرسل استفساراً</h2>
+      <form class="form" id="enquiry" novalidate>
+        <label>الاسم<input id="f-name" name="name" autocomplete="name" required></label>
+        <label>الشركة أو العلامة<input id="f-company" name="company" autocomplete="organization"></label>
+        <label>البريد الإلكتروني<input id="f-email" name="email" type="email" autocomplete="email" dir="ltr" required></label>
+        <label>الدولة<input id="f-country" name="country" autocomplete="country-name"></label>
+        <label class="full">أي قسم؟
+          <select id="f-topic" name="topic">
+            <option value="atelier">مايدي أتيليه · تصميم حسب الطلب أو تركيبة جاهزة</option>
+            <option value="factory">مايدي فاكتوري · تسجيل الاهتمام (قيد الإنشاء)</option>
+            <option value="boutique">مايدي بوتيك · سؤال عن عطر</option>
+            <option value="order">مايدي بوتيك · طلب شراء</option>
+            <option value="botanicals">مايدي بوتانيكالز · مواد خام</option>
+            <option value="other">شيء آخر</option>
+          </select>
+        </label>
+        <label class="full">رسالتك<textarea id="f-message" name="message"></textarea></label>
+        <div class="full" style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
+          <button class="btn" type="submit">أرسل عبر واتساب</button>
+          <span class="muted" style="font-size:.9rem">يفتح واتساب برسالتك جاهزة للإرسال.</span>
+        </div>
+        <p class="form-note full" id="form-status" role="status" hidden></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+<footer data-site-foot></footer>
+<script src="products.js"></script>
+<script src="products-ar.js"></script>
+<script src="site.js"></script>
+<script>MAYDI.initContact(document, MAYDI.queryCtx());</script>
+<script src="glass.js"></script>
+</body>
+</html>

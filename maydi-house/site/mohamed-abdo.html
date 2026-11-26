@@ -1,0 +1,205 @@
+<!doctype html>
+<!-- Mohamed Abdo (v2 prototype): the founder's own section inside Maydi House.
+     The client asked for: photo and introduction, CV, works and oils, archive, interviews, articles. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mohamed Abdo · Maydi House</title>
+<link rel="canonical" href="https://maydihouse.com/mohamed-abdo">
+<link rel="alternate" hreflang="en" href="https://maydihouse.com/mohamed-abdo">
+<link rel="alternate" hreflang="ar" href="https://maydihouse.com/ar-mohamed-abdo">
+<link rel="alternate" hreflang="x-default" href="https://maydihouse.com/mohamed-abdo">
+<meta name="description" content="Mohamed Abdo, Somali perfume designer, founder and perfumer of Maydi House.">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="glass.css">
+<style>
+  .founder-head { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(2rem, 6vw, 6rem); align-items: end; padding-block: clamp(2.5rem, 6vw, 5rem); }
+  .founder-head .portrait img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 28%; }
+  .founder-head h1 { font-size: clamp(3rem, 7.4vw, 6.4rem); line-height: 1; }
+  .founder-head .ar-name { font-family: var(--display); font-weight: 700; font-size: clamp(2rem, 4.6vw, 3.8rem); color: var(--accent-2); margin-top: .5rem; line-height: 1.3; }
+  .founder-head .role { margin-top: 1.4rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .16em; color: var(--umber); }
+  .founder-head .lede { font-family: var(--display); font-size: clamp(1.15rem, 1.8vw, 1.4rem); line-height: 1.6; color: var(--ink-soft); max-width: 40ch; margin-top: 1rem; }
+  .bio { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(2rem, 6vw, 6rem); }
+  .bio .pull { margin: 0; font-family: var(--display); font-size: clamp(1.5rem, 2.6vw, 2.2rem); line-height: 1.35; color: var(--accent); }
+  .bio .text p + p { margin-top: 1rem; }
+  .works { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.4rem, 4vw, 3rem); margin-top: 2.6rem; max-width: 880px; }
+  .cv { list-style: none; margin: 2rem 0 0; padding: 0; border-top: 1px solid rgba(245,230,218,.3); }
+  .cv li { display: grid; grid-template-columns: 9rem 1fr; gap: 1.4rem; padding-block: 1.1rem; border-bottom: 1px solid rgba(245,230,218,.3); }
+  .cv .when { font-size: .72rem; text-transform: uppercase; letter-spacing: .16em; color: #EAD3CB; padding-top: .3rem; }
+  .cv .what { font-family: var(--display); font-size: 1.2rem; color: var(--canvas); }
+  .cv .what.todo { opacity: .6; }
+  .archive { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 2.4rem; }
+  .archive .slot { border: 1px dashed color-mix(in oklab, var(--accent) 35%, transparent); padding: 1.6rem; min-height: 11rem; display: flex; flex-direction: column; justify-content: space-between; }
+  .archive .slot h3 { font-size: 1.35rem; }
+  .archive .slot p { color: var(--ink-soft); font-size: .92rem; }
+  .archive a.slot--article { border-style: solid; text-decoration: none; color: inherit; transition: background-color .3s ease; }
+  .archive a.slot--article:hover { background: var(--surface); }
+  .slot--article .series { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--umber); }
+  .slot--article h3 { margin-top: .5rem; }
+  .slot--article .go { margin-top: 1rem; font-size: .8rem; color: var(--accent); border-bottom: 1px solid currentColor; align-self: flex-start; }
+  .follow { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.6rem; }
+  @media (max-width: 860px) {
+    .founder-head, .bio { grid-template-columns: 1fr; }
+    .founder-head .portrait { max-width: 22rem; }
+    .archive { grid-template-columns: 1fr; }
+    .cv li { grid-template-columns: 1fr; gap: .2rem; }
+  }
+  .works-wrap { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(1.6rem, 5vw, 4rem); align-items: start; margin-top: 2.6rem; }
+  .works-wrap .works { margin-top: 0; max-width: none; }
+  .pair { margin: 0; }
+  .pair img { display: block; width: 100%; height: auto; aspect-ratio: 888 / 1205; object-fit: cover; }
+  .pair figcaption { margin-top: .8rem; font-size: .9rem; line-height: 1.6; color: var(--ink-soft); }
+  .pair figcaption b { color: var(--accent); font-weight: 600; }
+  @media (max-width: 860px) { .works-wrap { grid-template-columns: 1fr; } .pair { max-width: 26rem; } }
+  @media (max-width: 480px) { .works { grid-template-columns: 1fr; } }
+  .cred { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(1.6rem, 5vw, 4rem); align-items: center; margin-top: 2.2rem; }
+  .cred .cert { margin: 0; display: block; padding: 0; border: 0; background: none; cursor: zoom-in; }
+  .cred .cert img { display: block; width: 100%; height: auto; box-shadow: 0 1.2rem 3rem -1.2rem rgba(0,0,0,.45); border: 1px solid color-mix(in oklab, var(--accent) 30%, transparent); }
+  .cred .seal { display: inline-block; font-size: .72rem; text-transform: uppercase; letter-spacing: .16em; color: var(--accent); border: 1px solid currentColor; padding: .35rem .8rem; border-radius: 999px; }
+  .cred h3 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); margin-top: 1rem; }
+  .cred p { color: var(--ink-soft); margin-top: .7rem; }
+  .cred .meta { font-size: .85rem; color: var(--umber); }
+  .cred-zoom { position: fixed; inset: 0; z-index: 90; display: none; align-items: center; justify-content: center; padding: 1rem; background: rgba(20,12,8,.88); cursor: zoom-out; }
+  .cred-zoom.on { display: flex; }
+  .cred-zoom img { max-width: 100%; max-height: 100%; }
+  @media (max-width: 860px) { .cred { grid-template-columns: 1fr; } }
+
+</style>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:site_name" content="Maydi House">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Mohamed Abdo · Maydi House">
+<meta property="og:description" content="Mohamed Abdo, Somali perfume designer, founder and perfumer of Maydi House.">
+<meta property="og:image" content="https://maydihouse.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body data-section="mohamed-abdo.html">
+<header data-site-bar></header>
+<main>
+
+  <section class="wrap">
+    <div class="crumbs" style="margin-top:2rem"><a href="index.html">Home</a> / Mohamed Abdo</div>
+    <div class="founder-head">
+      <figure class="portrait arch rv" style="margin:0"><img class="bw" src="assets/founder.webp" width="900" height="1600" alt="Mohamed Abdo smelling a perfume blotter"></figure>
+      <div>
+        <h1>Mohamed Abdo</h1>
+        <p class="ar-name" lang="ar" dir="rtl">محمد عبده</p>
+        <p class="role">Independent perfumer · Founder of Maydi House</p>
+        <p class="lede">A Somali perfume designer whose compositions are inventive, with a classic character. He founded Maydi House in Mogadishu to carry Somali fragrance to the world.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="wrap bio">
+      <p class="pull rv">The house believes perfume is an art before it is a product.</p>
+      <div class="text rv">
+        <p>Mohamed Abdo trained in perfume design through courses in the craft.</p>
+        <p>He has created original fragrance compositions, collaborated with perfume houses across the Arab Gulf, and serves today as a fragrance innovation consultant.</p>
+        <p>At Maydi House he leads the Atelier, where brands come to him for a fragrance of their own.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section section--surface">
+    <div class="wrap">
+      <h2>Credentials</h2>
+      <div class="cred">
+        <button class="cert rv" type="button" aria-label="Enlarge the certificate"><img src="assets/certificate-cpd.webp" width="1400" height="1059" loading="lazy" alt="Certificate of Completion: Advanced Perfumery Course, awarded to Mohamed Elmi Abdo by Perfumery Art Training, 21 December 2024, CPD certified (UK)"></button>
+        <div class="rv">
+          <span class="seal">CPD Certified · UK</span>
+          <h3>Advanced Perfumery Course</h3>
+          <p>Completed with Perfumery Art Training, a course certified by the Continuing Professional Development (CPD) Certification Service in the United Kingdom.</p>
+          <p class="meta">Awarded 21 December 2024. Tap the certificate to enlarge it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- His perfumes: the only colour on this page comes from the bottles. -->
+  <section class="section">
+    <div class="wrap">
+      <h2>His compositions</h2>
+      <p class="intro">Compositions designed by Mohamed Abdo. Both Timbroses are offered through the Atelier as ready formulas for brands.</p>
+      <div class="works-wrap">
+        <figure class="pair rv">
+          <img src="assets/timbrose-pair.webp" width="888" height="1205" loading="lazy" alt="Timbrose II and Timbrose side by side: two black bottles with gold labels, one with a flared black cap and one with a round wooden cap">
+          <figcaption><b>Creations waiting for winter.</b> Timbrose II and Timbrose, 30 ml each. Every bottle of Timbrose II is numbered out of 12.</figcaption>
+        </figure>
+        <div class="works" id="works"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Services</h2>
+      <p class="intro">What Mohamed Abdo offers, as an independent perfumer.</p>
+      <ol class="services">
+        <li>Exclusive perfume design</li>
+        <li>Consultations in perfume making and development</li>
+        <li>Consultations in establishing perfume companies</li>
+        <li>Perfume design courses</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--accent">
+    <div class="wrap">
+      <h2>Curriculum vitae</h2>
+      <p class="intro">The full CV will be published here. What we can already state:</p>
+      <ol class="cv">
+        <li><span class="when">Training</span><span class="what">Certified by the Perfumery Art Training in professional perfume design in accordance with the highest quality and safety standards.</span></li>
+        <li><span class="when">Collaborations</span><span class="what">Perfume houses across the Arab Gulf</span></li>
+        <li><span class="when">Today</span><span class="what">Fragrance innovation consultant; founder of Maydi House, Mogadishu</span></li>
+        <li><span class="when">Dates and details</span><span class="what todo">To come from Mohamed Abdo</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Archive, interviews and articles</h2>
+      <p class="intro">A private archive of photographs, the interviews he has given and the articles written about him. This part of the page fills as material arrives.</p>
+      <div class="gallery__row gallery__row--3" style="margin-top:2.4rem"><figure><img src="assets/timbrose-ii-plaid.webp" width="1184" height="1776" alt="Timbrose II lying on brown tartan cloth beside a leather wallet, a wristwatch, a gold coin and a wooden frame" loading="lazy"></figure><figure><img src="assets/timbrose-ii-denim.webp" width="1184" height="1776" alt="Timbrose II lying on dark blue denim beside a leather wallet, a wristwatch and a gold coin" loading="lazy"></figure><figure><img src="assets/timbrose-ii-study.webp" width="1184" height="1776" alt="Timbrose II lying on grey cloth beside round spectacles, a key ring, a gold brooch and an old book" loading="lazy"></figure><figure><img src="assets/timbrose-ii-gift.webp" width="1184" height="1776" alt="Timbrose II in a slant of sunlight on grey cloth beside a wristwatch and a black gift box tied with ribbon" loading="lazy"></figure><figure><img src="assets/timbrose-ii-flatlay.webp" width="1184" height="1776" alt="Timbrose II seen from above on grey cloth, with a wristwatch with Arabic numerals, a pen, a book on Henri Cartier-Bresson and the edge of a denim jacket" loading="lazy"></figure><figure><img src="assets/timbrose-ii-label.webp" width="1000" height="1339" alt="A close view of the Timbrose II label, numbered 8 of 12, in low light" loading="lazy"></figure></div>
+      <p class="gallery__cap">Timbrose II, in the house's own photographs.</p>
+      <div class="archive">
+        <div class="slot rv"><h3>Archive</h3><p>Photographs of the perfumes are above. More from the lab, the trees and the work to come.</p></div>
+        <div class="slot rv"><h3>Interviews</h3><p>Press and video interviews. To come.</p></div>
+        <a class="slot slot--article rv" href="article-frankincense.html"><div><p class="series">Articles · Treasures of Nature 1</p><h3>Frankincense, tears of gold</h3></div><p>By Mohamed Abdo: the frankincense the house is named after, and what a 2021 study of twelve trees found in it.</p><span class="go">Read the article</span></a>
+      </div>
+      <div class="follow">
+        <a class="btn btn--ghost" href="https://www.instagram.com/ma.perfumer/" rel="noopener">Instagram · @ma.perfumer</a>
+        <a class="btn btn--ghost" href="https://www.tiktok.com/@ma.perfumer" rel="noopener">TikTok · @ma.perfumer</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+<footer data-site-foot></footer>
+<script src="products.js"></script>
+<script src="site.js"></script>
+<script>MAYDI.initFounder(document);</script>
+<script src="glass.js"></script>
+<div class="cred-zoom" id="cred-zoom" role="dialog" aria-modal="true" hidden><img alt="Certificate, enlarged"></div>
+<script>
+(function () {
+  var z = document.getElementById('cred-zoom'), b = document.querySelector('.cred .cert');
+  if (!z || !b) return;
+  function set(on) { z.hidden = !on; z.classList.toggle('on', on); if (on) z.querySelector('img').src = b.querySelector('img').src; }
+  b.addEventListener('click', function () { set(true); });
+  z.addEventListener('click', function () { set(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
+})();
+</script>
+
+
+</body>
+</html>
